@@ -4,18 +4,19 @@ title: CV
 permalink: /cv/
 ---
 
-**Full CV**
+## Full CV
 
-## [Shubham Kejriwal Curriculum Vitae (PDF)](assets/Shubham_Kejriwal_CV.pdf)
+### [Shubham Kejriwal CV (PDF)](assets/Shubham_Kejriwal_CV.pdf)
 
 ---
 
-**Brief Overview**
+## Brief Overview
 
+---
 
-## Publications
-
-### First Author
+### Publications
+---
+#### First Author
 
 - **S. Kejriwal**, F. Duque, A. J. K. Chua, J. Gair. (2025)
 
@@ -28,6 +29,7 @@ permalink: /cv/
 - **S. Kejriwal**, L. Speri, A. J. K. Chua. (2024)
 
 *Impact of Correlations on the Modeling and Inference of Beyond Vacuum-GR Effects in Extreme-Mass-Ratio Inspirals*, [PRD](https://doi.org/10.1103/PhysRevD.110.084060)
+
 ---
 
 ## 🎤 Recent Talks
