@@ -19,33 +19,15 @@ Shiv Nadar University, Delhi, India (2018-2022)
 
 ## Contact
 
-National University of Singapore
+National University of Singapore,
+
 Science Drive 4, 
 Singapore-119077
 
-Email: [shubhamkejriwal@u.nus.edu](mailto:shubhamkejriwal@u.nus.edu)  
+Email: shubhamkejriwal \[at\] u \[dot\] nus \[dot\] edu  
 Github: [github.com/perturber](https://github.com/perturber) 
 ORCID ID: [0009-0004-5838-1886](https://orcid.org/0009-0004-5838-1886)
 
----
-
-## 📄 [Curriculum Vitae (PDF)](assets/Shubham_Kejriwal_CV.pdf)
-
----
-
-## 📚 Publications
-
-- *Bias-Corrected Importance Sampling for Inferring Beyond Vacuum-GR Effects in Gravitational Wave Sources*, [arXiv:2503.01120](https://arxiv.org/abs/2503.01120)
-- *Constraining accretion physics...*, Phys. Rev. D: [Link](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.111.084006)
-- More at [InspireHEP](https://inspirehep.net/authors/2739234?ui-citation-summary=true)
-
----
-
-## 🎤 Recent Talks
-
-- LISA Meeting, AEI Potsdam, Germany (2024)
-- 15th International LISA Symposium, Dublin, Ireland (2024)
-- LIGO Seminar, Caltech (2024)
 
 ---
 
