@@ -4,13 +4,13 @@ title: Home
 ---
 
 # Shubham Kejriwal
-**Ph.D. Candidate, Gravitational Wave Astrophysics**   
-**National University of Singapore | LISA Consortium**  
+**Physics Ph.D. Candidate**   
+**National University of Singapore**  
 
 ---
 ## About Me
 
-My name is Shubham Kejriwal. I’m a third-year Ph.D. student at the National University of Singapore working on gravitational wave data analysis for the upcoming LISA mission. I specialize in waveform modeling, Bayesian statistics, and machine learning, with a working knowledge of general-relativistic waveform modeling.
+Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at the National University of Singapore. I am working on gravitational wave data analysis for the upcoming LISA mission. I specialize in waveform modeling, Bayesian statistics, and machine learning, with a working knowledge of general-relativistic waveform modeling.
 
 ---
 ## Education
