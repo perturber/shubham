@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <style>
+    nav {
+      background-color: #f8f8f8;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #007acc;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research/">Research</a>
+    <a href="/cv/">CV</a>
+    <a href="/projects/">Projects</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+
+  <main>
+    {{ content }}
+  </main>
+
+</body>
+</html>
+
