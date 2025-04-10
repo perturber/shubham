@@ -8,12 +8,12 @@ permalink: /publications/
 
   <!-- InspireHEP -->
   <a href="https://inspirehep.net/authors/2739234?ui-citation-summary=true" target="_blank" title="InspireHEP Profile" style="margin-right: 10px;">
-    <img src="shubham/assets/hep.jpg" alt="InspireHEP" style="height: 28px; vertical-align: middle;">
+    <img src="/assets/hep.jpg" alt="InspireHEP" style="height: 28px; vertical-align: middle;">
   </a>
 
   <!-- arXiv -->
   <a href="https://arxiv.org/search/advanced?advanced=&terms-0-operator=AND&terms-0-term=Kejriwal%2C+Shubham&terms-0-field=author&classification-physics=y&classification-physics_archives=all&classification-include_cross_list=include&date-year=&date-filter_by=date_range&date-from_date=2023&date-to_date=&date-date_type=submitted_date&abstracts=show&size=50&order=-announced_date_first" target="_blank" title="arXiv Search">
-    <img src="shubham/assets/arxiv.png" alt="arXiv" style="height: 28px; vertical-align: middle;">
+    <img src="/assets/arxiv.png" alt="arXiv" style="height: 28px; vertical-align: middle;">
   </a>
 
 </div>
