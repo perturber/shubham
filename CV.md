@@ -1,11 +1,12 @@
 ---
 layout: default
 title: CV
+permalink: /cv/
 ---
 
 **Full CV**
 
-## [Curriculum Vitae (PDF)](assets/Shubham_Kejriwal_CV.pdf)
+## [Shubham Kejriwal Curriculum Vitae (PDF)](assets/Shubham_Kejriwal_CV.pdf)
 
 ---
 
