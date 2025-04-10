@@ -12,12 +12,14 @@ My name is Shubham Kejriwal. I’m a third-year Ph.D. student at the National Un
 ---
 ## Education
 
-- **Ph.D. Physics**
-    National University of Singapore, Singapore. (2023-)
-    Thesis advisor: Asst. Prof. Alvin J. K. Chua
+- **Ph.D. Physics**  
 
-- **B.Sc. (Research) in Physics with a Minor in Mathematics**
-    Shiv Nadar University, Delhi, India (2018-2022)
+    National University of Singapore, Singapore. (2023-)  
+    Thesis advisor: Asst. Prof. Alvin J. K. Chua  
+
+- **B.Sc. (Research) in Physics with a Minor in Mathematics**  
+
+    Shiv Nadar University, Delhi, India (2018-2022)  
 
 ---
 ## Contact
