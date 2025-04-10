@@ -25,17 +25,5 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at 
     Shiv Nadar University, Delhi, India (2018-2022)  
 
 ---
-## Contact
-
-National University of Singapore,   
-Science Drive 4,    
-Singapore-119077   
-
-Email: shubhamkejriwal \[at\] u \[dot\] nus \[dot\] edu   
-Github: [github.com/perturber](https://github.com/perturber)   
-ORCID ID: [0009-0004-5838-1886](https://orcid.org/0009-0004-5838-1886)   
-
-
----
 
 © 2025 Shubham Kejriwal
