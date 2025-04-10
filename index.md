@@ -6,8 +6,9 @@ title: Home
 # Shubham Kejriwal (he/him)
 **Physics Ph.D. Candidate**   
 **National University of Singapore**  
-**Science Drive 4,**  
-**Singapore-119077**  
+Science Drive 4,  
+Singapore-119077  
+
 ---
 ## About Me
 
