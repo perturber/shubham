@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Home
+homepage: True
 ---
 
 # Shubham Kejriwal (he/him)
