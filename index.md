@@ -29,6 +29,7 @@ I primarily work on developing the data analysis pipeline for the upcoming space
 
 - GW waveform modeling and inference.  
 - Inferring environments and beyond-GR ("beyond-vacuum-GR") effects using the LISA mission.  
-- Search for electromagnetic counterparts of extreme-mass-ratio inspirals.
+- Search for electromagnetic counterparts of extreme-mass-ratio inspirals.  
+
 ---
 © 2025 Shubham Kejriwal
