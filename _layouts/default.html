@@ -16,13 +16,21 @@
       flex-direction: row;
     }
 
-    /* Sidebar styling */
+    /* Sidebar base styling */
     .sidebar {
-      width: 250px;
       background-color: #f0f0f0;
       padding: 20px;
       box-shadow: 2px 0 5px rgba(0,0,0,0.1);
       text-align: center;
+      transition: width 0.3s ease;
+    }
+
+    .sidebar-large {
+      width: 300px;
+    }
+
+    .sidebar-standard {
+      width: 220px;
     }
 
     .sidebar img {
@@ -39,6 +47,7 @@
     .sidebar p {
       font-size: 0.95em;
       line-height: 1.4;
+      text-align: justify;
     }
 
     .sidebar a {
@@ -100,7 +109,7 @@
       }
 
       .sidebar {
-        width: 100%;
+        width: 100% !important;
         box-shadow: none;
       }
 
@@ -118,10 +127,10 @@
 <body>
 
   <!-- Sidebar -->
-  <div class="sidebar">
+  <div class="sidebar {% if page.url == '/' %}sidebar-large{% else %}sidebar-standard{% endif %}">
     <img src="{{ site.baseurl }}/assets/profile.jpg" alt="Shubham">
     <h2>Shubham Kejriwal</h2>
-    <p style="text-aling: left;"><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>
+    <p><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>
 Science Drive 4, <br> Singapore-119077 </p>
 
     <div class="icon-links">
