@@ -109,6 +109,7 @@
       }
 
       .sidebar {
+        display: none;
         width: 100% !important;
         box-shadow: none;
       }
@@ -121,13 +122,36 @@
         font-size: 24px;
         margin: 0 10px;
       }
+
+      #mobile-toggle {
+        display: block;
+        background: #007acc;
+        color: #fff;
+        border: none;
+        width: 100%;
+        padding: 10px;
+        font-size: 1.2em;
+        text-align: left;
+      }
+
+      .sidebar.show {
+        display: block;
+      }
+    }
+
+    /* Hide toggle button on desktop */
+    #mobile-toggle {
+      display: none;
     }
   </style>
 </head>
 <body>
 
+  <!-- Mobile Toggle Button -->
+  <button id="mobile-toggle">☰ Menu</button>
+
   <!-- Sidebar -->
-  <div class="sidebar {% if page.homepage %}sidebar-large{% else %}sidebar-standard{% endif %}">
+  <div id="sidebar" class="sidebar {% if page.homepage %}sidebar-large{% else %}sidebar-standard{% endif %}">
     <img src="{{ site.baseurl }}/assets/profile.jpg" alt="Shubham">
     <h2>Shubham Kejriwal</h2>
     <p><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>
@@ -162,6 +186,17 @@ Science Drive 4, <br> Singapore-119077 </p>
       {{ content }}
     </main>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleButton = document.getElementById("mobile-toggle");
+      const sidebar = document.getElementById("sidebar");
+
+      toggleButton.addEventListener("click", function () {
+        sidebar.classList.toggle("show");
+      });
+    });
+  </script>
 
 </body>
 </html>
