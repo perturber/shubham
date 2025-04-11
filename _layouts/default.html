@@ -10,23 +10,22 @@
   <style>
     :root {
       /* Color Palette */
-      --panel-bg-dark: #333; /* Dark grey for sidebar and nav */
-      --text-color-light: #f0f0f0; /* Light text for dark backgrounds */
-      --link-color-light: #7fdbff; /* Light blue for links on dark */
+      --panel-bg-dark: #333;
+      --text-color-light: #f0f0f0;
+      --link-color-light: #7fdbff;
       --link-hover-light: #aaddff;
       --icon-color-light: #ccc;
       --icon-hover-light: #fff;
-      --button-bg-mobile: #007acc; /* Keep mobile button distinct or make dark? */
-      --button-color-mobile: #fff;
-      --content-bg: #fff; /* Background for main content area */
+      --content-bg: #fff;
       --content-text: #333;
 
       /* Layout */
       --mobile-breakpoint: 768px;
       --sidebar-width-large: 350px;
       --sidebar-width-standard: 250px;
-      --sidebar-width-collapsed: 75px; /* Width when collapsed on desktop */
-      --collapsed-image-size: 45px; /* Size of profile pic when collapsed */
+      --sidebar-width-collapsed: 75px;
+      --collapsed-image-size: 45px;
+      --mobile-top-bar-height: 55px; /* Approximate height for padding */
       --transition-speed: 0.3s;
     }
 
@@ -36,17 +35,17 @@
       display: flex;
       min-height: 100vh;
       flex-direction: row;
-      background-color: var(--content-bg); /* Set base background */
+      background-color: var(--content-bg);
       color: var(--content-text);
       transition: padding-left var(--transition-speed) ease;
     }
 
-    /* Sidebar */
+    /* --- Sidebar (Common & Desktop) --- */
     .sidebar {
-      background-color: var(--panel-bg-dark); /* Dark background */
-      color: var(--text-color-light); /* Light text */
+      background-color: var(--panel-bg-dark);
+      color: var(--text-color-light);
       padding: 20px;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.2); /* Slightly darker shadow */
+      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
       text-align: center;
       flex-shrink: 0;
       overflow-x: hidden;
@@ -55,45 +54,36 @@
       position: relative;
       box-sizing: border-box;
     }
-
-    /* Default Widths */
     .sidebar-large-page { width: var(--sidebar-width-large); }
     .sidebar-standard-page { width: var(--sidebar-width-standard); }
 
-    /* --- Collapsed State (Desktop) --- */
-    .sidebar.collapsed {
+    .sidebar.collapsed { /* Desktop collapsed state */
       width: var(--sidebar-width-collapsed);
-      padding-left: 10px;
-      padding-right: 10px;
-      padding-top: 70px; /* Make space for profile pic + button */
+      padding: 10px;
+      padding-top: 70px; /* Space for desktop toggle + image */
     }
-    /* Keep profile image visible but small */
-    .sidebar.collapsed img {
-      display: block;
-      max-width: var(--collapsed-image-size) !important; /* Override larger size */
+    .sidebar.collapsed .sidebar-profile-pic { /* Target specific image class */
+      display: block !important;
+      max-width: var(--collapsed-image-size) !important;
       height: var(--collapsed-image-size);
-      margin: 15px auto; /* Center it */
-      opacity: 1 !important; /* Ensure visible */
+      margin: 15px auto;
+      opacity: 1 !important;
       object-fit: cover;
     }
-    /* Hide text content when collapsed */
     .sidebar.collapsed h2,
-    .sidebar.collapsed p:not(.icon-links) {
+    .sidebar.collapsed .sidebar-description { /* Target specific description class */
       display: none;
     }
-    /* Adjust icons when collapsed */
-    .sidebar.collapsed .icon-links {
+    .sidebar.collapsed .sidebar-icon-links { /* Target specific icon class */
       margin-top: 20px;
     }
-     .sidebar.collapsed .icon-links a {
+     .sidebar.collapsed .sidebar-icon-links a {
        font-size: 24px;
        margin: 10px 0;
        display: block;
      }
-    /* --- End Collapsed State --- */
 
-
-    .sidebar img {
+    .sidebar-profile-pic { /* Class for the main profile pic */
       max-width: 150px;
       height: auto;
       border-radius: 50%;
@@ -103,206 +93,227 @@
       margin-right: auto;
       transition: opacity var(--transition-speed) ease, max-width var(--transition-speed) ease, height var(--transition-speed) ease;
     }
-
-    .sidebar h2 {
-      margin-top: 0;
-      font-size: 1.5em;
-      transition: opacity var(--transition-speed) ease;
-    }
-
-    .sidebar p {
+    .sidebar h2 { margin-top: 0; font-size: 1.5em; transition: opacity var(--transition-speed) ease; }
+    .sidebar-description { /* Class for description */
       font-size: 0.95em;
       line-height: 1.4;
-      text-align: justify; /* Keep or change to center? */
+      text-align: justify;
       transition: opacity var(--transition-speed) ease;
     }
-
-    /* Light links on dark background */
     .sidebar a { color: var(--link-color-light); text-decoration: none; }
     .sidebar a:hover { text-decoration: underline; color: var(--link-hover-light); }
+    .sidebar-icon-links { margin-top: 15px; } /* Class for main icons */
+    .sidebar-icon-links a { margin: 0 8px; display: inline-block; color: var(--icon-color-light); font-size: 20px; transition: color 0.2s ease; }
+    .sidebar-icon-links a:hover { color: var(--icon-hover-light); }
 
-    /* Light icons on dark background */
-    .icon-links { margin-top: 15px; }
-    .icon-links a { margin: 0 8px; display: inline-block; color: var(--icon-color-light); font-size: 20px; transition: color 0.2s ease; }
-    .icon-links a:hover { color: var(--icon-hover-light); }
-
-    /* Toggle Button (Common styling) */
-    #sidebar-toggle {
+    /* --- Desktop Toggle Button --- */
+    #desktop-sidebar-toggle {
+      display: none; /* Hidden by default, shown on desktop */
       position: absolute;
       top: 15px;
       left: 15px;
-      background: rgba(255, 255, 255, 0.1); /* Subtle light on dark */
+      background: rgba(255, 255, 255, 0.1);
       color: var(--text-color-light);
-      border: none;
-      width: 40px;
-      height: 40px;
-      font-size: 1.2em;
-      cursor: pointer;
-      z-index: 1001;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: none; width: 40px; height: 40px; font-size: 1.2em;
+      cursor: pointer; z-index: 1001; border-radius: 4px;
+      align-items: center; justify-content: center;
       transition: background-color 0.2s ease;
     }
-    #sidebar-toggle:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    /* Position button in collapsed state (desktop) */
-    .sidebar.collapsed #sidebar-toggle {
-       left: calc( (var(--sidebar-width-collapsed) - 40px) / 2 ); /* Center */
-       top: 15px; /* Keep near top */
+    #desktop-sidebar-toggle:hover { background: rgba(255, 255, 255, 0.2); }
+    .sidebar.collapsed #desktop-sidebar-toggle { /* Position when collapsed */
+       left: calc( (var(--sidebar-width-collapsed) - 40px) / 2 );
+       top: 15px;
     }
 
+    /* --- Mobile-Only Top Bar --- */
+    #mobile-top-bar {
+        display: none; /* Hidden by default */
+        background-color: var(--panel-bg-dark);
+        color: var(--text-color-light);
+        padding: 5px 15px;
+        position: sticky; /* Stick to top on mobile scroll */
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1005; /* Above content, below overlay */
+        box-sizing: border-box;
+        align-items: center;
+        min-height: var(--mobile-top-bar-height);
+    }
+    #mobile-sidebar-toggle { /* The hamburger button in the mobile top bar */
+        background: none;
+        border: none;
+        color: var(--text-color-light);
+        font-size: 1.8em; /* Larger icon */
+        cursor: pointer;
+        padding: 5px;
+        margin-right: 15px; /* Space between button and pic */
+        line-height: 1; /* Prevent extra spacing */
+    }
+    .mobile-top-profile-pic {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: auto; /* Push icons to the right */
+    }
+    .mobile-top-icons {
+        display: flex;
+        align-items: center;
+    }
+    .mobile-top-icons a {
+        color: var(--icon-color-light);
+        font-size: 20px; /* Adjust size as needed */
+        margin-left: 12px; /* Space between icons */
+        transition: color 0.2s ease;
+    }
+    .mobile-top-icons a:hover {
+        color: var(--icon-hover-light);
+    }
 
-    /* Main Content Area */
+    /* --- Close button inside the slide-out sidebar (Mobile only) --- */
+    #sidebar-close-button {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: none;
+        border: none;
+        color: var(--text-color-light);
+        font-size: 1.8em;
+        cursor: pointer;
+        z-index: 1002;
+    }
+
+    /* --- Main Content Area --- */
     .content-wrapper {
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      transition: margin-left var(--transition-speed) ease;
+      flex-grow: 1; display: flex; flex-direction: column;
+      min-width: 0; transition: margin-left var(--transition-speed) ease;
     }
-
-    /* Top Navigation */
     nav {
-      background-color: var(--panel-bg-dark); /* Dark background */
-      color: var(--text-color-light); /* Light text */
-      padding: 10px 20px;
-      text-align: center;
-      border-bottom: 1px solid #555; /* Darker border */
+      background-color: var(--panel-bg-dark); color: var(--text-color-light);
+      padding: 10px 20px; text-align: center; border-bottom: 1px solid #555;
       flex-shrink: 0;
     }
-    /* Light links for nav */
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: var(--text-color-light);
-      font-weight: bold;
-      display: inline-block;
-      padding: 5px 0;
-      transition: color 0.2s ease;
-    }
-    nav a:hover {
-      color: var(--link-color-light); /* Use light link color on hover */
-    }
+    nav a { margin: 0 15px; text-decoration: none; color: var(--text-color-light); font-weight: bold; display: inline-block; padding: 5px 0; transition: color 0.2s ease; }
+    nav a:hover { color: var(--link-color-light); }
+    main { padding: 30px; flex-grow: 1; background-color: var(--content-bg); color: var(--content-text); }
 
-    /* Main Content Area */
-    main {
-      padding: 30px;
-      flex-grow: 1;
-      background-color: var(--content-bg); /* Ensure main content has its own background */
-      color: var(--content-text);
-    }
 
     /* --- Responsive Styles --- */
+    @media (min-width: /*calc(var(--mobile-breakpoint) + 1px)*/ 769px) {
+        /* Show desktop toggle button on larger screens */
+        #desktop-sidebar-toggle {
+            display: flex; /* Use flex to center icon */
+        }
+    }
+
     @media (max-width: /*var(--mobile-breakpoint)*/ 768px) {
       body {
         flex-direction: column;
+        /* Add padding to prevent content from going under sticky top bar */
+        padding-top: var(--mobile-top-bar-height);
       }
 
-      /* Mobile Sidebar: Overlay, hidden by default */
+      /* Show Mobile Top Bar */
+      #mobile-top-bar {
+          display: flex; /* Use flex for layout */
+      }
+
+      /* Hide Desktop Toggle */
+      #desktop-sidebar-toggle { display: none !important; }
+
+      /* --- Mobile Sidebar Styling (Slide-out) --- */
       .sidebar {
         position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 80%;
-        max-width: 300px;
-        transform: translateX(-100%);
+        top: 0; left: 0; height: 100%;
+        width: 80%; max-width: 300px;
+        transform: translateX(-100%); /* Hidden off-screen */
         transition: transform var(--transition-speed) ease;
         box-shadow: 2px 0 5px rgba(0,0,0,0.3);
-        overflow-y: auto;
-        display: block;
-        padding-top: 60px; /* Space for fixed toggle button */
-        /* Ensure width is not collapsed width */
-        width: min(80%, 300px) !important; /* Use appropriate mobile width */
+        overflow-y: auto; display: block;
+        padding-top: 50px; /* Space for close button */
+        /* Override desktop collapsed state visually */
+        width: min(80%, 300px) !important;
+        padding-left: 20px !important; padding-right: 20px !important;
       }
-
-      /* Mobile: Show sidebar when NOT collapsed */
       .sidebar:not(.collapsed) {
          transform: translateX(0); /* Slide in */
       }
-
-      /* Mobile: Restore content visibility */
-       .sidebar img {
-         display: block !important; /* Ensure visible */
-         max-width: 120px !important; /* Restore mobile size */
-         height: auto !important;
-         opacity: 1 !important;
-       }
-       .sidebar h2,
-       .sidebar p:not(.icon-links) {
-         display: block !important; /* Ensure visible */
-       }
-       /* Mobile: Restore icon layout */
-       .sidebar .icon-links a {
-         font-size: 22px;
-         margin: 0 10px;
-         display: inline-block;
-       }
-       .sidebar .icon-links { margin-top: 15px; }
-       .sidebar.collapsed {
-         padding-top: 60px; /* Keep padding consistent */
-       }
-
-      /* Mobile Toggle Button: Fixed */
-      #sidebar-toggle {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        background: var(--button-bg-mobile); /* Specific mobile background */
-        color: var(--button-color-mobile); /* Specific mobile text color */
-        transform: translateX(0); /* Ensure it's visible */
-        /* Ensure it's above the overlay */
-        z-index: 1001;
+      /* Ensure content is visible when sidebar is open on mobile */
+      .sidebar .sidebar-profile-pic,
+      .sidebar h2,
+      .sidebar .sidebar-description {
+        display: block !important; opacity: 1 !important;
       }
-      /* Remove desktop hover effect */
-      #sidebar-toggle:hover {
-          background: var(--button-bg-mobile); /* Keep background solid */
+      .sidebar .sidebar-profile-pic { /* Restore image size */
+          max-width: 120px !important; height: auto !important;
       }
-
+      .sidebar .sidebar-icon-links { margin-top: 15px !important; }
+      .sidebar .sidebar-icon-links a { /* Restore icon layout */
+         font-size: 22px !important; margin: 0 10px !important; display: inline-block !important;
+      }
+      /* Show close button only when sidebar is open on mobile */
+      .sidebar:not(.collapsed) #sidebar-close-button {
+          display: block;
+      }
 
       /* Content wrapper takes full width */
       .content-wrapper { margin-left: 0 !important; width: 100%; }
+      nav { /* Ensure nav is full width */ width: 100%; box-sizing: border-box; }
 
       /* Mobile Overlay */
-       body::after {
-         content: '';
-         position: fixed;
-         top: 0; left: 0; width: 100%; height: 100%;
-         background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
-         z-index: 999;
+      body::after {
+         content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+         background: rgba(0, 0, 0, 0.6); z-index: 999;
          opacity: 0; visibility: hidden;
          transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
-       }
-       body.sidebar-open::after {
-         opacity: 1; visibility: visible;
-       }
+      }
+      body.sidebar-open::after { opacity: 1; visibility: visible; }
     }
+
   </style>
 </head>
 <body>
 
+  <!-- Mobile Only Top Bar -->
+  <div id="mobile-top-bar">
+      <button id="mobile-sidebar-toggle" aria-label="Open Menu" aria-controls="sidebar" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+      </button>
+      <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham" class="mobile-top-profile-pic">
+      <div class="mobile-top-icons">
+          <!-- Duplicated Icons for Mobile Top Bar -->
+          <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+          <a href="mailto:shubhamkejriwal@u.nus.edu" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+  </div>
+
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar {% if page.homepage %}sidebar-large-page{% else %}sidebar-standard-page{% endif %}">
-    <!-- Profile content -->
-    <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham">
+    <!-- Desktop Toggle Button (Positioned absolutely within sidebar) -->
+    <button id="desktop-sidebar-toggle" aria-label="Toggle Menu" aria-controls="sidebar" aria-expanded="true">
+      <i class="fas fa-times"></i> <!-- Starts closed on desktop -->
+    </button>
+    <!-- Mobile Close Button (Positioned absolutely within sidebar) -->
+    <button id="sidebar-close-button" aria-label="Close Menu">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <!-- Sidebar Content -->
+    <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham" class="sidebar-profile-pic">
     <h2>Shubham Kejriwal</h2>
-    <p><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>
+    <p class="sidebar-description"><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>
 Science Drive 4, <br> Singapore-119077 </p>
-    <div class="icon-links">
+    <div class="sidebar-icon-links">
       <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
       <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
       <a href="mailto:shubhamkejriwal@u.nus.edu" title="Email"><i class="fas fa-envelope"></i></a>
       <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
   </div>
-
-  <!-- Toggle Button -->
-   <button id="sidebar-toggle" aria-expanded="true" aria-controls="sidebar">
-     <i class="fas fa-times"></i> <!-- Start with close icon -->
-   </button>
 
   <!-- Main Content Area -->
   <div class="content-wrapper">
@@ -318,58 +329,77 @@ Science Drive 4, <br> Singapore-119077 </p>
   </div>
 
   <script>
-    // --- JavaScript remains the same as the previous version ---
-    // It correctly toggles the 'collapsed' class and updates the button
-    // based on screen size and the presence of the 'collapsed' class.
-
     document.addEventListener("DOMContentLoaded", function () {
-      const toggleButton = document.getElementById("sidebar-toggle");
       const sidebar = document.getElementById("sidebar");
       const body = document.body;
 
-      if (!toggleButton || !sidebar) {
-        console.error("Sidebar toggle button or sidebar element not found.");
-        return;
-      }
+      // --- Button References ---
+      const desktopToggleBtn = document.getElementById("desktop-sidebar-toggle");
+      const mobileToggleBtn = document.getElementById("mobile-sidebar-toggle");
+      const sidebarCloseBtn = document.getElementById("sidebar-close-button");
 
-      const updateButtonState = (isCollapsed) => {
-         const icon = toggleButton.querySelector('i');
-         if (window.innerWidth <= 768) {
-             // Mobile: Button shows 'close' when sidebar is visible (NOT collapsed)
-             toggleButton.setAttribute("aria-expanded", !isCollapsed);
-             if (icon) icon.className = isCollapsed ? 'fas fa-bars' : 'fas fa-times';
-             body.classList.toggle('sidebar-open', !isCollapsed);
-         } else {
-             // Desktop: Button shows 'menu' when sidebar IS collapsed
-             toggleButton.setAttribute("aria-expanded", !isCollapsed);
-             if (icon) icon.className = isCollapsed ? 'fas fa-bars' : 'fas fa-times';
-             body.classList.remove('sidebar-open');
-         }
+      // --- Error Checking ---
+      if (!sidebar) { console.error("Sidebar element not found."); return; }
+      if (!desktopToggleBtn) { console.error("Desktop toggle button not found."); return; }
+      if (!mobileToggleBtn) { console.error("Mobile toggle button not found."); return; }
+      if (!sidebarCloseBtn) { console.error("Sidebar close button not found."); return; }
+
+      // --- Helper Function to Manage State ---
+      const setSidebarState = (isCollapsed) => {
+          sidebar.classList.toggle('collapsed', isCollapsed);
+          body.classList.toggle('sidebar-open', !isCollapsed && window.innerWidth <= 768); // Overlay only on mobile
+
+          // Update ARIA attributes
+          const isMobile = window.innerWidth <= 768;
+          if (isMobile) {
+              mobileToggleBtn.setAttribute('aria-expanded', !isCollapsed);
+          } else {
+              desktopToggleBtn.setAttribute('aria-expanded', !isCollapsed);
+              // Update desktop button icon
+              const desktopIcon = desktopToggleBtn.querySelector('i');
+              if (desktopIcon) {
+                  desktopIcon.className = isCollapsed ? 'fas fa-bars' : 'fas fa-times';
+              }
+          }
       };
 
+      // --- Initial State ---
       let isInitiallyCollapsed = false;
       if (window.innerWidth <= 768) {
-          isInitiallyCollapsed = true;
-          sidebar.classList.add('collapsed');
+          isInitiallyCollapsed = true; // Start collapsed on mobile
       } else {
-          sidebar.classList.remove('collapsed');
+          isInitiallyCollapsed = false; // Start open on desktop (can be changed)
+          // If you want desktop to start collapsed, set: isInitiallyCollapsed = true;
       }
-      updateButtonState(isInitiallyCollapsed);
+      setSidebarState(isInitiallyCollapsed); // Apply initial state
 
-      toggleButton.addEventListener("click", function () {
-        const isCollapsed = sidebar.classList.toggle("collapsed");
-        updateButtonState(isCollapsed);
+      // --- Event Listeners ---
+      // Desktop Toggle Button (Handles both open and close)
+      desktopToggleBtn.addEventListener("click", function () {
+          setSidebarState(sidebar.classList.toggle("collapsed"));
       });
 
+      // Mobile Hamburger Button (Only Opens)
+      mobileToggleBtn.addEventListener("click", function () {
+          setSidebarState(false); // Force open (remove collapsed)
+      });
+
+      // Sidebar Close Button (Only Closes)
+      sidebarCloseBtn.addEventListener("click", function () {
+          setSidebarState(true); // Force close (add collapsed)
+      });
+
+      // Overlay Click (Closes sidebar on mobile)
       body.addEventListener('click', function(event) {
            if (window.innerWidth <= 768 && body.classList.contains('sidebar-open')) {
-               if (!sidebar.contains(event.target) && !toggleButton.contains(event.target)) {
-                   sidebar.classList.add('collapsed');
-                   updateButtonState(true);
+               if (!sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target) && event.target !== body) {
+                   // Check if click is outside sidebar AND outside mobile toggle button
+                   setSidebarState(true); // Close sidebar
                }
            }
        });
 
+      // --- Resize Handling ---
       let currentWindowWidth = window.innerWidth;
       window.addEventListener('resize', function() {
           const newWindowWidth = window.innerWidth;
@@ -377,16 +407,11 @@ Science Drive 4, <br> Singapore-119077 </p>
           const isMobile = newWindowWidth <= breakpoint;
           const wasMobile = currentWindowWidth <= breakpoint;
 
-          if (isMobile !== wasMobile) {
-              let isCollapsed = sidebar.classList.contains('collapsed');
-              if (isMobile) {
-                  isCollapsed = true; // Force closed on transition to mobile
-                  sidebar.classList.add('collapsed');
-              } else {
-                  isCollapsed = false; // Force open on transition to desktop
-                  sidebar.classList.remove('collapsed');
-              }
-              updateButtonState(isCollapsed);
+          if (isMobile !== wasMobile) { // Crossed the breakpoint
+              // Reset to default state for the new view
+              let shouldBeCollapsed = isMobile; // Collapse on mobile, open on desktop default
+              // If you want desktop to default collapsed: shouldBeCollapsed = true;
+              setSidebarState(shouldBeCollapsed);
           }
           currentWindowWidth = newWindowWidth;
       });
