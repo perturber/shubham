@@ -48,11 +48,15 @@
       box-shadow: 2px 0 5px rgba(0,0,0,0.2);
       text-align: center;
       flex-shrink: 0;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+      overflow-y: auto;   /* Allow vertical scroll if needed */
       transition: width var(--transition-speed) ease, padding var(--transition-speed) ease;
-      z-index: 1000;
+      z-index: 1000; /* Base z-index for desktop */
       position: relative;
       box-sizing: border-box;
+      height: 100vh; /* Make sidebar full height on desktop */
+      position: sticky; /* Stick to top on desktop */
+      top: 0;
     }
     .sidebar-large-page { width: var(--sidebar-width-large); }
     .sidebar-standard-page { width: var(--sidebar-width-standard); }
@@ -135,7 +139,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        z-index: 1005; /* Above content, below overlay */
+        z-index: 1005; /* Above content, below overlay & sidebar */
         box-sizing: border-box;
         align-items: center;
         min-height: var(--mobile-top-bar-height);
@@ -182,13 +186,15 @@
         color: var(--text-color-light);
         font-size: 1.8em;
         cursor: pointer;
-        z-index: 1002;
+        z-index: 1011; /* Ensure it's above the sidebar background (1010) */
     }
 
     /* --- Main Content Area --- */
     .content-wrapper {
       flex-grow: 1; display: flex; flex-direction: column;
-      min-width: 0; transition: margin-left var(--transition-speed) ease;
+      min-width: 0; /* Prevent flex item overflow */
+      transition: margin-left var(--transition-speed) ease;
+      width: 100%; /* Ensure it takes up space */
     }
     nav {
       background-color: var(--panel-bg-dark); color: var(--text-color-light);
@@ -201,18 +207,42 @@
 
 
     /* --- Responsive Styles --- */
-    @media (min-width: /*calc(var(--mobile-breakpoint) + 1px)*/ 769px) {
+    @media (min-width: 769px) { /* Apply desktop styles above breakpoint */
         /* Show desktop toggle button on larger screens */
         #desktop-sidebar-toggle {
             display: flex; /* Use flex to center icon */
         }
+        /* Ensure mobile top bar is hidden on desktop */
+        #mobile-top-bar {
+            display: none !important;
+        }
     }
 
-    @media (max-width: /*var(--mobile-breakpoint)*/ 768px) {
+    @media (max-width: 768px) { /* Apply mobile styles at or below breakpoint */
       body {
         flex-direction: column;
         /* Add padding to prevent content from going under sticky top bar */
-        padding-top: var(--mobile-top-bar-height);
+        /* Padding is applied dynamically via JS now, but keep this as fallback or if JS fails */
+         padding-top: var(--mobile-top-bar-height);
+      }
+
+      /* Hide desktop sidebar structure */
+      .sidebar {
+        position: fixed; /* Change from sticky to fixed */
+        top: 0; left: 0; height: 100%;
+        background-color: var(--panel-bg-dark); /* Explicit background */
+        width: 80%; max-width: 300px;
+        transform: translateX(-100%); /* Hidden off-screen */
+        transition: transform var(--transition-speed) ease;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+        overflow-y: auto; display: block;
+        padding-top: 50px; /* Space for close button */
+        z-index: 1010; /* *** FIX: Ensure sidebar is above top-bar (1005) *** */
+        /* Override desktop collapsed state visually & ensure correct width */
+        width: min(80%, 300px) !important;
+        padding-left: 20px !important; padding-right: 20px !important;
+        /* Reset desktop specific styles that might interfere */
+        padding-top: 50px !important;
       }
 
       /* Show Mobile Top Bar */
@@ -223,20 +253,7 @@
       /* Hide Desktop Toggle */
       #desktop-sidebar-toggle { display: none !important; }
 
-      /* --- Mobile Sidebar Styling (Slide-out) --- */
-      .sidebar {
-        position: fixed;
-        top: 0; left: 0; height: 100%;
-        width: 80%; max-width: 300px;
-        transform: translateX(-100%); /* Hidden off-screen */
-        transition: transform var(--transition-speed) ease;
-        box-shadow: 2px 0 5px rgba(0,0,0,0.3);
-        overflow-y: auto; display: block;
-        padding-top: 50px; /* Space for close button */
-        /* Override desktop collapsed state visually */
-        width: min(80%, 300px) !important;
-        padding-left: 20px !important; padding-right: 20px !important;
-      }
+
       .sidebar:not(.collapsed) {
          transform: translateX(0); /* Slide in */
       }
@@ -248,6 +265,7 @@
       }
       .sidebar .sidebar-profile-pic { /* Restore image size */
           max-width: 120px !important; height: auto !important;
+          margin: 15px auto !important; /* Restore margin */
       }
       .sidebar .sidebar-icon-links { margin-top: 15px !important; }
       .sidebar .sidebar-icon-links a { /* Restore icon layout */
@@ -265,7 +283,7 @@
       /* Mobile Overlay */
       body::after {
          content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-         background: rgba(0, 0, 0, 0.6); z-index: 999;
+         background: rgba(0, 0, 0, 0.6); z-index: 999; /* Below sidebar and top bar */
          opacity: 0; visibility: hidden;
          transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
       }
@@ -274,7 +292,7 @@
 
   </style>
 </head>
-<body>
+<body class="{% if page.homepage %}homepage-body{% else %}standard-body{% endif %}"> <!-- Optional: Add body class -->
 
   <!-- Mobile Only Top Bar -->
   <div id="mobile-top-bar">
@@ -295,7 +313,7 @@
   <div id="sidebar" class="sidebar {% if page.homepage %}sidebar-large-page{% else %}sidebar-standard-page{% endif %}">
     <!-- Desktop Toggle Button (Positioned absolutely within sidebar) -->
     <button id="desktop-sidebar-toggle" aria-label="Toggle Menu" aria-controls="sidebar" aria-expanded="true">
-      <i class="fas fa-times"></i> <!-- Starts closed on desktop -->
+      <i class="fas fa-times"></i> <!-- Starts 'close' icon as sidebar open by default -->
     </button>
     <!-- Mobile Close Button (Positioned absolutely within sidebar) -->
     <button id="sidebar-close-button" aria-label="Close Menu">
@@ -332,6 +350,7 @@ Science Drive 4, <br> Singapore-119077 </p>
     document.addEventListener("DOMContentLoaded", function () {
       const sidebar = document.getElementById("sidebar");
       const body = document.body;
+      const mobileTopBar = document.getElementById("mobile-top-bar"); // Get ref to top bar
 
       // --- Button References ---
       const desktopToggleBtn = document.getElementById("desktop-sidebar-toggle");
@@ -340,61 +359,68 @@ Science Drive 4, <br> Singapore-119077 </p>
 
       // --- Error Checking ---
       if (!sidebar) { console.error("Sidebar element not found."); return; }
+      if (!mobileTopBar) { console.error("Mobile top bar element not found."); return; }
       if (!desktopToggleBtn) { console.error("Desktop toggle button not found."); return; }
       if (!mobileToggleBtn) { console.error("Mobile toggle button not found."); return; }
       if (!sidebarCloseBtn) { console.error("Sidebar close button not found."); return; }
 
+      // --- Dynamic Padding Helper ---
+      // Calculates height of mobile top bar if visible and applies padding to body
+      const adjustBodyPadding = () => {
+          const isMobile = window.innerWidth <= 768;
+          if (isMobile && mobileTopBar.offsetHeight > 0) {
+              body.style.paddingTop = `${mobileTopBar.offsetHeight}px`;
+          } else {
+              body.style.paddingTop = '0px'; // Remove padding on desktop or if bar hidden
+          }
+      };
+
+
       // --- Helper Function to Manage State ---
       const setSidebarState = (isCollapsed) => {
           sidebar.classList.toggle('collapsed', isCollapsed);
-          body.classList.toggle('sidebar-open', !isCollapsed && window.innerWidth <= 768); // Overlay only on mobile
-
-          // Update ARIA attributes
           const isMobile = window.innerWidth <= 768;
+          body.classList.toggle('sidebar-open', !isCollapsed && isMobile); // Overlay only on mobile
+
+          // Update ARIA attributes and icons
           if (isMobile) {
               mobileToggleBtn.setAttribute('aria-expanded', !isCollapsed);
+              // Mobile hamburger icon doesn't need to change, only open/close buttons
           } else {
               desktopToggleBtn.setAttribute('aria-expanded', !isCollapsed);
-              // Update desktop button icon
               const desktopIcon = desktopToggleBtn.querySelector('i');
               if (desktopIcon) {
                   desktopIcon.className = isCollapsed ? 'fas fa-bars' : 'fas fa-times';
               }
           }
+          // Adjust body padding after state change (sidebar visibility might affect layout briefly)
+          requestAnimationFrame(adjustBodyPadding);
       };
 
-      // --- Initial State ---
-      let isInitiallyCollapsed = false;
-      if (window.innerWidth <= 768) {
-          isInitiallyCollapsed = true; // Start collapsed on mobile
-      } else {
-          isInitiallyCollapsed = false; // Start open on desktop (can be changed)
-          // If you want desktop to start collapsed, set: isInitiallyCollapsed = true;
-      }
+      // --- Initial State & Padding---
+      let isInitiallyCollapsed = window.innerWidth <= 768; // Start collapsed on mobile, open on desktop
       setSidebarState(isInitiallyCollapsed); // Apply initial state
+      adjustBodyPadding(); // Set initial padding
+
 
       // --- Event Listeners ---
-      // Desktop Toggle Button (Handles both open and close)
       desktopToggleBtn.addEventListener("click", function () {
           setSidebarState(sidebar.classList.toggle("collapsed"));
       });
 
-      // Mobile Hamburger Button (Only Opens)
       mobileToggleBtn.addEventListener("click", function () {
-          setSidebarState(false); // Force open (remove collapsed)
+          setSidebarState(false); // Force open
       });
 
-      // Sidebar Close Button (Only Closes)
       sidebarCloseBtn.addEventListener("click", function () {
-          setSidebarState(true); // Force close (add collapsed)
+          setSidebarState(true); // Force close
       });
 
-      // Overlay Click (Closes sidebar on mobile)
       body.addEventListener('click', function(event) {
            if (window.innerWidth <= 768 && body.classList.contains('sidebar-open')) {
-               if (!sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target) && event.target !== body) {
-                   // Check if click is outside sidebar AND outside mobile toggle button
-                   setSidebarState(true); // Close sidebar
+               // Close if click is outside sidebar AND outside mobile toggle button
+               if (!sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target)) {
+                   setSidebarState(true);
                }
            }
        });
@@ -402,19 +428,21 @@ Science Drive 4, <br> Singapore-119077 </p>
       // --- Resize Handling ---
       let currentWindowWidth = window.innerWidth;
       window.addEventListener('resize', function() {
+          adjustBodyPadding(); // Recalculate padding on resize
           const newWindowWidth = window.innerWidth;
           const breakpoint = 768;
           const isMobile = newWindowWidth <= breakpoint;
           const wasMobile = currentWindowWidth <= breakpoint;
 
           if (isMobile !== wasMobile) { // Crossed the breakpoint
-              // Reset to default state for the new view
-              let shouldBeCollapsed = isMobile; // Collapse on mobile, open on desktop default
-              // If you want desktop to default collapsed: shouldBeCollapsed = true;
+              let shouldBeCollapsed = isMobile; // Default: Collapse on mobile, open on desktop
               setSidebarState(shouldBeCollapsed);
           }
           currentWindowWidth = newWindowWidth;
       });
+
+      // Also adjust padding on orientation change
+      window.addEventListener('orientationchange', adjustBodyPadding);
     });
   </script>
 
