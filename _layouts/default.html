@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title | default: site.title }}</title>
 
+  <!-- Google Font Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
@@ -39,13 +45,14 @@
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      /* --- UPDATED FONT --- */
+      font-family: 'Roboto', Arial, sans-serif; /* Use Roboto, fallback to Arial */
       display: flex;
       min-height: 100vh;
       flex-direction: row;
       background-color: var(--content-bg);
       color: var(--content-text);
-      transition: padding-left var(--transition-speed) ease, padding-top var(--transition-speed) ease; /* Added padding-top transition */
+      transition: padding-left var(--transition-speed) ease, padding-top var(--transition-speed) ease;
     }
 
     /* --- Sidebar Base Styles --- */
@@ -59,14 +66,11 @@
       overflow-x: hidden;
       overflow-y: auto;
       z-index: 1000;
-      /* Default state width */
       width: var(--sidebar-width-expanded);
-      /* Default state positioning (overridden by media queries) */
       height: 100vh;
       position: sticky;
       top: 0;
       transform: none;
-      /* Transitions */
       transition: width var(--transition-speed) ease,
                   padding var(--transition-speed) ease,
                   transform var(--transition-speed) ease;
@@ -74,9 +78,9 @@
 
     /* --- Desktop Collapsed State --- */
     .sidebar.collapsed {
-      width: var(--sidebar-width-collapsed); /* Override base width */
+      width: var(--sidebar-width-collapsed);
       padding: 10px;
-      padding-top: 70px; /* Make space for the button */
+      padding-top: 70px;
     }
     .sidebar.collapsed .sidebar-profile-pic {
       display: block !important; max-width: var(--collapsed-image-size) !important;
@@ -90,10 +94,10 @@
     }
     .sidebar.collapsed .sidebar-icon-links {
       margin-top: 20px;
-      text-align: center; /* Center icons when collapsed */
+      text-align: center;
     }
      .sidebar.collapsed .sidebar-icon-links a {
-       font-size: 24px; margin: 10px 0; display: block; /* Stack icons vertically */
+       font-size: 24px; margin: 10px 0; display: block;
      }
 
     /* --- Common Sidebar Child Styles --- */
@@ -130,30 +134,28 @@
 
     /* --- Desktop Toggle Button --- */
     #desktop-sidebar-toggle {
-      display: none; /* Hidden by default, shown via media query */
+      display: none;
       position: absolute; top: 15px; left: 15px;
       background: rgba(255, 255, 255, 0.1); color: var(--text-color-light);
       border: none; width: 40px; height: 40px; font-size: 1.2em;
       cursor: pointer; z-index: 1001; border-radius: 4px;
-      align-items: center; justify-content: center; /* Center icon */
-      transition: background-color 0.2s ease, left var(--transition-speed) ease; /* Added left transition */
+      align-items: center; justify-content: center;
+      transition: background-color 0.2s ease, left var(--transition-speed) ease;
     }
     #desktop-sidebar-toggle:hover { background: rgba(255, 255, 255, 0.2); }
-    /* Adjust button position when sidebar is collapsed */
     .sidebar.collapsed #desktop-sidebar-toggle {
-       /* Center button horizontally within the collapsed sidebar */
        left: calc( (var(--sidebar-width-collapsed) - 40px) / 2 );
        top: 15px;
     }
 
     /* --- Mobile-Only Top Bar --- */
     #mobile-top-bar {
-        display: none; /* Hidden by default, shown via media query */
+        display: none;
         background-color: var(--panel-bg-dark);
         color: var(--text-color-light); padding: 5px 15px;
         position: fixed; top: 0; left: 0; width: 100%;
         z-index: 1005; align-items: center; min-height: var(--mobile-top-bar-height);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add shadow */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     #mobile-sidebar-toggle {
         background: none; border: none; color: var(--text-color-light);
@@ -162,7 +164,7 @@
     }
     .mobile-top-profile-pic {
         height: 35px; width: 35px; border-radius: 50%;
-        object-fit: cover; margin-right: auto; /* Pushes icons to the right */
+        object-fit: cover; margin-right: auto;
     }
     .mobile-top-icons { display: flex; align-items: center; }
     .mobile-top-icons a {
@@ -173,21 +175,23 @@
 
     /* --- Close button inside the slide-out sidebar (Mobile only) --- */
     #sidebar-close-button {
-        display: none; /* Hidden by default */
+        display: none;
         position: absolute; top: 10px; right: 15px;
         background: none; border: none; color: var(--text-color-light);
-        font-size: 1.8em; cursor: pointer; z-index: 1011; /* Ensure it's above sidebar content */
+        font-size: 1.8em; cursor: pointer; z-index: 1011;
     }
 
     /* --- Main Content Area --- */
     .content-wrapper {
       flex-grow: 1; display: flex; flex-direction: column;
-      min-width: 0; /* Prevent content from overflowing flex container */
-      width: 100%; /* Take remaining width */
+      min-width: 0;
+      width: 100%;
     }
     main {
-      padding: 30px; flex-grow: 1;
+      padding: 30px; /* Base padding */
+      flex-grow: 1;
       background-color: var(--content-bg); color: var(--content-text);
+      /* Global width/margin settings removed from here */
     }
 
     /* === Link Styling in Main Content === */
@@ -195,12 +199,12 @@
       color: var(--content-link-color); text-decoration: none;
       transition: text-decoration 0.2s ease;
     }
-    main a:visited { color: var(--content-link-color); } /* Keep color consistent */
+    main a:visited { color: var(--content-link-color); }
     main a:hover,
     main a:focus {
       color: var(--content-link-color); text-decoration: underline;
     }
-    main a:active { color: var(--content-link-color); } /* Keep color consistent */
+    main a:active { color: var(--content-link-color); }
     /* === End Link Styling === */
 
 
@@ -210,19 +214,25 @@
     @media (min-width: 769px) {
         body { flex-direction: row; }
         .sidebar {
-            /* Desktop-specific positioning: already sticky by default */
             position: sticky;
             top: 0;
             height: 100vh;
-            transform: none; /* Ensure no transform applied on desktop */
-            /* Width handled by base .sidebar and .sidebar.collapsed rules */
+            transform: none;
         }
-        /* Show/hide correct buttons for desktop */
-        #desktop-sidebar-toggle { display: flex; } /* Use flex to center icon */
+        #desktop-sidebar-toggle { display: flex; }
         #mobile-top-bar { display: none; }
         #sidebar-close-button { display: none; }
-        .content-wrapper { margin-left: 0; } /* No margin needed with sticky sidebar */
-        body { padding-top: 0 !important; } /* Ensure no top padding on desktop */
+        .content-wrapper { margin-left: 0; }
+        body { padding-top: 0 !important; }
+
+        /* === Adjust Main Content Width/Margins on Desktop === */
+        main {
+            max-width: 960px; /* Adjust as needed */
+            margin-left: auto; /* Center the main block */
+            margin-right: auto; /* Center the main block */
+             /* Existing padding: 30px provides space inside the centered block */
+        }
+        /* === End Main Content Adjustment === */
     }
 
     /* Mobile */
@@ -231,21 +241,18 @@
         .sidebar {
             position: fixed; top: 0; left: 0; height: 100%;
             width: min(80%, 300px); max-width: 300px;
-            /* Start HIDDEN off-screen to the left */
             transform: translateX(-100%);
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            z-index: 1010; /* Above overlay, below close button */
-            padding: 20px; padding-top: 50px; /* Space for close button */
-            /* Ensure collapsed styles are not applied on mobile */
+            z-index: 1010;
+            padding: 20px; padding-top: 50px;
             width: min(80%, 300px) !important;
             padding: 20px !important;
             padding-top: 50px !important;
         }
-         /* Show elements hidden by .collapsed on mobile */
          .sidebar.collapsed h2,
          .sidebar.collapsed .sidebar-description,
          .sidebar.collapsed .sidebar-nav {
-             display: block; /* Or appropriate display type */
+             display: block;
          }
          .sidebar.collapsed .sidebar-profile-pic {
              max-width: 150px !important;
@@ -261,22 +268,18 @@
 
         #mobile-top-bar { display: flex; }
         #desktop-sidebar-toggle { display: none; }
-        #sidebar-close-button { display: block; } /* Show close button *inside* sidebar */
+        #sidebar-close-button { display: block; }
 
-        /* State when mobile sidebar is open */
-        body.sidebar-open .sidebar { transform: translateX(0); } /* Slide in */
-        /* No need for body.sidebar-open #sidebar-close-button display: block - it's always block on mobile */
+        body.sidebar-open .sidebar { transform: translateX(0); }
 
         .content-wrapper { margin-left: 0; width: 100%; }
-        /* Overlay for mobile */
         body::after {
            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-           background: rgba(0, 0, 0, 0.6); z-index: 999; /* Below sidebar */
+           background: rgba(0, 0, 0, 0.6); z-index: 999;
            opacity: 0; visibility: hidden;
            transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
         }
         body.sidebar-open::after { opacity: 1; visibility: visible; }
-        /* Adjust body padding for fixed top bar */
         body { padding-top: var(--mobile-top-bar-height); }
     }
 
@@ -289,10 +292,8 @@
       <button id="mobile-sidebar-toggle" aria-label="Open Menu" aria-controls="sidebar" aria-expanded="false">
           <i class="fas fa-bars"></i>
       </button>
-      <!-- Hardcoded profile pic path -->
       <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham" class="mobile-top-profile-pic">
       <div class="mobile-top-icons">
-          <!-- Hardcoded original links -->
           <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
           <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
           <a href="mailto:shubhamkejriwal@u.nus.edu" title="Email"><i class="fas fa-envelope"></i></a>
@@ -303,27 +304,23 @@
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
     <button id="desktop-sidebar-toggle" aria-label="Toggle Menu" aria-controls="sidebar" aria-expanded="true">
-      <i class="fas fa-times"></i> <!-- Starts 'close' (expanded) icon -->
+      <i class="fas fa-times"></i>
     </button>
     <button id="sidebar-close-button" aria-label="Close Menu">
         <i class="fas fa-times"></i>
     </button>
 
-    <!-- Hardcoded profile pic path -->
     <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham" class="sidebar-profile-pic">
-    <!-- Hardcoded name and description -->
     <h2>Shubham Kejriwal</h2>
     <p class="sidebar-description"><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>
 Science Drive 4, <br> Singapore-119077 </p>
     <div class="sidebar-icon-links">
-      <!-- Hardcoded original links -->
       <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
       <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
       <a href="mailto:shubhamkejriwal@u.nus.edu" title="Email"><i class="fas fa-envelope"></i></a>
       <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
     <nav class="sidebar-nav">
-      <!-- Hardcoded original navigation links with baseurl -->
       <a href="{{ site.baseurl | default: '' }}/">Home</a>
       <a href="{{ site.baseurl | default: '' }}/research/">Research</a>
       <a href="{{ site.baseurl | default: '' }}/publications/">Publications</a>
@@ -339,7 +336,7 @@ Science Drive 4, <br> Singapore-119077 </p>
   </div>
 
   <script>
-    // --- Corrected JavaScript from previous step ---
+    // --- JavaScript remains the same as the previous corrected version ---
     document.addEventListener("DOMContentLoaded", function () {
       const sidebar = document.getElementById("sidebar");
       const body = document.body;
@@ -359,7 +356,7 @@ Science Drive 4, <br> Singapore-119077 </p>
           const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none';
           const topBarHeight = mobileTopBar.offsetHeight;
 
-          body.style.paddingTop = '0px'; // Reset first
+          body.style.paddingTop = '0px';
           body.style.paddingLeft = '0px';
 
           if (isMobile && isTopBarVisible && topBarHeight > 0) {
@@ -371,10 +368,10 @@ Science Drive 4, <br> Singapore-119077 </p>
           const isMobile = window.innerWidth <= 768;
           if (isMobile) {
               body.classList.toggle('sidebar-open', shouldBeOpen);
-              sidebar.classList.remove('collapsed'); // Important: Remove collapsed on mobile
+              sidebar.classList.remove('collapsed');
               mobileToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
           } else {
-              sidebar.classList.toggle('collapsed', !shouldBeOpen); // Add collapsed if closing
+              sidebar.classList.toggle('collapsed', !shouldBeOpen);
               body.classList.remove('sidebar-open');
               desktopToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
               const desktopIcon = desktopToggleBtn.querySelector('i');
@@ -387,7 +384,7 @@ Science Drive 4, <br> Singapore-119077 </p>
 
       const setInitialState = () => {
           const isMobile = window.innerWidth <= 768;
-          setSidebarState(!isMobile); // Open on desktop, closed on mobile initially
+          setSidebarState(!isMobile);
           adjustBodyPadding();
       };
 
@@ -417,15 +414,15 @@ Science Drive 4, <br> Singapore-119077 </p>
 
       desktopToggleBtn.addEventListener("click", function () {
           const isCurrentlyCollapsed = sidebar.classList.contains('collapsed');
-          setSidebarState(isCurrentlyCollapsed); // Correct logic: pass true to open, false to close
+          setSidebarState(isCurrentlyCollapsed);
       });
 
       mobileToggleBtn.addEventListener("click", function () {
-          setSidebarState(true); // Open sidebar
+          setSidebarState(true);
       });
 
       sidebarCloseBtn.addEventListener("click", function () {
-          setSidebarState(false); // Close sidebar
+          setSidebarState(false);
       });
 
       body.addEventListener('click', function(event) {
