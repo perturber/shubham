@@ -28,11 +28,21 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at 
 ---
 ## What I Do
 
-I primarily work on developing the data analysis pipeline for the upcoming space-based gravitational wave observatory LISA. Some broad directions are highlighted below. You can read more about my research [here](/shubham/research/).
+### Research Work  
+    I primarily work on developing the data analysis pipeline for the upcoming space-based gravitational wave observatory LISA. Some broad directions are highlighted below. You can read more about my research [here](/shubham/research/).  
+  
+    - GW waveform modeling and inference of extreme-mass-ratio inspirals (EMRIs).  
+    - Inferring environments and beyond-GR ("beyond-vacuum-GR") effects using the LISA mission.  
+    - Search for electromagnetic counterparts of EMRIs.  
 
-- GW waveform modeling and inference.  
-- Inferring environments and beyond-GR ("beyond-vacuum-GR") effects using the LISA mission.  
-- Search for electromagnetic counterparts of extreme-mass-ratio inspirals.  
-
+### Teaching  
+    ...  
+    
+### Student Mentoring  
+    ...  
+    
+### Community Engagement
+    ...  
+    
 ---
 © 2025 Shubham Kejriwal
