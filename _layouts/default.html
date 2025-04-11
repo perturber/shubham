@@ -2,27 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ page.title }}</title>
+  <!-- Crucial for responsive design -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title> <!-- Added default title -->
 
   <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
+    :root {
+      --sidebar-bg: #f0f0f0;
+      --nav-bg: #f8f8f8;
+      --link-color: #007acc;
+      --link-hover-color: #0056b3;
+      --text-color: #333;
+      --icon-color: #333;
+      --icon-hover-color: #007acc;
+      --button-bg: #007acc;
+      --button-color: #fff;
+      --mobile-breakpoint: 768px; /* Define breakpoint */
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       display: flex;
       min-height: 100vh;
-      flex-direction: row;
+      flex-direction: row; /* Default: Sidebar left, content right */
     }
 
     /* Sidebar */
     .sidebar {
-      background-color: #f0f0f0;
+      background-color: var(--sidebar-bg);
       padding: 20px;
       box-shadow: 2px 0 5px rgba(0,0,0,0.1);
       text-align: center;
-      transition: all 0.3s ease;
+      transition: width 0.3s ease;
+      flex-shrink: 0; /* Prevent sidebar from shrinking */
+      z-index: 1000; /* Ensure sidebar potentially overlays content if needed later */
     }
 
     .sidebar-large {
@@ -34,29 +51,36 @@
     }
 
     .sidebar img {
-      width: 100%;
+      max-width: 150px; /* Use max-width */
+      height: auto;
       border-radius: 50%;
       margin-bottom: 15px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .sidebar h2 {
       margin-top: 0;
       font-size: 1.5em;
+      color: var(--text-color);
     }
 
     .sidebar p {
       font-size: 0.95em;
       line-height: 1.4;
-      text-align: justify;
+      text-align: justify; /* Or center if preferred */
+      color: var(--text-color);
     }
 
     .sidebar a {
-      color: #007acc;
+      color: var(--link-color);
       text-decoration: none;
     }
 
     .sidebar a:hover {
       text-decoration: underline;
+      color: var(--link-hover-color);
     }
 
     .icon-links {
@@ -66,95 +90,133 @@
     .icon-links a {
       margin: 0 8px;
       display: inline-block;
-      color: #333;
+      color: var(--icon-color);
       font-size: 20px;
     }
 
     .icon-links a:hover {
-      color: #007acc;
+      color: var(--icon-hover-color);
     }
 
+    /* Main Content Area */
     .content-wrapper {
-      flex-grow: 1;
+      flex-grow: 1; /* Take remaining horizontal space */
       display: flex;
-      flex-direction: column;
+      flex-direction: column; /* Stack nav and main vertically */
+      min-width: 0; /* Prevent flex item overflow issues */
     }
 
+    /* Navigation Bar */
     nav {
-      background-color: #f8f8f8;
-      padding: 10px;
+      background-color: var(--nav-bg);
+      padding: 10px 20px;
       text-align: center;
+      border-bottom: 1px solid #ddd;
+      flex-shrink: 0; /* Prevent nav from shrinking */
     }
 
     nav a {
       margin: 0 15px;
       text-decoration: none;
-      color: #333;
+      color: var(--text-color);
       font-weight: bold;
+      display: inline-block;
+      padding: 5px 0;
     }
 
     nav a:hover {
-      color: #007acc;
+      color: var(--link-hover-color);
     }
 
+    /* Main Content */
     main {
       padding: 30px;
+      flex-grow: 1; /* Take remaining vertical space */
     }
 
-    /* Toggle button */
+    /* Mobile Toggle Button */
     #mobile-toggle {
-      display: none;
-      background: #007acc;
-      color: #fff;
+      display: none; /* Hidden by default */
+      background: var(--button-bg);
+      color: var(--button-color);
       border: none;
-      width: 100%;
-      padding: 10px;
+      width: 100%; /* Full width */
+      padding: 12px 20px;
       font-size: 1.2em;
       text-align: left;
       cursor: pointer;
-      z-index: 9999;
-      position: relative;
+      z-index: 1001; /* Ensure it's above other elements */
+      box-sizing: border-box; /* Include padding in width */
     }
+     #mobile-toggle i {
+        margin-right: 10px; /* Space between icon and text */
+     }
 
-    /* Responsive styles */
-    @media (max-width: 768px) {
+    /* Responsive styles - Apply below the mobile breakpoint */
+    @media (max-width: /*var(--mobile-breakpoint)*/ 768px) { /* Using literal value for broader compatibility */
       body {
-        flex-direction: column;
+        flex-direction: column; /* Stack elements vertically */
       }
 
+      /* Show the mobile toggle button */
+      #mobile-toggle {
+        display: block; /* Make button visible */
+      }
+
+      /* Sidebar adjustments for mobile */
       .sidebar {
+        /* Hide sidebar by default on mobile */
         display: none;
-        width: 100% !important;
-        box-shadow: none;
+        width: 100% !important; /* Override specific widths, take full width */
+        box-shadow: none; /* Remove shadow on mobile */
+        /* Add scroll for potentially long sidebars on small screens */
+        max-height: calc(100vh - 50px); /* Adjust 50px based on button height */
+        overflow-y: auto;
+        /* Reset any desktop-specific transitions if needed */
+        transition: none;
       }
 
+      /* Rule to display the sidebar when 'show' class is added via JS */
       .sidebar.show {
-        display: block;
+        display: block; /* Show the sidebar */
       }
 
       .sidebar img {
-        width: 150px;
+        max-width: 120px; /* Slightly smaller image on mobile */
       }
 
       .icon-links a {
-        font-size: 24px;
+        font-size: 22px;
         margin: 0 10px;
       }
 
-      #mobile-toggle {
-        display: block;
+      /* Content wrapper takes full width automatically in column layout */
+      .content-wrapper {
+         /* No special width needed */
+      }
+
+      nav {
+         /* Optional: Adjust nav layout for small screens if needed */
+         /* text-align: left; */
+      }
+      nav a {
+         /* Optional: Make nav links easier to tap */
+         /* display: block; margin: 5px 0; */
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Mobile Toggle Button -->
-  <button id="mobile-toggle">☰ Menu</button>
+  <!-- Mobile Toggle Button - Placed first for top position in column layout -->
+  <button id="mobile-toggle" aria-expanded="false" aria-controls="sidebar">
+    <i class="fas fa-bars"></i> Menu
+  </button>
 
-  <!-- Sidebar -->
+  <!-- Sidebar - ID matches JS and aria-controls -->
   <div id="sidebar" class="sidebar {% if page.homepage %}sidebar-large{% else %}sidebar-standard{% endif %}">
-    <img src="{{ site.baseurl }}/assets/profile.jpg" alt="Shubham">
+    <!-- Ensure baseurl is handled correctly (works locally and deployed) -->
+    <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham">
     <h2>Shubham Kejriwal</h2>
     <p><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>
 Science Drive 4, <br> Singapore-119077 </p>
@@ -167,13 +229,14 @@ Science Drive 4, <br> Singapore-119077 </p>
     </div>
   </div>
 
-  <!-- Main content -->
+  <!-- Main Content Area -->
   <div class="content-wrapper">
     <nav>
-      <a href="/shubham/">Home</a>
-      <a href="/shubham/research/">Research</a>
-      <a href="/shubham/publications/">Publications</a>
-      <a href="/shubham/teaching/">Teaching & Mentoring</a>
+      <!-- Use site.baseurl for Jekyll site links -->
+      <a href="{{ site.baseurl | default: '' }}/">Home</a>
+      <a href="{{ site.baseurl | default: '' }}/research/">Research</a>
+      <a href="{{ site.baseurl | default: '' }}/publications/">Publications</a>
+      <a href="{{ site.baseurl | default: '' }}/teaching/">Teaching & Mentoring</a>
     </nav>
 
     <main>
@@ -181,18 +244,35 @@ Science Drive 4, <br> Singapore-119077 </p>
     </main>
   </div>
 
-  <!-- JS to toggle sidebar -->
+  <!-- JS to toggle sidebar visibility -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const toggleButton = document.getElementById("mobile-toggle");
       const sidebar = document.getElementById("sidebar");
 
-      toggleButton.addEventListener("click", function () {
-        sidebar.classList.toggle("show");
-      });
+      if (toggleButton && sidebar) {
+        toggleButton.addEventListener("click", function () {
+          // Toggle the 'show' class on the sidebar
+          const isExpanded = sidebar.classList.toggle("show");
+
+          // Update button's aria-expanded attribute for accessibility
+          toggleButton.setAttribute("aria-expanded", isExpanded);
+
+          // Optional: Change button icon
+          const icon = toggleButton.querySelector('i');
+          if (icon) {
+            if (isExpanded) {
+              icon.classList.replace('fa-bars', 'fa-times'); // Change to close icon
+            } else {
+              icon.classList.replace('fa-times', 'fa-bars'); // Change back to menu icon
+            }
+          }
+        });
+      } else {
+        console.error("Mobile toggle button or sidebar element not found.");
+      }
     });
   </script>
 
 </body>
 </html>
-
