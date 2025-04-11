@@ -45,9 +45,7 @@
       flex-direction: row;
       background-color: var(--content-bg);
       color: var(--content-text);
-      /* Only transition padding-left on desktop */
       transition: padding-left var(--transition-speed) ease;
-      /* padding-top will be set by JS on mobile */
     }
 
     /* --- Sidebar Base Styles --- */
@@ -60,13 +58,14 @@
       flex-shrink: 0;
       overflow-x: hidden;
       overflow-y: auto;
-      z-index: 1000; /* Base z-index */
-      /* Default state (overridden by media queries/classes) */
+      z-index: 1000;
+      /* Default state width */
       width: var(--sidebar-width-expanded);
+      /* Default state positioning (overridden by media queries) */
       height: 100vh;
       position: sticky;
       top: 0;
-      transform: none; /* Default no transform */
+      transform: none;
       /* Transitions */
       transition: width var(--transition-speed) ease,
                   padding var(--transition-speed) ease,
@@ -75,9 +74,9 @@
 
     /* --- Desktop Collapsed State --- */
     .sidebar.collapsed {
-      width: var(--sidebar-width-collapsed);
+      width: var(--sidebar-width-collapsed); /* Override base width */
       padding: 10px;
-      padding-top: 70px; /* Space for toggle + image */
+      padding-top: 70px;
     }
     .sidebar.collapsed .sidebar-profile-pic {
       display: block !important; max-width: var(--collapsed-image-size) !important;
@@ -107,7 +106,6 @@
       font-size: 0.95em; line-height: 1.4; text-align: justify;
       margin-bottom: 20px; transition: opacity var(--transition-speed) ease;
     }
-    /* Sidebar internal links (like icons, nav) */
     .sidebar a { color: var(--link-color-light); text-decoration: none; }
     .sidebar a:hover { text-decoration: underline; color: var(--link-hover-light); }
     .sidebar-icon-links { margin-top: 0; margin-bottom: 25px; }
@@ -121,11 +119,11 @@
     }
     .sidebar-nav a {
         display: block; margin: 0; padding: 10px 0; font-weight: bold;
-        color: var(--text-color-light); /* Use sidebar text color */
+        color: var(--text-color-light);
         transition: color 0.2s ease; text-decoration: none;
     }
     .sidebar-nav a:hover {
-        color: var(--link-color-light); /* Use sidebar link hover color */
+        color: var(--link-color-light);
         text-decoration: none;
     }
 
@@ -148,8 +146,7 @@
         display: none; background-color: var(--panel-bg-dark);
         color: var(--text-color-light); padding: 5px 15px;
         position: fixed; top: 0; left: 0; width: 100%;
-        z-index: 1005; /* Above content, below sidebar */
-        align-items: center; min-height: var(--mobile-top-bar-height);
+        z-index: 1005; align-items: center; min-height: var(--mobile-top-bar-height);
     }
     #mobile-sidebar-toggle {
         background: none; border: none; color: var(--text-color-light);
@@ -171,7 +168,7 @@
     #sidebar-close-button {
         display: none; position: absolute; top: 10px; right: 15px;
         background: none; border: none; color: var(--text-color-light);
-        font-size: 1.8em; cursor: pointer; z-index: 1011; /* Above sidebar bg */
+        font-size: 1.8em; cursor: pointer; z-index: 1011;
     }
 
     /* --- Main Content Area --- */
@@ -186,17 +183,15 @@
 
     /* === Link Styling in Main Content === */
     main a {
-      color: var(--content-link-color); /* Use crimson variable */
-      text-decoration: none; /* Optional: Remove underline */
+      color: var(--content-link-color); text-decoration: none;
       transition: text-decoration 0.2s ease;
     }
-    main a:visited { color: var(--content-link-color); } /* Keep color */
+    main a:visited { color: var(--content-link-color); }
     main a:hover,
     main a:focus {
-      color: var(--content-link-color); /* Keep color */
-      text-decoration: underline; /* Add underline on hover/focus */
+      color: var(--content-link-color); text-decoration: underline;
     }
-    main a:active { color: var(--content-link-color); } /* Keep color */
+    main a:active { color: var(--content-link-color); }
     /* === End Link Styling === */
 
 
@@ -206,52 +201,44 @@
     @media (min-width: 769px) {
         body { flex-direction: row; }
         .sidebar {
-            position: sticky; top: 0; height: 100vh; transform: none;
-            width: var(--sidebar-width-expanded); /* Default unless collapsed */
+            /* === Define DESKTOP-SPECIFIC positioning and behavior === */
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            transform: none;
+            /* === Width is handled by base .sidebar and .sidebar.collapsed rules === */
         }
-        /* Show/hide correct buttons */
+        /* Show/hide correct buttons for desktop */
         #desktop-sidebar-toggle { display: flex; }
         #mobile-top-bar { display: none; }
         #sidebar-close-button { display: none; }
-        .content-wrapper { margin-left: 0; } /* Flex handles spacing */
+        .content-wrapper { margin-left: 0; }
     }
 
     /* Mobile */
     @media (max-width: 768px) {
-      body { flex-direction: column; }
-      .sidebar {
-        position: fixed; top: 0; left: 0; height: 100%;
-        width: min(80%, 300px); max-width: 300px;
-        transform: translateY(-100%); /* HIDE sidebar above */
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        z-index: 1010; /* Above top-bar and content */
-        padding: 20px; padding-top: 50px; /* Mobile padding */
-      }
-      /* Show Mobile Top Bar */
-      #mobile-top-bar { display: flex; }
-      /* Hide Desktop Toggle */
-      #desktop-sidebar-toggle { display: none; }
-
-      /* Show sidebar by sliding down */
-      body.sidebar-open .sidebar {
-         transform: translateY(0);
-      }
-
-      /* Show close button only when sidebar is open */
-      body.sidebar-open #sidebar-close-button { display: block; }
-      #sidebar-close-button { display: none; } /* Hide otherwise */
-
-      /* Content wrapper takes full width */
-      .content-wrapper { margin-left: 0; width: 100%; }
-
-      /* Mobile Overlay */
-      body::after {
-         content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-         background: rgba(0, 0, 0, 0.6); z-index: 999; /* Below sidebar & top bar */
-         opacity: 0; visibility: hidden;
-         transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
-      }
-      body.sidebar-open::after { opacity: 1; visibility: visible; }
+        body { flex-direction: column; }
+        .sidebar {
+            position: fixed; top: 0; left: 0; height: 100%;
+            width: min(80%, 300px); max-width: 300px;
+            transform: translateY(-100%); /* HIDE sidebar above */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            z-index: 1010;
+            padding: 20px; padding-top: 50px;
+        }
+        #mobile-top-bar { display: flex; }
+        #desktop-sidebar-toggle { display: none; }
+        body.sidebar-open .sidebar { transform: translateY(0); }
+        body.sidebar-open #sidebar-close-button { display: block; }
+        #sidebar-close-button { display: none; }
+        .content-wrapper { margin-left: 0; width: 100%; }
+        body::after {
+           content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+           background: rgba(0, 0, 0, 0.6); z-index: 999;
+           opacity: 0; visibility: hidden;
+           transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+        }
+        body.sidebar-open::after { opacity: 1; visibility: visible; }
     }
 
   </style>
@@ -307,6 +294,7 @@ Science Drive 4, <br> Singapore-119077 </p>
   </div>
 
   <script>
+    // No changes needed in the JavaScript from the previous version
     document.addEventListener("DOMContentLoaded", function () {
       const sidebar = document.getElementById("sidebar");
       const body = document.body;
@@ -314,92 +302,77 @@ Science Drive 4, <br> Singapore-119077 </p>
       const desktopToggleBtn = document.getElementById("desktop-sidebar-toggle");
       const mobileToggleBtn = document.getElementById("mobile-sidebar-toggle");
       const sidebarCloseBtn = document.getElementById("sidebar-close-button");
-      const mainContent = document.querySelector('main'); // Get main content area
+      const mainContent = document.querySelector('main');
 
       if (!sidebar || !body || !mobileTopBar || !desktopToggleBtn || !mobileToggleBtn || !sidebarCloseBtn || !mainContent) {
           console.error("Essential layout element(s) not found.");
           return;
       }
 
-      // --- Dynamic Padding Helper ---
       const adjustBodyPadding = () => {
           const isMobile = window.innerWidth <= 768;
           const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none';
           const topBarHeight = mobileTopBar.offsetHeight;
-
           if (isMobile && isTopBarVisible && topBarHeight > 0) {
               body.style.paddingTop = `${topBarHeight}px`;
           } else {
               body.style.paddingTop = '0px';
           }
-          // Reset padding-left for flexbox layout
           body.style.paddingLeft = '0px';
       };
 
-      // --- Helper Function to Manage State ---
       const setSidebarState = (shouldBeOpen) => {
           const isMobile = window.innerWidth <= 768;
-
           if (isMobile) {
-              // Mobile: Control via body class
               body.classList.toggle('sidebar-open', shouldBeOpen);
-              sidebar.classList.remove('collapsed'); // Ensure desktop class is off
+              sidebar.classList.remove('collapsed');
               mobileToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
           } else {
-              // Desktop: Control via .collapsed class
               sidebar.classList.toggle('collapsed', !shouldBeOpen);
-              body.classList.remove('sidebar-open'); // Ensure mobile class is off
+              body.classList.remove('sidebar-open');
               desktopToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
               const desktopIcon = desktopToggleBtn.querySelector('i');
               if (desktopIcon) {
                   desktopIcon.className = shouldBeOpen ? 'fas fa-times' : 'fas fa-bars';
               }
           }
-          requestAnimationFrame(adjustBodyPadding); // Adjust padding after state change
+          requestAnimationFrame(adjustBodyPadding);
       };
 
-      // --- Initial State Setup ---
       const setInitialState = () => {
           const isMobile = window.innerWidth <= 768;
-          setSidebarState(!isMobile); // Open on desktop, closed on mobile initially
-          adjustBodyPadding(); // Also adjust padding on initial load
+          setSidebarState(!isMobile);
+          adjustBodyPadding();
       };
 
-      // --- Add target="_blank" to links in <main> ---
       const setupMainLinks = () => {
          const links = mainContent.querySelectorAll('a');
          links.forEach(link => {
             const href = link.getAttribute('href');
-             // Only modify external links, not internal anchors or mailto links
              if (href && !href.startsWith('#') && !href.startsWith('mailto:')) {
-                 // Add target blank if it doesn't have one
                  if (!link.getAttribute('target')) {
                      link.setAttribute('target', '_blank');
-                     // Add rel=noopener noreferrer for security
                      link.setAttribute('rel', 'noopener noreferrer');
                  }
              }
          });
       };
 
-      // --- Initial Setup Calls ---
       setInitialState();
-      setupMainLinks(); // Apply link attributes after initial DOM load
+      setupMainLinks();
 
-      // --- Event Listeners ---
       desktopToggleBtn.addEventListener("click", function () {
-          setSidebarState(!sidebar.classList.contains('collapsed')); // Toggle based on current state
+          setSidebarState(!sidebar.classList.contains('collapsed'));
       });
 
       mobileToggleBtn.addEventListener("click", function () {
-          setSidebarState(true); // Force open on mobile
+          setSidebarState(true);
       });
 
       sidebarCloseBtn.addEventListener("click", function () {
-          setSidebarState(false); // Force close on mobile
+          setSidebarState(false);
       });
 
-      // Click outside to close on mobile
       body.addEventListener('click', function(event) {
            const isMobile = window.innerWidth <= 768;
            if (isMobile && body.classList.contains('sidebar-open')) {
@@ -409,23 +382,20 @@ Science Drive 4, <br> Singapore-119077 </p>
            }
        });
 
-      // --- Resize Handling ---
       let currentWindowWidth = window.innerWidth;
       window.addEventListener('resize', function() {
           const newWindowWidth = window.innerWidth;
           const breakpoint = 768;
           const isMobile = newWindowWidth <= breakpoint;
           const wasMobile = currentWindowWidth <= breakpoint;
-
-          if (isMobile !== wasMobile) { // Crossed the breakpoint
-              setInitialState(); // Reset state for the new mode
+          if (isMobile !== wasMobile) {
+              setInitialState();
           } else {
-              adjustBodyPadding(); // Just adjust padding if mode didn't change
+              adjustBodyPadding();
           }
           currentWindowWidth = newWindowWidth;
       });
 
-      // Orientation change can affect top bar height
       window.addEventListener('orientationchange', adjustBodyPadding);
     });
   </script>
