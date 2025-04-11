@@ -289,19 +289,14 @@
       <button id="mobile-sidebar-toggle" aria-label="Open Menu" aria-controls="sidebar" aria-expanded="false">
           <i class="fas fa-bars"></i>
       </button>
-      <!-- Conditional profile pic rendering -->
-      {% if site.avatar %}
-      <img src="{{ site.avatar | relative_url }}" alt="{{ site.title | default: 'Profile Picture' }}" class="mobile-top-profile-pic">
-      {% else %}
-      <img src="{{ '/assets/profile.jpg' | relative_url }}" alt="Shubham" class="mobile-top-profile-pic">
-      {% endif %}
+      <!-- Hardcoded profile pic path -->
+      <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham" class="mobile-top-profile-pic">
       <div class="mobile-top-icons">
-          <!-- Ensure these links match sidebar -->
-          {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>{% endif %}
-          {% if site.orcid_id %}<a href="https://orcid.org/{{ site.orcid_id }}" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>{% endif %}
-          {% if site.email %}<a href="mailto:{{ site.email }}" title="Email"><i class="fas fa-envelope"></i></a>{% endif %}
-          {% if site.linkedin_username %}<a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>{% endif %}
-          <!-- Add other icons as needed -->
+          <!-- Hardcoded original links -->
+          <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+          <a href="mailto:shubhamkejriwal@u.nus.edu" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
   </div>
 
@@ -314,30 +309,25 @@
         <i class="fas fa-times"></i>
     </button>
 
-    <!-- Conditional profile pic -->
-    {% if site.avatar %}
-    <img src="{{ site.avatar | relative_url }}" alt="{{ site.title | default: 'Profile Picture' }}" class="sidebar-profile-pic">
-    {% else %}
-    <img src="{{ '/assets/profile.jpg' | relative_url }}" alt="Shubham" class="sidebar-profile-pic">
-    {% endif %}
-
-    <h2>{{ site.title | default: "Your Name" }}</h2>
-    <p class="sidebar-description">{{ site.description | default: "Your description here." | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+    <!-- Hardcoded profile pic path -->
+    <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham" class="sidebar-profile-pic">
+    <!-- Hardcoded name and description -->
+    <h2>Shubham Kejriwal</h2>
+    <p class="sidebar-description"><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>
+Science Drive 4, <br> Singapore-119077 </p>
     <div class="sidebar-icon-links">
-      <!-- Use site variables for links -->
-      {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>{% endif %}
-      {% if site.orcid_id %}<a href="https://orcid.org/{{ site.orcid_id }}" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>{% endif %}
-      {% if site.email %}<a href="mailto:{{ site.email }}" title="Email"><i class="fas fa-envelope"></i></a>{% endif %}
-      {% if site.linkedin_username %}<a href="https://www.linkedin.com/in/{{ site.linkedin_username }}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>{% endif %}
-      <!-- Add other icons as needed -->
+      <!-- Hardcoded original links -->
+      <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+      <a href="mailto:shubhamkejriwal@u.nus.edu" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
     <nav class="sidebar-nav">
-      <!-- Use site.baseurl for links -->
-      <a href="{{ "/" | relative_url }}">Home</a>
-      <a href="{{ "/research/" | relative_url }}">Research</a>
-      <a href="{{ "/publications/" | relative_url }}">Publications</a>
-      <a href="{{ "/teaching/" | relative_url }}">Teaching & Mentoring</a>
-      <!-- Add other navigation links -->
+      <!-- Hardcoded original navigation links with baseurl -->
+      <a href="{{ site.baseurl | default: '' }}/">Home</a>
+      <a href="{{ site.baseurl | default: '' }}/research/">Research</a>
+      <a href="{{ site.baseurl | default: '' }}/publications/">Publications</a>
+      <a href="{{ site.baseurl | default: '' }}/teaching/">Teaching & Mentoring</a>
     </nav>
   </div>
 
@@ -349,6 +339,7 @@
   </div>
 
   <script>
+    // --- Corrected JavaScript from previous step ---
     document.addEventListener("DOMContentLoaded", function () {
       const sidebar = document.getElementById("sidebar");
       const body = document.body;
@@ -356,7 +347,7 @@
       const desktopToggleBtn = document.getElementById("desktop-sidebar-toggle");
       const mobileToggleBtn = document.getElementById("mobile-sidebar-toggle");
       const sidebarCloseBtn = document.getElementById("sidebar-close-button");
-      const mainContent = document.querySelector('main'); // Corrected selector
+      const mainContent = document.querySelector('main');
 
       if (!sidebar || !body || !mobileTopBar || !desktopToggleBtn || !mobileToggleBtn || !sidebarCloseBtn || !mainContent) {
           console.error("Essential layout element(s) not found. Check IDs and structure.");
@@ -365,52 +356,38 @@
 
       const adjustBodyPadding = () => {
           const isMobile = window.innerWidth <= 768;
-          const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none'; // Check if top bar is actually displayed
+          const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none';
           const topBarHeight = mobileTopBar.offsetHeight;
 
-          // Reset paddings first to avoid conflicts
-          body.style.paddingTop = '0px';
-          body.style.paddingLeft = '0px'; // Desktop doesn't need left padding adjustment
+          body.style.paddingTop = '0px'; // Reset first
+          body.style.paddingLeft = '0px';
 
-          // Apply top padding only if on mobile and the top bar is visible
           if (isMobile && isTopBarVisible && topBarHeight > 0) {
               body.style.paddingTop = `${topBarHeight}px`;
           }
       };
 
-
       const setSidebarState = (shouldBeOpen) => {
           const isMobile = window.innerWidth <= 768;
           if (isMobile) {
-              // --- Mobile Logic ---
               body.classList.toggle('sidebar-open', shouldBeOpen);
-              // Ensure 'collapsed' class is always REMOVED on mobile as it interferes with styles
-              sidebar.classList.remove('collapsed');
+              sidebar.classList.remove('collapsed'); // Important: Remove collapsed on mobile
               mobileToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
-              // No need to manage desktop button/icon on mobile
           } else {
-              // --- Desktop Logic ---
-              // Toggle 'collapsed' class based on the INVERSE of shouldBeOpen
-              sidebar.classList.toggle('collapsed', !shouldBeOpen);
-              // Ensure mobile class is removed on desktop
+              sidebar.classList.toggle('collapsed', !shouldBeOpen); // Add collapsed if closing
               body.classList.remove('sidebar-open');
               desktopToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
               const desktopIcon = desktopToggleBtn.querySelector('i');
               if (desktopIcon) {
-                  // Update icon based on the NEW state (shouldBeOpen)
                   desktopIcon.className = shouldBeOpen ? 'fas fa-times' : 'fas fa-bars';
               }
-              // No need to manage mobile buttons on desktop
           }
-          // Adjust body padding AFTER state change, mainly needed for mobile top bar
           requestAnimationFrame(adjustBodyPadding);
       };
 
       const setInitialState = () => {
           const isMobile = window.innerWidth <= 768;
-          // Start open on desktop (!isMobile = true), closed on mobile (!isMobile = false)
-          setSidebarState(!isMobile);
-           // Adjust padding on initial load
+          setSidebarState(!isMobile); // Open on desktop, closed on mobile initially
           adjustBodyPadding();
       };
 
@@ -418,21 +395,16 @@
          const links = mainContent.querySelectorAll('a');
          links.forEach(link => {
             const href = link.getAttribute('href');
-             // Ensure it's a valid link and not an internal fragment or mailto
              if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
-                 // Check if it's explicitly targeting something else already
                  const hasTarget = link.getAttribute('target');
                  if (!hasTarget) {
                     try {
                         const linkUrl = new URL(href, window.location.origin);
-                        // Open in new tab if hostname is different from current site's hostname
                         if (linkUrl.hostname !== window.location.hostname) {
                             link.setAttribute('target', '_blank');
-                            // Add rel="noopener noreferrer" for security
                             link.setAttribute('rel', 'noopener noreferrer');
                         }
                     } catch (e) {
-                        // If URL parsing fails (e.g., invalid href), ignore it
                         console.warn(`Could not parse link href: ${href}`, e);
                     }
                  }
@@ -440,44 +412,31 @@
          });
       };
 
-
-      // --- Initialization ---
       setInitialState();
-      setupMainLinks(); // Run link setup after initial load
-
-      // --- Event Listeners ---
+      setupMainLinks();
 
       desktopToggleBtn.addEventListener("click", function () {
-          // If sidebar IS currently collapsed, we want to open it (set state to true).
-          // If sidebar IS NOT currently collapsed, we want to close it (set state to false).
           const isCurrentlyCollapsed = sidebar.classList.contains('collapsed');
-          setSidebarState(isCurrentlyCollapsed); // Pass true to open, false to close
+          setSidebarState(isCurrentlyCollapsed); // Correct logic: pass true to open, false to close
       });
 
       mobileToggleBtn.addEventListener("click", function () {
-          // Mobile toggle always tries to OPEN the sidebar
-          setSidebarState(true);
+          setSidebarState(true); // Open sidebar
       });
 
       sidebarCloseBtn.addEventListener("click", function () {
-          // Mobile close button always tries to CLOSE the sidebar
-          setSidebarState(false);
+          setSidebarState(false); // Close sidebar
       });
 
-      // Close mobile sidebar if clicking on the overlay (outside sidebar)
       body.addEventListener('click', function(event) {
            const isMobile = window.innerWidth <= 768;
-           // Only act if on mobile AND sidebar is open
            if (isMobile && body.classList.contains('sidebar-open')) {
-               // Check if the click target is the overlay itself (::after pseudo-element isn't directly targetable,
-               // so check if the click was NOT inside the sidebar AND NOT the mobile toggle button)
                if (!sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target)) {
                    setSidebarState(false);
                }
            }
        });
 
-      // Handle resize events, specifically crossing the mobile breakpoint
       let currentWindowWidth = window.innerWidth;
       window.addEventListener('resize', function() {
           const newWindowWidth = window.innerWidth;
@@ -485,17 +444,14 @@
           const isMobile = newWindowWidth <= breakpoint;
           const wasMobile = currentWindowWidth <= breakpoint;
 
-          // Only reset state if the mode (mobile/desktop) has changed
           if (isMobile !== wasMobile) {
-              setInitialState(); // Reset to default state for the new mode
+              setInitialState();
           } else {
-              // If mode didn't change, just ensure padding is correct (e.g., mobile orientation change)
               adjustBodyPadding();
           }
-          currentWindowWidth = newWindowWidth; // Update width tracking
+          currentWindowWidth = newWindowWidth;
       });
 
-      // Also adjust padding on orientation change (primarily affects mobile)
       window.addEventListener('orientationchange', adjustBodyPadding);
     });
   </script>
