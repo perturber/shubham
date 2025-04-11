@@ -16,13 +16,13 @@
       flex-direction: row;
     }
 
-    /* Sidebar base styling */
+    /* Sidebar */
     .sidebar {
       background-color: #f0f0f0;
       padding: 20px;
       box-shadow: 2px 0 5px rgba(0,0,0,0.1);
       text-align: center;
-      transition: width 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .sidebar-large {
@@ -74,7 +74,6 @@
       color: #007acc;
     }
 
-    /* Content + nav bar */
     .content-wrapper {
       flex-grow: 1;
       display: flex;
@@ -102,7 +101,22 @@
       padding: 30px;
     }
 
-    /* Responsive layout */
+    /* Toggle button */
+    #mobile-toggle {
+      display: none;
+      background: #007acc;
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      font-size: 1.2em;
+      text-align: left;
+      cursor: pointer;
+      z-index: 9999;
+      position: relative;
+    }
+
+    /* Responsive styles */
     @media (max-width: 768px) {
       body {
         flex-direction: column;
@@ -112,6 +126,10 @@
         display: none;
         width: 100% !important;
         box-shadow: none;
+      }
+
+      .sidebar.show {
+        display: block;
       }
 
       .sidebar img {
@@ -125,23 +143,7 @@
 
       #mobile-toggle {
         display: block;
-        background: #007acc;
-        color: #fff;
-        border: none;
-        width: 100%;
-        padding: 10px;
-        font-size: 1.2em;
-        text-align: left;
       }
-
-      .sidebar.show {
-        display: block;
-      }
-    }
-
-    /* Hide toggle button on desktop */
-    #mobile-toggle {
-      display: none;
     }
   </style>
 </head>
@@ -158,18 +160,10 @@
 Science Drive 4, <br> Singapore-119077 </p>
 
     <div class="icon-links">
-      <a href="https://github.com/perturber" target="_blank" title="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID">
-        <i class="fab fa-orcid"></i>
-      </a>
-      <a href="mailto:shubhamkejriwal@u.nus.edu" title="Email">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" target="_blank" title="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
+      <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+      <a href="mailto:shubhamkejriwal@u.nus.edu" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
   </div>
 
@@ -187,6 +181,7 @@ Science Drive 4, <br> Singapore-119077 </p>
     </main>
   </div>
 
+  <!-- JS to toggle sidebar -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const toggleButton = document.getElementById("mobile-toggle");
