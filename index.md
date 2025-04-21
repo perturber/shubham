@@ -4,9 +4,21 @@ title: Home
 homepage: True
 ---
 
-<img src="/shubham/assets/profile_large.jpg" alt="Shubham Kejriwal" style="float: right; margin-left: 20px; width: 200px; border-radius: 10px;" />
-
 # Shubham Kejriwal (he/him)
+
+<div class="intro-container">
+  <div class="intro-text">
+    **Physics Ph.D. Candidate**  
+    **National University of Singapore**  
+    Science Drive 4,  
+    Singapore-119077  
+  </div>
+
+  <div class="intro-image">
+    <img src="/shubham/assets/profile_large.jpg" alt="Shubham Kejriwal" />
+  </div>
+</div>
+
 **Physics Ph.D. Candidate**   
 **National University of Singapore**  
 Science Drive 4,  
