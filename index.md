@@ -30,20 +30,21 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at 
 
 ### Research Work  
 
-  I primarily work on developing the data analysis pipeline for the upcoming space-based gravitational wave observatory LISA. Some broad directions are highlighted below. You can read more about my research [here](/shubham/research/).  
+  I primarily work on the development of the data analysis pipeline for the upcoming space-based gravitational wave observatory LISA. Some broad directions are highlighted below. You can read more about my research [here](/shubham/research/) and access my full list of publications [here](/shubham/publications/).  
   
   - GW waveform modeling and inference of extreme-mass-ratio inspirals (EMRIs).  
   - Inferring environments and beyond-GR ("beyond-vacuum-GR") effects using the LISA mission.  
   - Search for electromagnetic counterparts of EMRIs.  
 
 ### Teaching  
-  ...  
+  I have contributed as a Teaching Assistant for multiple courses (both graduate and undergraduate) during my Ph.D. In my role, I have instructed tutorials, invigilated, assessed assignment submissions, and provided general guidance to class sizes of roughly 40-100 students. Here's a full list of courses I have assisted for:  
+  - PC5252 "Bayesian Statistics and Machine Learning" (2 semesters).  
+  - COS1000 "Computational Thinking for Scientists" (3 semesters).   
+  - HS1502 "Conceptual Introduction to Machine Learning" (2 semesters).  
+
     
-### Student Mentoring  
-  ...  
-    
-### Community Engagement
-  ...  
+### Talks, Posters, and Outreach
+  Beyond research and teaching, I am keen on sharing the impact of my research and in science outreach generally. Below is a short list of talks and posters I have presented for various research conferences and science outreach programs. In addition, I have also attended several workshops and schools during my Ph.D. to dive deeper into niche topics within gravitational wave research. You can find a full list of participations in my [Curriculum Vitae](/assets/Shubham_Kejriwal_CV.pdf).
     
 ---
 © 2025 Shubham Kejriwal
