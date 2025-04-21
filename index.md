@@ -69,6 +69,7 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at 
   I also enjoy contributing to science events, by organizing them:  
   - Local Organizing Committee member, [Capra27](https://www.caprameeting.org/capra-meetings/capra-27).   
   - Executive Committee member, Physics Graduate Students' Society, National University of Singapore.  
+  
   or by participating:  
   - [Beyond the Horizon Program](https://icts.res.in/program/beyondhorizon), March 2025, ICTS-TIFR, India.  
   - [EMRI Search and Inference within the LISA Global Fit - Part 1](https://indico.in2p3.fr/event/34916/overview), June 2025, APC, Paris, France.  
