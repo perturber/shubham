@@ -191,7 +191,7 @@
       padding: 30px; /* Base padding */
       flex-grow: 1;
       background-color: var(--content-bg); color: var(--content-text);
-      /* Global width/margin settings removed from here */
+      /* Global width/margin settings removed from here, applied via @media query */
     }
 
     /* === Link Styling in Main Content === */
@@ -206,6 +206,36 @@
     }
     main a:active { color: var(--content-link-color); }
     /* === End Link Styling === */
+
+    /* --- Styles for Intro Section with Image (Mobile First) --- */
+    .intro-section {
+      display: flex;
+      flex-direction: column; /* Mobile First: Stack elements vertically */
+      margin-bottom: 2em; /* Add some space below the section */
+    }
+
+    .intro-image-container {
+      order: -1; /* Mobile: Show image *before* the text */
+      text-align: center; /* Center image container */
+      margin-bottom: 1.5em; /* Space between image and text on mobile */
+    }
+
+    .intro-profile-image {
+      max-width: 200px; /* Limit image size on mobile */
+      width: 60%; /* Responsive width */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 8px; /* Optional: slightly rounded corners */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: subtle shadow */
+      display: inline-block; /* Needed for text-align: center to work */
+    }
+
+    .intro-text {
+      order: 0; /* Mobile: Text comes after image (default order) */
+      /* Styles for h1, p, etc. inside .intro-text are handled by Markdown conversion */
+    }
+    .intro-text h1 { margin-top: 0; } /* Adjust spacing if needed */
+
+    /* --- End Styles for Intro Section --- */
 
 
     /* --- Responsive Styles --- */
@@ -233,6 +263,39 @@
              /* Existing padding: 30px provides space inside the centered block */
         }
         /* === End Main Content Adjustment === */
+
+        /* === Desktop layout adjustments for Intro Section === */
+        .intro-section {
+            flex-direction: row; /* Desktop: Side-by-side layout */
+            align-items: flex-start; /* Align items to the top */
+            gap: 30px; /* Space between text and image */
+        }
+
+        .intro-text {
+            order: 0; /* Desktop: Text on the left */
+            flex: 1; /* Allow text block to take available space */
+            margin-bottom: 0; /* Remove bottom margin needed for mobile */
+             /* Resetting order just to be explicit */
+        }
+
+        .intro-image-container {
+            order: 1; /* Desktop: Image on the right */
+            flex-basis: 250px; /* Fixed or percentage width for image container */
+            flex-shrink: 0; /* Prevent image container from shrinking */
+            text-align: right; /* Align image container content to the right */
+            margin-bottom: 0; /* Remove bottom margin */
+            margin-left: auto; /* Push to the right if needed, depends on flex settings */
+        }
+
+        .intro-profile-image {
+            max-width: 100%; /* Image can take full width of its container */
+            width: 100%; /* Make image fill its container */
+            /* Keep other styles like border-radius, shadow */
+            display: block; /* Change from inline-block if needed for alignment */
+            margin-left: auto; /* Align image itself to right within its container */
+            margin-right: 0;
+        }
+         /* === End Intro Section Desktop Adjustments === */
     }
 
     /* Mobile */
@@ -245,10 +308,12 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
             z-index: 1010;
             padding: 20px; padding-top: 50px;
-            width: min(80%, 300px) !important;
-            padding: 20px !important;
-            padding-top: 50px !important;
+            width: min(80%, 300px) !important; /* Ensure override */
+            padding: 20px !important; /* Ensure override */
+            padding-top: 50px !important; /* Ensure override */
         }
+         /* --- Adjust mobile collapsed state if needed --- */
+         /* (The previous rules seem fine, ensuring non-text elements don't disappear) */
          .sidebar.collapsed h2,
          .sidebar.collapsed .sidebar-description,
          .sidebar.collapsed .sidebar-nav {
@@ -265,6 +330,7 @@
          .sidebar.collapsed .sidebar-icon-links a {
             font-size: 20px; margin: 0 8px; display: inline-block;
          }
+        /* --- End mobile collapsed state adjustments --- */
 
         #mobile-top-bar { display: flex; }
         #desktop-sidebar-toggle { display: none; }
@@ -281,8 +347,11 @@
         }
         body.sidebar-open::after { opacity: 1; visibility: visible; }
         body { padding-top: var(--mobile-top-bar-height); }
+
+        /* --- Mobile-specific styles for Intro Section (already handled by base styles) --- */
+        /* No extra rules needed here unless overriding something specific for mobile */
     }
-    
+
   </style>
 </head>
 <body>
@@ -304,7 +373,7 @@
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
     <button id="desktop-sidebar-toggle" aria-label="Toggle Menu" aria-controls="sidebar" aria-expanded="true">
-      <i class="fas fa-times"></i>
+      <i class="fas fa-times"></i> <!-- Icon changes via JS -->
     </button>
     <button id="sidebar-close-button" aria-label="Close Menu">
         <i class="fas fa-times"></i>
@@ -324,7 +393,7 @@ Science Drive 4, <br> Singapore-119077 </p>
       <a href="{{ site.baseurl | default: '' }}/">Home</a>
       <a href="{{ site.baseurl | default: '' }}/research/">Research</a>
       <a href="{{ site.baseurl | default: '' }}/publications/">Publications</a>
-      <a href="{{ site.baseurl | default: '' }}/assets/Shubham_Kejriwal_CV.pdf"target="_blank" rel="noopener noreferrer">CV</a>
+      <a href="{{ site.baseurl | default: '' }}/assets/Shubham_Kejriwal_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
     </nav>
   </div>
 
@@ -336,7 +405,7 @@ Science Drive 4, <br> Singapore-119077 </p>
   </div>
 
   <script>
-    // --- JavaScript remains the same as the previous corrected version ---
+    // --- JavaScript remains the same ---
     document.addEventListener("DOMContentLoaded", function () {
       const sidebar = document.getElementById("sidebar");
       const body = document.body;
@@ -356,8 +425,9 @@ Science Drive 4, <br> Singapore-119077 </p>
           const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none';
           const topBarHeight = mobileTopBar.offsetHeight;
 
+          // Reset paddings first
           body.style.paddingTop = '0px';
-          body.style.paddingLeft = '0px';
+          // We don't manipulate paddingLeft for sidebar here, CSS handles it based on class/state
 
           if (isMobile && isTopBarVisible && topBarHeight > 0) {
               body.style.paddingTop = `${topBarHeight}px`;
@@ -368,72 +438,95 @@ Science Drive 4, <br> Singapore-119077 </p>
           const isMobile = window.innerWidth <= 768;
           if (isMobile) {
               body.classList.toggle('sidebar-open', shouldBeOpen);
-              sidebar.classList.remove('collapsed');
+              sidebar.classList.remove('collapsed'); // Ensure mobile doesn't use 'collapsed' visually
               mobileToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
+               // Reset desktop button state just in case
+               desktopToggleBtn.setAttribute('aria-expanded', 'true');
+               const desktopIcon = desktopToggleBtn.querySelector('i');
+               if (desktopIcon) desktopIcon.className = 'fas fa-times';
+
+
           } else {
               sidebar.classList.toggle('collapsed', !shouldBeOpen);
-              body.classList.remove('sidebar-open');
+              body.classList.remove('sidebar-open'); // Ensure desktop doesn't use overlay
               desktopToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
               const desktopIcon = desktopToggleBtn.querySelector('i');
               if (desktopIcon) {
                   desktopIcon.className = shouldBeOpen ? 'fas fa-times' : 'fas fa-bars';
               }
+              // Reset mobile button state
+               mobileToggleBtn.setAttribute('aria-expanded', 'false');
           }
-          requestAnimationFrame(adjustBodyPadding);
+          requestAnimationFrame(adjustBodyPadding); // Adjust padding after state change potentially affects layout
       };
 
-      const setInitialState = () => {
+       const setInitialState = () => {
           const isMobile = window.innerWidth <= 768;
+          // Desktop starts expanded, Mobile starts closed
           setSidebarState(!isMobile);
           adjustBodyPadding();
       };
 
+      // Function to automatically add target="_blank" to external links in main content
       const setupMainLinks = () => {
          const links = mainContent.querySelectorAll('a');
          links.forEach(link => {
             const href = link.getAttribute('href');
+             // Check if it's a valid link, not an anchor, mailto, or javascript
              if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
+                 // Check if it already has a target attribute
                  const hasTarget = link.getAttribute('target');
-                 if (!hasTarget) {
+                 if (!hasTarget) { // Only add target if one doesn't exist
                     try {
+                        // Create a URL object to easily check hostname
                         const linkUrl = new URL(href, window.location.origin);
+                        // Check if the hostname is different from the current site's hostname
                         if (linkUrl.hostname !== window.location.hostname) {
                             link.setAttribute('target', '_blank');
+                            // Add rel="noopener noreferrer" for security
                             link.setAttribute('rel', 'noopener noreferrer');
                         }
                     } catch (e) {
-                        console.warn(`Could not parse link href: ${href}`, e);
+                        // Handle cases where href might not be a valid URL (e.g., relative paths managed by Jekyll)
+                        // We can cautiously assume relative paths are internal or let them be.
+                        // Or log a warning if needed:
+                        // console.warn(`Could not parse link href: ${href}`, e);
                     }
                  }
              }
          });
       };
 
+      // Initial setup
       setInitialState();
-      setupMainLinks();
+      setupMainLinks(); // Run link setup after content is likely loaded
 
+      // Event Listeners
       desktopToggleBtn.addEventListener("click", function () {
           const isCurrentlyCollapsed = sidebar.classList.contains('collapsed');
-          setSidebarState(isCurrentlyCollapsed);
+          setSidebarState(isCurrentlyCollapsed); // Toggle state: if collapsed, open it; if open, collapse it.
       });
 
       mobileToggleBtn.addEventListener("click", function () {
-          setSidebarState(true);
+          setSidebarState(true); // Always open on mobile toggle click
       });
 
       sidebarCloseBtn.addEventListener("click", function () {
-          setSidebarState(false);
+          setSidebarState(false); // Close sidebar via explicit close button
       });
 
+      // Close mobile sidebar if clicking outside of it
       body.addEventListener('click', function(event) {
            const isMobile = window.innerWidth <= 768;
            if (isMobile && body.classList.contains('sidebar-open')) {
+               // Check if the click target is outside the sidebar AND not the mobile toggle button
                if (!sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target)) {
                    setSidebarState(false);
                }
            }
        });
 
+      // Handle resizing across breakpoints
       let currentWindowWidth = window.innerWidth;
       window.addEventListener('resize', function() {
           const newWindowWidth = window.innerWidth;
@@ -442,13 +535,16 @@ Science Drive 4, <br> Singapore-119077 </p>
           const wasMobile = currentWindowWidth <= breakpoint;
 
           if (isMobile !== wasMobile) {
+              // We crossed the breakpoint, reset state based on the new mode
               setInitialState();
           } else {
+              // Didn't cross breakpoint, just adjust padding if needed (e.g., mobile top bar height change on rotate)
               adjustBodyPadding();
           }
-          currentWindowWidth = newWindowWidth;
+          currentWindowWidth = newWindowWidth; // Update the stored width
       });
 
+      // Adjust padding on orientation change as well, as top bar height might change
       window.addEventListener('orientationchange', adjustBodyPadding);
     });
   </script>

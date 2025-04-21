@@ -4,12 +4,21 @@ title: Home
 homepage: True
 ---
 
+<!-- Start of Intro Section with Image -->
+<div class="intro-section">
+  <div class="intro-text" markdown="1"> <!-- Added markdown="1" to ensure Markdown inside renders -->
 # Shubham Kejriwal (he/him)
 
 **Physics Ph.D. Candidate**   
 **National University of Singapore**  
 Science Drive 4,  
-Singapore-119077  
+Singapore-119077
+  </div>
+  <div class="intro-image-container">
+    <img src="{{ site.baseurl | default: '' }}/assets/profile_large.png" alt="Shubham Kejriwal" class="intro-profile-image">
+  </div>
+</div>
+<!-- End of Intro Section -->
 
 ---
 ## About Me
