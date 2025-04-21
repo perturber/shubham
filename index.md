@@ -15,7 +15,7 @@ Science Drive 4,
 Singapore-119077
   </div>
   <div class="intro-image-container">
-    <img src="{{ site.baseurl | default: '' }}/assets/profile_large.png" alt="Shubham Kejriwal" class="intro-profile-image">
+    <img src="{{ site.baseurl | default: '' }}/assets/profile_large.jpg" alt="Shubham Kejriwal" class="intro-profile-image">
   </div>
 </div>
 <!-- End of Intro Section -->
