@@ -48,9 +48,9 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at 
 
 ### Teaching  
   I have contributed as a Teaching Assistant for multiple courses (both graduate and undergraduate) during my Ph.D. In my role, I have instructed tutorials, invigilated, assessed assignment submissions, and provided general guidance to class sizes of roughly 40-100 students. Here's a full list of courses I have assisted for:  
-  - PC5252 "Bayesian Statistics and Machine Learning" (2 semesters).  
-  - COS1000 "Computational Thinking for Scientists" (3 semesters).   
-  - HS1502 "Conceptual Introduction to Machine Learning" (2 semesters).  
+  - [PC5252](https://nusmods.com/courses/PC5252/bayesian-statistics-and-machine-learning) "Bayesian Statistics and Machine Learning" (2 semesters).  
+  - [COS1000](https://nusmods.com/courses/COS1000/computational-thinking-for-scientists) "Computational Thinking for Scientists" (3 semesters).   
+  - [HS1502](https://nusmods.com/courses/HS1502/conceptual-introduction-to-machine-learning) "Conceptual Introduction to Machine Learning" (2 semesters).  
 
     
 ### Presentations
