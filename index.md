@@ -4,7 +4,7 @@ title: Home
 homepage: True
 ---
 
-<img src="/shubham/assets/profile.jpg" alt="Shubham Kejriwal" style="float: right; margin-left: 20px; width: 200px; border-radius: 10px;" />
+<img src="/shubham/assets/profile_large.jpg" alt="Shubham Kejriwal" style="float: right; margin-left: 20px; width: 200px; border-radius: 10px;" />
 
 # Shubham Kejriwal (he/him)
 **Physics Ph.D. Candidate**   
