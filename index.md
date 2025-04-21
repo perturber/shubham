@@ -62,14 +62,20 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at 
   
 
 ### Other Contributions  
-  I am a member of the following international research collaborations:
+  I am a member of multiple international research collaborations including:  
   - [LISA Consortium](https://www.lisamission.org/)  
-  - LISA Figures of Merit Collaboration  
   - [FastEMRIWaveforms (FEW)](https://github.com/BlackHolePerturbationToolkit/FastEMRIWaveforms) Collaboration  
   
-  I also enjoy contributing to science event organization: 
-  - Local Organizing Committee member, [Capra27](https://www.caprameeting.org/capra-meetings/capra-27). 
-  - Executive Committee member, Physics Graduate Students' Society, National University of Singapore.
+  I also enjoy contributing to science events, by organizing them:  
+  - Local Organizing Committee member, [Capra27](https://www.caprameeting.org/capra-meetings/capra-27).   
+  - Executive Committee member, Physics Graduate Students' Society, National University of Singapore.  
+  or by participating:  
+  - [Beyond the Horizon Program](https://icts.res.in/program/beyondhorizon), March 2025, ICTS-TIFR, India.  
+  - [EMRI Search and Inference within the LISA Global Fit - Part 1](https://indico.in2p3.fr/event/34916/overview), June 2025, APC, Paris, France.  
+  - [Enabling Future Gravitational Wave Astrophysics in the Milli-Hertz Regime](https://www.munich-iapbp.de/activities/activities-2025/gravitational-waves), July 2025, MIAPbP, Munich, Germany.  
+  
+  Find a full list of contributions in my [Curriculum Vitae](/assets/Shubham_Kejriwal_CV.pdf).  
+  
   
 ### Beyond Academia
 
