@@ -61,10 +61,19 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at 
   - Physics Engagement Camp Poster, March 2024, National University of Singapore.  
   
 
-### Outreach  
-  Beyond research, I also enjoy contributing towards science outreach events. Find a list below and in my [Curriculum Vitae](/assets/Shubham_Kejriwal_CV.pdf). 
+### Other Contributions  
+  I am a member of the following international research collaborations:
+  - [LISA Consortium](https://www.lisamission.org/)  
+  - LISA Figures of Merit Collaboration  
+  - [FastEMRIWaveforms (FEW)](https://github.com/BlackHolePerturbationToolkit/FastEMRIWaveforms) Collaboration  
+  
+  I also enjoy contributing to science event organization: 
   - Local Organizing Committee member, [Capra27](https://www.caprameeting.org/capra-meetings/capra-27). 
   - Executive Committee member, Physics Graduate Students' Society, National University of Singapore.
+  
+### Beyond Academia
+
+  When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriwal). I also love travelling and trying out different cuisines (which is however a restrictive hobby being vegetarian). I am a big Formula One fan. I enjoy trekking and swimming, so I am both a mountain *and* a beach person!  
     
 ---
 © 2025 Shubham Kejriwal
