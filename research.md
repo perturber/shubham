@@ -16,7 +16,7 @@ Below, I provide a slightly more ellaborate (and mostly self-contained) overview
 ### Laser Interferometer Space Antenna (LISA)
 
 <figure style="text-align: center;">
-  <img src="{{ site.baseurl | default: '' }}/assets/LISA.jpg" alt="LISA image"/>
+  <img src="{{ site.baseurl | default: '' }}/assets/LISA.jpg" alt="LISA image" style="max-width: 500px;"/>
   <figcaption>
     <em>Figure 1: The space-based gravitational wave observatory LISA. Image from ESA <a href="https://www.esa.int/ESA_Multimedia/Images/2002/02/LISA_Laser_Interferometer_Space_Antenna_line_drawing" target="_blank">[i]</a>.</em>
   </figcaption>
@@ -27,18 +27,24 @@ I primarily work on developing the data analysis pipeline in various contexts (a
 
 ### Extreme-mass-ratio inspirals (EMRIs)  
 
-<div class="video-container" style="text-align: center;">
-  <iframe 
-          src="https://www.youtube.com/embed/WPvkzSvgHvc" 
-          title="Inspiralling EMRI video" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          allowfullscreen>
-  </iframe>
+<!-- Wrap the whole thing in a <figure> -->
+<figure style="text-align: center;">
+  <!-- The video-container div handles aspect ratio -->
+  <div class="video-container">
+    <iframe
+            src="https://www.youtube.com/embed/WPvkzSvgHvc"
+            title="Inspiralling EMRI video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+    </iframe>
+  </div> <!-- End of video-container -->
+
+  <!-- Place <figcaption> as a direct child of <figure> -->
   <figcaption>
     <em>Figure 2: Animation of a late-stage extreme-mass-ratio inspiral. Credits: <a href="https://www.youtube.com/watch?v=WPvkzSvgHvc" target="_blank">[Steve Drasco, MPI (AEI), Potsdam]</a>.</em>
   </figcaption>
-</div>  
+</figure> <!-- End of figure -->
 
 
 EMRIs are inspirals of a compact object (CO), most likely a stellar-origin black hole with mass \\(\sim 10 M_\odot\\) orbiting a supermassive black hole (MBH) of mass \\(\sim 10^6 M_\odot\\). Their gravitational wave signals are expected to spend years in the LISA band spanning hundreds of thousands of strong-field orbits. This will allow a unique opportunity to map the curvature of spacetime around MBHs, testing General Relativity (GR) to unprecedented precision. In addition, any environmental forces (for e.g. from an accretion disk surrounding the MBH) will have a cummulative effect on the long-term inspiral, which makes the measurements extremely sensitive to such effects.
@@ -48,7 +54,7 @@ EMRIs are inspirals of a compact object (CO), most likely a stellar-origin black
 ## Measurability of "Beyond-Vacuum-GR" effects in EMRIs  
 
 <figure style="text-align: center;">
-  <img src="{{ site.baseurl | default: '' }}/assets/joint_analysis/correlation_bias-1.png" alt="biases intrinsic"/>
+  <img src="{{ site.baseurl | default: '' }}/assets/joint_analysis/correlation_bias-1.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
     Figure 3: Biases induced on the EMRI's intrinsic parameters due to an environmental effect in the signal which was not accounted for in the inference. The biases scaled by the \(1\sigma\) measurement precision on each parameter are plotted along the vertical axis, showing biases of order 10-100. The horizontal axis shows the average correlations of the intrinsic and the unmeasured environmental effect parameter, showing a weak trend. Diagram from <a href="https://arxiv.org/abs/2312.13028" target="_blank">[https://arxiv.org/abs/2312.13028]</a>.
   </figcaption>
