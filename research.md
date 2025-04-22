@@ -19,7 +19,7 @@ Below, I provide a slightly more ellaborate (and mostly self-contained) overview
   <figcaption>
     <em>Figure 1: The space-based gravitational wave observatory LISA. Image from ESA <a href="https://www.esa.int/ESA_Multimedia/Images/2002/02/LISA_Laser_Interferometer_Space_Antenna_line_drawing" target="_blank">[i]</a>.</em>
   </figcaption>
-</figure>
+</figure>  
 
 I primarily work on developing the data analysis pipeline in various contexts (as you will see below) for the upcoming space-based gravitational wave observatory, i.e. the Laser Interferometer Space Antenna (LISA) [(1)](https://lisa.nasa.gov/). LISA was recently adopted by the European Space Agency, and is on track to be launched sometime in the middle of the next decade [(2)](https://www.esa.int/Science_Exploration/Space_Science/LISA/Capturing_the_ripples_of_spacetime_LISA_gets_go-ahead). Notably, the milli-Hz frequency band of LISA will be sensitive to many source-types, including a swarm of compact binaries evolving in the Milky Way, supermassive black hole binaries in the late-inspiral stage, and extreme-mass-ratio inspirals (EMRIs) in which a stellar-mass black hole is gravitationally bound to a supermassive black hole [(3)](https://arxiv.org/abs/2402.07571). EMRIs are the primary target of my study.  
 
@@ -36,15 +36,32 @@ I primarily work on developing the data analysis pipeline in various contexts (a
   <figcaption>
     <em>Figure 2: Animation of a late-stage extreme-mass-ratio inspiral. Credits: <a href="https://www.youtube.com/watch?v=WPvkzSvgHvc" target="_blank">[Steve Drasco, MPI (AEI), Potsdam]</a>.</em>
   </figcaption>
-</div>
+</div>  
 
 
 EMRIs are inspirals of a compact object (CO), most likely a stellar-origin black hole with mass \\(\sim 10 M_\odot\\) orbiting a supermassive black hole (MBH) of mass \\(\sim 10^6 M_\odot\\). Their gravitational wave signals are expected to spend years in the LISA band spanning hundreds of thousands of strong-field orbits. This will allow a unique opportunity to map the curvature of spacetime around MBHs, testing General Relativity (GR) to unprecedented precision. In addition, any environmental forces (for e.g. from an accretion disk surrounding the MBH) will have a cummulative effect on the long-term inspiral, which makes the measurements extremely sensitive to such effects.
 
 ---
 
-## A study of correlations between "Beyond-Vacuum-GR" effects in EMRIs  
+## Measurability of "Beyond-Vacuum-GR" effects in EMRIs  
+
+<figure style="text-align: center;">
+  <img src="{{ site.baseurl | default: '' }}/assets/joint_analysis/correlations_bias-1.png" alt="biases intrinsic" width="400"/>
+  <figcaption>
+    <em>Figure 3: Biases induced on the EMRI's intrinsic parameters due to an environmental effect in the signal which was not accounted for in the inference. The vertical axis denotes the \\(\sigma\\) biases induced on each parameter. We also plot the true correlation of the unmeasured environmental effect parameter along the horizontal axis. Diagram from <a href="https://arxiv.org/abs/2312.13028" target="_blank">[https://arxiv.org/abs/2312.13028]</a>.</em>
+  </figcaption>
+</figure> 
+
+Mathematically, environmental effects and beyond-GR modifications are generally expressed using simple power law expressions, added perturbatively to the leading-order equations of motion of the binary, see e.g. [(arxiv.org/abs/1104.2322)](https://arxiv.org/abs/1104.2322) and [(arxiv.org/abs/1404.7149)](https://arxiv.org/abs/1404.7149), or directly to the final waveform in frequency domain, see e.g. [(https://arxiv.org/abs/0909.3328)](https://arxiv.org/abs/0909.3328). When multiple such effects, which we generically tag as "beyond-vacuum-GR" effects, are being tested for during inference, the general expectation in the literature is then that they can simply be added together. However, using a generic mathematical framework, we show in our work, [(https://arxiv.org/abs/2312.13028)](https://arxiv.org/abs/2312.13028), that such setups can lead to extremely correlated posterior surfaces. Along with worsened inference efficiency, this also degrades the precision with which EMRI parameters can be measured. On the flip side, if such effects are excluded from the analysis but are present in the true signal, this can significantly bias the inference of EMRI's intrinsic parameters, effectively washing away any prospects of testing GR. Our study is a first of its kind to establish the severe impact that beyond-vacuum-GR effects can have on EMRI systems, and motivates further work to develop a consistent and systematic procedure to include such effects in the data analysis pipeline. 
 
 
+
+
+
+
+
+
+
+---  
 
 © 2025 Shubham Kejriwal
