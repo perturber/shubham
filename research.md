@@ -76,7 +76,7 @@ A major challenge in developing a systematic framework for inferring beyond-vacu
 
 ---
 
-### Electromagnetic Counterparts of EMRIs
+## Electromagnetic Counterparts of EMRIs
 
 <figure>
   <!-- Inline style on IMG sets DESKTOP max width -->
@@ -100,7 +100,7 @@ Quasi-periodic eruption (QPE) events, which are low-frequency \\((\sim 10^{-4}) 
 
 ---
 
-### Developing Waveform Models and Data Analysis Tools
+## Developing Waveform Models and Data Analysis Tools
 
   These are ongoing projects under this theme:  
   
@@ -108,7 +108,7 @@ Quasi-periodic eruption (QPE) events, which are low-frequency \\((\sim 10^{-4}) 
   
   - To perform data analysis with a given model, rapid waveform evaluations at each parameter point are required. The `FastEMRIWaveforms (FEW)` package [(arxiv.org/abs/2104.04582)](https://arxiv.org/abs/2104.04582) provides the framework to generate such waveforms, enabled by GPU-acceleration and strategically setting mode-selection cutoffs. I am involved in the development of the latest version of `FEW` and studying the data analysis implications for the latest KerrEccentricEquatorial model being introduced with this release. The manuscript is currently under preparation.  
 
-  - Fisher Information Matrices (FIMs) give the information present in a signal at parameter points \\(\boldsymbol{\theta}\\), and its inverse provides an upper-bound on measurement precision of \\(\boldsymbol{\theta}\\). In preparatory science for LISA and EMRIs, FIMs thus play a significant role in studies spanning large parameter spaces, where more accurate but expensive methods to span the posterior surface (e.g. MCMC) are impractical. However, obtaining the FIM for GW waveforms involves taking their derivatives, which can be especially challenging for highly-correlated posterior surfaces [(arxiv.org/abs/gr-qc/0703086)](https://arxiv.org/abs/gr-qc/0703086), characteristic of EMRIs. In addition, the current suite of fast EMRI waveforms, which depend on various approximations, amplify the problem by introducing small "jitters" in the likelihood surface. In a manuscript under preparation, we have formulated a robust FIM calculator, `StableEMRIFishers (SEF)`, that attempts to systematically calculate stable derivatives and hence the FIMs given an input EMRI parameter point \\(\boldsymbol{\theta}\\).   
+  - Fisher Information Matrices (FIMs) give the information present in a signal at parameter points \\(\boldsymbol{\theta}\\), and its inverse provides an upper-bound on measurement precision of \\(\boldsymbol{\theta}\\). In preparatory science for LISA and EMRIs, FIMs thus play a significant role in studies spanning large parameter spaces, where more accurate but expensive methods to span the posterior surface (e.g. MCMC) are impractical. However, obtaining the FIM for GW waveforms involves taking their derivatives, which can be especially challenging for highly-correlated posterior surfaces [(arxiv.org/abs/gr-qc/0703086)](https://arxiv.org/abs/gr-qc/0703086), characteristic of EMRIs. In addition, the current suite of fast EMRI waveforms, which depends on various approximations, amplify the problem by introducing small "jitters" in the likelihood surface. In a manuscript under preparation, we have formulated a robust FIM calculator, `StableEMRIFishers (SEF)`, that attempts to systematically calculate stable derivatives and hence the FIMs given an input EMRI parameter point \\(\boldsymbol{\theta}\\).   
 
 ---  
 
