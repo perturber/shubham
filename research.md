@@ -2,6 +2,7 @@
 layout: default
 title: Research
 permalink: /research/
+mathjax: true # <-- Add this line
 ---
 
 # Research Overview  
