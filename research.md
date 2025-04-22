@@ -49,7 +49,7 @@ EMRIs are inspirals of a compact object (CO), most likely a stellar-origin black
 <figure style="text-align: center;">
   <img src="{{ site.baseurl | default: '' }}/assets/joint_analysis/correlation_bias-1.png" alt="biases intrinsic" width="400"/>
   <figcaption>
-    Figure 3: Biases induced on the EMRI's intrinsic parameters due to an environmental effect in the signal which was not accounted for in the inference. The biases scaled by the \\(1\sigma\\) measurement precision on each parameter are plotted along the vertical axis, showing biases of order 10-100. The horizontal axis shows the average correlations of the intrinsic and the unmeasured environmental effect parameter, showing a weak trend. Diagram from <a href="https://arxiv.org/abs/2312.13028" target="_blank">[https://arxiv.org/abs/2312.13028]</a>.
+    Figure 3: Biases induced on the EMRI's intrinsic parameters due to an environmental effect in the signal which was not accounted for in the inference. The biases scaled by the \\(1\\sigma\\) measurement precision on each parameter are plotted along the vertical axis, showing biases of order 10-100. The horizontal axis shows the average correlations of the intrinsic and the unmeasured environmental effect parameter, showing a weak trend. Diagram from <a href="https://arxiv.org/abs/2312.13028" target="_blank">[https://arxiv.org/abs/2312.13028]</a>.
   </figcaption>
 </figure> 
 

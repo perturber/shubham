@@ -232,20 +232,17 @@
     main a:active { color: var(--content-link-color); }
     /* === End Link Styling === */
 
-    /* --- Add this rule for spacing around figures in main content --- */
+    /* --- Rules for spacing around figures/divs in main content --- */
     main figure {
       margin-top: 2em;    /* Adds space above the figure */
       margin-bottom: 2em; /* Adds space below the figure */
-      /* You can adjust the '2em' value as needed (e.g., 1.5em, 25px, 1.8rem) */
     }
-    
-    main div + p {
-      margin-top: 2em; /* Adds space above paragraphs that directly follow a div */
-      margin-bottom: 2em; /* Adds space below the div */
-      /* Adjust the '2em' value as needed */
+    main div + p { /* Spacing after DIVs used like figures */
+      margin-top: 2em;
+      margin-bottom: 2em; /* Added for consistency if needed */
     }
+    /* --- End of spacing rules --- */
 
-    /* --- End of added rule --- */
 
     /* --- Styles for Intro Section with Image (Mobile First) --- */
     .intro-section {
@@ -272,9 +269,8 @@
 
     .intro-text {
       order: 0; /* Mobile: Text comes after image (default order) */
-      /* Styles for h1, p, etc. inside .intro-text are handled by Markdown conversion */
     }
-    .intro-text h1 { margin-top: 0; } /* Adjust spacing if needed */
+    .intro-text h1 { margin-top: 0; }
 
     /* --- End Styles for Intro Section --- */
 
@@ -296,51 +292,39 @@
         .content-wrapper { margin-left: 0; }
         body { padding-top: 0 !important; }
 
-        /* === Adjust Main Content Width/Margins on Desktop === */
         main {
-            max-width: 960px; /* Adjust as needed */
-            margin-left: auto; /* Center the main block */
-            margin-right: auto; /* Center the main block */
-             /* Existing padding: 30px provides space inside the centered block */
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        /* === End Main Content Adjustment === */
 
-        /* === Desktop layout adjustments for Intro Section === */
         .intro-section {
-            flex-direction: row; /* Desktop: Side-by-side layout */
-            align-items: flex-start; /* Align items to the top */
-            gap: 40px; /* ADJUSTED: Increased gap slightly */
-            /* margin-bottom: 1.5em; <- Retained from base, can override if needed */
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 40px;
         }
 
         .intro-text {
-            order: 0; /* Desktop: Text on the left */
-            flex: 1; /* Allow text block to grow */
-            min-width: 0; /* Prevent text from overflowing if container shrinks unexpectedly */
+            order: 0;
+            flex: 1;
+            min-width: 0;
             margin-bottom: 0;
         }
 
         .intro-image-container {
-            order: 1; /* Desktop: Image on the right */
-            /* ADJUSTED: Increased basis, removed auto margin and text-align */
+            order: 1;
             flex-basis: 300px;
             flex-shrink: 0;
             margin-bottom: 0;
-            /* margin-left: auto;  <- REMOVED */
-            /* text-align: right; <- REMOVED */
         }
 
         .intro-profile-image {
-            max-width: 100%; /* Image can take full width of its container */
-            width: 100%;     /* Make image fill its container */
-            height: auto;    /* Keep aspect ratio */
-            display: block;  /* Ensures it takes block space, helps with layout */
-            /* margin-left: auto;  <- REMOVED (or set margin: 0;) */
-            /* margin-right: 0; <- REMOVED */
-            margin: 0;       /* Reset margins */
-            /* Keep border-radius, shadow from base styles */
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0;
         }
-         /* === End Intro Section Desktop Adjustments === */
     }
 
     /* Mobile */
@@ -353,11 +337,10 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
             z-index: 1010;
             padding: 20px; padding-top: 50px;
-            width: min(80%, 300px) !important; /* Ensure override */
-            padding: 20px !important; /* Ensure override */
-            padding-top: 50px !important; /* Ensure override */
+            width: min(80%, 300px) !important;
+            padding: 20px !important;
+            padding-top: 50px !important;
         }
-         /* --- Adjust mobile collapsed state if needed --- */
          .sidebar.collapsed h2,
          .sidebar.collapsed .sidebar-description,
          .sidebar.collapsed .sidebar-nav {
@@ -374,7 +357,6 @@
          .sidebar.collapsed .sidebar-icon-links a {
             font-size: 20px; margin: 0 8px; display: inline-block;
          }
-        /* --- End mobile collapsed state adjustments --- */
 
         #mobile-top-bar { display: flex; }
         #desktop-sidebar-toggle { display: none; }
@@ -391,9 +373,6 @@
         }
         body.sidebar-open::after { opacity: 1; visibility: visible; }
         body { padding-top: var(--mobile-top-bar-height); }
-
-        /* --- Mobile-specific styles for Intro Section (handled by base styles) --- */
-        /* Base styles target mobile first. Adjustments for desktop are in the min-width: 769px query. */
     }
 
   </style>
@@ -449,7 +428,6 @@ Science Drive 4, <br> Singapore-119077 </p>
   </div>
 
   <script>
-    // --- JavaScript remains the same ---
     document.addEventListener("DOMContentLoaded", function () {
       const sidebar = document.getElementById("sidebar");
       const body = document.body;
@@ -468,10 +446,7 @@ Science Drive 4, <br> Singapore-119077 </p>
           const isMobile = window.innerWidth <= 768;
           const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none';
           const topBarHeight = mobileTopBar.offsetHeight;
-
-          // Reset paddings first
           body.style.paddingTop = '0px';
-
           if (isMobile && isTopBarVisible && topBarHeight > 0) {
               body.style.paddingTop = `${topBarHeight}px`;
           }
@@ -483,9 +458,9 @@ Science Drive 4, <br> Singapore-119077 </p>
               body.classList.toggle('sidebar-open', shouldBeOpen);
               sidebar.classList.remove('collapsed');
               mobileToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
-               desktopToggleBtn.setAttribute('aria-expanded', 'true');
-               const desktopIcon = desktopToggleBtn.querySelector('i');
-               if (desktopIcon) desktopIcon.className = 'fas fa-times';
+              desktopToggleBtn.setAttribute('aria-expanded', 'true');
+              const desktopIcon = desktopToggleBtn.querySelector('i');
+              if (desktopIcon) desktopIcon.className = 'fas fa-times';
           } else {
               sidebar.classList.toggle('collapsed', !shouldBeOpen);
               body.classList.remove('sidebar-open');
@@ -494,7 +469,7 @@ Science Drive 4, <br> Singapore-119077 </p>
               if (desktopIcon) {
                   desktopIcon.className = shouldBeOpen ? 'fas fa-times' : 'fas fa-bars';
               }
-               mobileToggleBtn.setAttribute('aria-expanded', 'false');
+              mobileToggleBtn.setAttribute('aria-expanded', 'false');
           }
           requestAnimationFrame(adjustBodyPadding);
       };
@@ -518,19 +493,24 @@ Science Drive 4, <br> Singapore-119077 </p>
                             link.setAttribute('target', '_blank');
                             link.setAttribute('rel', 'noopener noreferrer');
                         }
-                    } catch (e) {
-                        // console.warn(`Could not parse link href: ${href}`, e);
-                    }
+                    } catch (e) { /* console.warn(`Could not parse link href: ${href}`, e); */ }
                  }
              }
          });
       };
 
-      // --- ADDED: Trigger MathJax typesetting after initial setup ---
+      // --- Trigger MathJax typesetting ---
       const typesetMath = () => {
           if (typeof MathJax !== "undefined") {
-              // Use MathJax.Hub.Queue for v2
+              // Initial pass on the main content
               MathJax.Hub.Queue(["Typeset", MathJax.Hub, mainContent]);
+
+              // **ADDED: Explicitly re-process figures for robustness**
+              const figures = mainContent.querySelectorAll('figure');
+              figures.forEach(figure => {
+                  MathJax.Hub.Queue(["Typeset", MathJax.Hub, figure]);
+              });
+              // ** End of added figure processing **
           }
       };
 
@@ -538,8 +518,7 @@ Science Drive 4, <br> Singapore-119077 </p>
       setupMainLinks();
       typesetMath(); // Call MathJax after page load
 
-      // --- End of added MathJax trigger ---
-
+      // --- Event Listeners ---
       desktopToggleBtn.addEventListener("click", function () {
           const isCurrentlyCollapsed = sidebar.classList.contains('collapsed');
           setSidebarState(isCurrentlyCollapsed);
