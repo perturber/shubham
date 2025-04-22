@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Add this MathJax Configuration Block -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']], // Use $...$ or \(...\) for inline
+        displayMath: [['$$','$$'], ['\\[','\\]']], // Use $$...$$ or \[...\] for display
+        processEscapes: true, // Allows you to use \$ to display a dollar sign
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] // Don't process math in these tags
+      },
+      TeX: {
+        // extensions: ["AMSmath.js", "AMSsymbols.js"], // Uncomment if you need AMS packages
+        Macros: {
+          // Define custom LaTeX macros here if needed
+          // R: "{\\mathbb R}",
+          // C: "{\\mathbb C}",
+        }
+      },
+      messageStyle: "none" // Suppress "Loading MathJax..." message
+    });
+  </script>
   <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
