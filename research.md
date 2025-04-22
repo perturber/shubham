@@ -4,7 +4,7 @@ title: Research
 permalink: /research/
 ---
 
-## Research Overview  
+# Research Overview  
 
 Below, I provide a slightly more ellaborate (and mostly self-contained) overview of my research. Still, the best way to learn about my research is to read my articles. You can find them on the [Publications](/shubham/publications) page.  
 
@@ -12,10 +12,10 @@ Below, I provide a slightly more ellaborate (and mostly self-contained) overview
 
 ## Background
 
-### LISA and Extreme-mass-ratio inspirals
+### LISA and extreme-mass-ratio inspirals
 
-<div align="right">
-  <img src="/assets/LISA.jpg" alt="LISA image" width="400"/>
+<div align="center">
+  <img src="{{ site.baseurl | default: '' }}/assets/LISA.jpg" alt="LISA image" width="400"/>
   <p><em>Figure 1: The space-based gravitational wave observatory LISA. Image from ESA [(i)](https://www.esa.int/ESA_Multimedia/Images/2002/02/LISA_Laser_Interferometer_Space_Antenna_line_drawing).</em></p>
 </div>
 
