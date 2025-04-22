@@ -41,7 +41,7 @@ I primarily work on developing the data analysis pipeline in various contexts (a
     </iframe>
   </div>
   <figcaption>
-    <em>Figure 2: Animation of a late-stage extreme-mass-ratio inspiral. Credits: <a href="https://www.youtube.com/watch?v=WPvkzSvgHvc" target="_blank">[Steve Drasco, MPI (AEI), Potsdam]</a>.</em>
+    <em>Figure 2: Animation of a late-stage extreme-mass-ratio inspiral. Credits: <a href="https://www.youtube.com/watch?v=WPvkzSvgHvc" target="_blank">Steve Drasco, MPIGP (AEI), Potsdam</a>.</em>
   </figcaption>
 </figure>
 
