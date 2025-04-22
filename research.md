@@ -63,6 +63,17 @@ EMRIs are inspirals of a compact object (CO), most likely a stellar-origin black
 
 Mathematically, environmental effects and beyond-GR modifications are generally expressed using simple power law expressions, added perturbatively to the leading-order equations of motion of the binary, see e.g. [(arxiv.org/abs/1104.2322)](https://arxiv.org/abs/1104.2322) and [(arxiv.org/abs/1404.7149)](https://arxiv.org/abs/1404.7149), or directly to the final waveform in frequency domain, see e.g. [(arxiv.org/abs/0909.3328)](https://arxiv.org/abs/0909.3328). When multiple such effects, which we generically tag as "beyond-vacuum-GR" effects, are being tested for during inference, the general expectation in the literature is then that they can simply be added together. However, using a generic mathematical framework, we show in our work, [(arxiv.org/abs/2312.13028)](https://arxiv.org/abs/2312.13028), that such setups can lead to extremely correlated posterior surfaces. Along with worsened inference efficiency, this also degrades the precision with which EMRI parameters can be measured. On the flip side, if such effects are excluded from the analysis but are present in the true signal, this can significantly bias the inference of EMRI's intrinsic parameters (more than \\(10\sigma\\)), effectively washing away any prospects of testing GR. Our study is a first of its kind to establish the severe impact that beyond-vacuum-GR effects can have on EMRI systems, and motivates further work to develop a consistent and systematic procedure to include such effects in the data analysis pipeline.  
 
+<figure>
+  <!-- Inline style on IMG sets DESKTOP max width -->
+  <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
+  <img src="{{ site.baseurl | default: '' }}/assets/biascorrected.png" alt="biases intrinsic" style="max-width: 400px;"/>
+  <figcaption>
+    <em>Figure 4: (Left panel): Schematic representation of how biases are induced to the set of signal parameters \(\psi_S, \varphi_S\) (blue cross) in a larger "signal space" (red cube) when inferred over a template space (grey manifold) which holds fixed one or more signal parameters to a fixed null value, in this case \(\varphi = \varphi_0\). The "best-fit" point is obtained at a biased location: \(\psi_{\rm MAP}, \varphi_0\). (Right panel): The scheme proposed in <strong>Kejriwal et al.</strong> <a href="https://arxiv.org/abs/2503.01120" target="_blank">[arxiv.org/abs/2503.01120]</a> to correct the biases by obtaining posterior samples along the restricted axis (green stars along the vertical axis) and measuring the corresponding probability that \(\varphi \neq \varphi_0\).</em>
+  </figcaption>
+</figure> 
+
+A major challenge in developing a systematic framework for inferring beyond-vacuum-GR effects is the shear number of such effects proposed in the literature. Given the cost of sampling the posterior surface in a single run with techniques like Markov Chain Monte Carlo (MCMC), and especially in the context of the LISA global fit inference pipeline, it is impractical to try and constrain all such effects simultaneously. Our latest work [(arxiv.org/abs/2503.01120)](https://arxiv.org/abs/2503.01120) proposes an inference-based method to consistently and inexpensively obtain samples from the posterior surface 
+
 ---  
 
 © 2025 Shubham Kejriwal
