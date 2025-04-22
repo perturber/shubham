@@ -1,3 +1,5 @@
+--- START OF FILE default.html ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -236,12 +238,47 @@
     main figure {
       margin-top: 2em;    /* Adds space above the figure */
       margin-bottom: 2em; /* Adds space below the figure */
+      /* Ensure figure itself doesn't cause overflow */
+      max-width: 100%;
     }
-    main div + p { /* Spacing after DIVs used like figures */
+    /* Spacing after DIVs used like figures (e.g., video container) */
+    main div.video-container {
       margin-top: 2em;
-      margin-bottom: 2em; /* Added for consistency if needed */
+      margin-bottom: 2em;
     }
     /* --- End of spacing rules --- */
+
+    /* --- ADDED: Responsive Images in Main Content --- */
+    main img {
+      max-width: 100%; /* Never wider than its container */
+      height: auto;    /* Maintain aspect ratio */
+      display: block;  /* Prevents potential extra space below inline images */
+      margin-left: auto; /* Center images within their containers (like figure) */
+      margin-right: auto;
+    }
+    /* --- ADDED: Responsive Iframes (Aspect Ratio Box) --- */
+    main .video-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 560px; /* Optional: Set a max width for the video on large screens */
+      margin-left: auto; /* Center the container */
+      margin-right: auto;
+    }
+    main .video-container::before {
+      content: "";
+      display: block;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio (315 / 560 = 0.5625) */
+    }
+    main .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0; /* Ensure no border is added by default styles */
+    }
+    /* --- End Responsive Additions --- */
 
 
     /* --- Styles for Intro Section with Image (Mobile First) --- */
@@ -257,14 +294,14 @@
       margin-bottom: 1.5em; /* Space between image and text on mobile */
     }
 
+    /* Make intro image responsive too */
     .intro-profile-image {
-      /* ADJUSTED: Larger size on mobile */
       max-width: 300px; /* Increased max width */
       width: 85%;     /* Increased percentage width */
       height: auto;    /* Maintain aspect ratio */
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: inline-block;
+      display: inline-block; /* Changed from block if centered by text-align */
     }
 
     .intro-text {
@@ -313,17 +350,18 @@
 
         .intro-image-container {
             order: 1;
-            flex-basis: 300px;
+            flex-basis: 300px; /* Fixed width on desktop */
             flex-shrink: 0;
             margin-bottom: 0;
+            text-align: left; /* Align to left, not center */
         }
 
         .intro-profile-image {
-            max-width: 100%;
+            max-width: 100%; /* Fill the container */
             width: 100%;
             height: auto;
-            display: block;
-            margin: 0;
+            display: block; /* Back to block for container filling */
+            margin: 0; /* Remove auto margins */
         }
     }
 
@@ -373,6 +411,12 @@
         }
         body.sidebar-open::after { opacity: 1; visibility: visible; }
         body { padding-top: var(--mobile-top-bar-height); }
+
+        /* Ensure intro image doesn't exceed viewport width minus padding */
+        .intro-profile-image {
+          max-width: min(300px, calc(100vw - 60px)); /* Adjust 60px based on body/main padding */
+          width: 85%;
+        }
     }
 
   </style>
@@ -443,62 +487,75 @@ Science Drive 4, <br> Singapore-119077 </p>
           return;
       }
 
-      const adjustBodyPadding = () => { /* ... keep as is ... */
+      const adjustBodyPadding = () => {
           const isMobile = window.innerWidth <= 768;
           const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none';
           const topBarHeight = mobileTopBar.offsetHeight;
-          body.style.paddingTop = '0px';
+          body.style.paddingTop = '0px'; // Reset first
           if (isMobile && isTopBarVisible && topBarHeight > 0) {
               body.style.paddingTop = `${topBarHeight}px`;
           }
       };
 
-      const setSidebarState = (shouldBeOpen) => { /* ... keep as is ... */
+      const setSidebarState = (shouldBeOpen) => {
           const isMobile = window.innerWidth <= 768;
           if (isMobile) {
               body.classList.toggle('sidebar-open', shouldBeOpen);
-              sidebar.classList.remove('collapsed');
+              sidebar.classList.remove('collapsed'); // Ensure not collapsed on mobile
               mobileToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
-              desktopToggleBtn.setAttribute('aria-expanded', 'true');
+              // Ensure desktop state is consistent visually if needed, but not functionally primary
+              desktopToggleBtn.setAttribute('aria-expanded', 'true'); // Assume expanded when mobile sidebar opens
               const desktopIcon = desktopToggleBtn.querySelector('i');
-              if (desktopIcon) desktopIcon.className = 'fas fa-times';
+              if (desktopIcon) desktopIcon.className = 'fas fa-times'; // Reset desktop icon
           } else {
+              // Desktop behavior
               sidebar.classList.toggle('collapsed', !shouldBeOpen);
-              body.classList.remove('sidebar-open');
+              body.classList.remove('sidebar-open'); // Ensure mobile overlay class is removed
               desktopToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
               const desktopIcon = desktopToggleBtn.querySelector('i');
               if (desktopIcon) {
                   desktopIcon.className = shouldBeOpen ? 'fas fa-times' : 'fas fa-bars';
               }
-              mobileToggleBtn.setAttribute('aria-expanded', 'false');
+              mobileToggleBtn.setAttribute('aria-expanded', 'false'); // Ensure mobile button state is correct
           }
+          // Use rAF for smoother visual updates related to layout changes
           requestAnimationFrame(adjustBodyPadding);
       };
 
-      const setInitialState = () => { /* ... keep as is ... */
+
+      const setInitialState = () => {
           const isMobile = window.innerWidth <= 768;
-          setSidebarState(!isMobile);
-          adjustBodyPadding();
+          setSidebarState(!isMobile); // Open on desktop, closed on mobile initially
+          adjustBodyPadding(); // Adjust padding after setting initial state
       };
 
-      const setupMainLinks = () => { /* ... keep as is ... */
+
+      const setupMainLinks = () => {
          const links = mainContent.querySelectorAll('a');
          links.forEach(link => {
             const href = link.getAttribute('href');
              if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
                  const hasTarget = link.getAttribute('target');
+                 // Only add target blank if it's not explicitly set AND it's an external link
                  if (!hasTarget) {
                     try {
-                        const linkUrl = new URL(href, window.location.origin);
+                        // Use current page as base URL for relative links
+                        const linkUrl = new URL(href, window.location.href);
+                        // Check if the hostname differs from the current page's hostname
                         if (linkUrl.hostname !== window.location.hostname) {
                             link.setAttribute('target', '_blank');
+                            // Add rel="noopener noreferrer" for security with target="_blank"
                             link.setAttribute('rel', 'noopener noreferrer');
                         }
-                    } catch (e) { /* console.warn(`Could not parse link href: ${href}`, e); */ }
+                    } catch (e) {
+                        // Ignore invalid URLs, don't stop script execution
+                        // console.warn(`Could not parse link href: ${href}`, e);
+                    }
                  }
              }
          });
       };
+
 
       // --- Initialize everything ---
       setInitialState();
@@ -506,8 +563,8 @@ Science Drive 4, <br> Singapore-119077 </p>
 
       // --- UPDATED MathJax Trigger ---
       // Queue a typeset call for the entire document body again,
-      // ensuring it runs after other setup.
-      if (typeof MathJax !== "undefined") {
+      // ensuring it runs after other setup. Needs MathJax v2 Hub object.
+      if (typeof MathJax !== "undefined" && MathJax.Hub) {
           MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.body]);
       }
       // --- End of MathJax Trigger ---
@@ -515,42 +572,59 @@ Science Drive 4, <br> Singapore-119077 </p>
       // --- Keep all the Event Listeners ---
       desktopToggleBtn.addEventListener("click", function () {
           const isCurrentlyCollapsed = sidebar.classList.contains('collapsed');
-          setSidebarState(isCurrentlyCollapsed);
+          setSidebarState(isCurrentlyCollapsed); // Toggle based on current state
       });
 
       mobileToggleBtn.addEventListener("click", function () {
-          setSidebarState(true);
+          setSidebarState(true); // Always open when mobile toggle is clicked
       });
 
       sidebarCloseBtn.addEventListener("click", function () {
-          setSidebarState(false);
+          setSidebarState(false); // Always close
       });
 
+      // Click outside to close on mobile
       body.addEventListener('click', function(event) {
            const isMobile = window.innerWidth <= 768;
            if (isMobile && body.classList.contains('sidebar-open')) {
+               // Close if the click is not on the sidebar itself AND not on the toggle button
                if (!sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target)) {
                    setSidebarState(false);
                }
            }
        });
 
-      let currentWindowWidth = window.innerWidth;
-      window.addEventListener('resize', function() {
-          const newWindowWidth = window.innerWidth;
-          const breakpoint = 768;
-          const isMobile = newWindowWidth <= breakpoint;
-          const wasMobile = currentWindowWidth <= breakpoint;
+      // Debounce resize function to avoid excessive calls
+      let resizeTimeout;
+      let currentWindowWidth = window.innerWidth; // Track width across resize events
 
-          if (isMobile !== wasMobile) {
-              setInitialState();
-          } else {
-              adjustBodyPadding();
-          }
-          currentWindowWidth = newWindowWidth;
+      window.addEventListener('resize', function() {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+              const newWindowWidth = window.innerWidth;
+              const breakpoint = 768;
+              const isMobile = newWindowWidth <= breakpoint;
+              const wasMobile = currentWindowWidth <= breakpoint;
+
+              // Only reset state if crossing the breakpoint
+              if (isMobile !== wasMobile) {
+                  setInitialState(); // Recalculate initial state based on new mode
+              } else {
+                  // If not crossing breakpoint, just adjust padding if needed
+                  adjustBodyPadding();
+              }
+              // Update the tracked width AFTER processing
+              currentWindowWidth = newWindowWidth;
+          }, 150); // Adjust debounce delay as needed (e.g., 150ms)
       });
 
-      window.addEventListener('orientationchange', adjustBodyPadding);
+
+      // Adjust padding on orientation change as well
+      window.addEventListener('orientationchange', () => {
+         // Give browser a moment to reflow before adjusting padding
+         requestAnimationFrame(adjustBodyPadding);
+      });
+
     });
   </script>
 
