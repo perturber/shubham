@@ -18,7 +18,7 @@ Below, I provide a slightly more ellaborate (and mostly self-contained) overview
 <figure>
   <!-- Inline style on IMG sets DESKTOP max width -->
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
-  <img src="{{ site.baseurl | default: '' }}/assets/LISA.jpg" alt="LISA image" style="max-width: 400px;"/>
+  <img src="{{ site.baseurl | default: '' }}/assets/LISA.jpg" alt="LISA image" style="max-width: 450px;"/>
   <figcaption>
     <em>Figure 1: The space-based gravitational wave observatory LISA. Image from <a href="https://www.esa.int/ESA_Multimedia/Images/2002/02/LISA_Laser_Interferometer_Space_Antenna_line_drawing" target="_blank">ESA</a>.</em>
   </figcaption>
@@ -55,7 +55,7 @@ EMRIs are inspirals of a compact object (CO), most likely a stellar-origin black
 <figure>
   <!-- Inline style on IMG sets DESKTOP max width -->
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
-  <img src="{{ site.baseurl | default: '' }}/assets/joint_analysis/correlation_bias-1.png" alt="biases intrinsic" style="max-width: 400px;"/>
+  <img src="{{ site.baseurl | default: '' }}/assets/joint_analysis/correlation_bias-1.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
     <em>Figure 3: Biases induced on the EMRI's intrinsic parameters due to an environmental effect in the signal which was not accounted for in the inference. The biases scaled by the \(1\sigma\) measurement precision on each parameter are plotted along the vertical axis, showing biases of order \(10-100\sigma\). The horizontal axis shows the average correlations of the intrinsic and the unmeasured environmental effect parameter, showing a weak trend. Diagram from <strong>Kejriwal et al.</strong> <a href="https://arxiv.org/abs/2312.13028" target="_blank">[arxiv.org/abs/2312.13028]</a>.</em>
   </figcaption>
@@ -66,13 +66,37 @@ Mathematically, environmental effects and beyond-GR modifications are generally 
 <figure>
   <!-- Inline style on IMG sets DESKTOP max width -->
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
-  <img src="{{ site.baseurl | default: '' }}/assets/biascorrected.png" alt="biases intrinsic" style="max-width: 400px;"/>
+  <img src="{{ site.baseurl | default: '' }}/assets/biascorrected.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
     <em>Figure 4: (Left panel): Schematic representation of how biases are induced to the set of signal parameters \(\psi_S, \varphi_S\) (blue cross) in a larger "signal space" (red cube) when inferred over a template space (grey manifold) which holds fixed one or more signal parameters to a fixed null value, in this case \(\varphi = \varphi_0\). The "best-fit" point is obtained at a biased location: \(\psi_{\rm MAP}, \varphi_0\). (Right panel): The scheme proposed in <strong>Kejriwal et al.</strong> <a href="https://arxiv.org/abs/2503.01120" target="_blank">[arxiv.org/abs/2503.01120]</a> to correct the biases by obtaining posterior samples along the restricted axis (green stars along the vertical axis) and measuring the corresponding probability that \(\varphi \neq \varphi_0\).</em>
   </figcaption>
 </figure> 
 
-A major challenge in developing a systematic framework for inferring beyond-vacuum-GR effects is the shear number of such effects proposed in the literature. Given the cost of sampling the posterior surface in a single run with techniques like Markov Chain Monte Carlo (MCMC), and especially in the context of the LISA global fit inference pipeline, it is impractical to try and constrain all such effects simultaneously. Our latest work [(arxiv.org/abs/2503.01120)](https://arxiv.org/abs/2503.01120) proposes an inference-based method to consistently and inexpensively obtain samples from the posterior surface in alternate beyond-vacuum-GR hypothesis, given just posterior samples from the vacuum-GR hypothesis. Within this novel framework, beyond-vacuuum-GR hypotheses can be quickly tested in a "post-processing" inference step.
+A major challenge in developing a systematic framework for inferring beyond-vacuum-GR effects is the shear number of such effects proposed in the literature. Given the cost of sampling the posterior surface in a single run with techniques like Markov Chain Monte Carlo (MCMC), and especially in the context of the LISA global fit inference pipeline, it is impractical to try and constrain all such effects simultaneously. Our latest work [(arxiv.org/abs/2503.01120)](https://arxiv.org/abs/2503.01120) proposes an inference-based method to consistently and inexpensively obtain samples from the posterior surface in alternate beyond-vacuum-GR hypothesis, given just posterior samples from the vacuum-GR hypothesis. Within this novel framework, beyond-vacuuum-GR hypotheses can be quickly tested in a "post-processing" inference step.  
+
+---
+
+### Electromagnetic Counterparts of EMRIs
+
+<figure>
+  <!-- Inline style on IMG sets DESKTOP max width -->
+  <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
+  <img src="{{ site.baseurl | default: '' }}/assets/EMcounterpart.png" alt="biases intrinsic" style="max-width: 450px;"/>
+  <figcaption>
+    <em>Figure 5: A schematic depiction of an EMRI evolving in a matter-rich environment (yellow disk). Diagram from <strong>Kejriwal et al.</strong> <a href="https://arxiv.org/abs/2404.00941" target="_blank">[arxiv.org/abs/2404.00941]</a>.</em>
+  </figcaption>
+</figure> 
+
+<figure>
+  <!-- Inline style on IMG sets DESKTOP max width -->
+  <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
+  <img src="{{ site.baseurl | default: '' }}/assets/QPE.png" alt="biases intrinsic" style="max-width: 450px;"/>
+  <figcaption>
+    <em>Figure 5: Time-domain signal from the August 2020 run of eRO-QPE2 quasi-periodic eruption source. Diagram from  Pasham, <strong>Kejriwal,</strong> et al. <a href="https://arxiv.org/abs/2411.00289" target="_blank">[arxiv.org/abs/2411.00289]</a>.</em>
+  </figcaption>
+</figure> 
+
+Quasi-periodic eruption (QPE) events, which are low-frequency (\(\sim 10^{-4}\) Hz) signals of soft X-ray peaks over a quiescent background, are theorized to be electromagnetic (EM) counterparts of EMRIs. While EMRIs evolving in a vacuum are not expected to host EM counterparts, the presence of a disk around the MBH allows interactions with the compact object that can lead to EM counterparts in the X-ray or even ultraviolet bands, see e.g. [(arxiv.org/abs/2303.16231)](https://arxiv.org/abs/2303.16231). This poses an exciting prospect of multimessenger astronomy with EMRIs. In our work, [(arxiv.org/abs/2404.00941)](https://arxiv.org/abs/2404.00941), we calculated the frequency band of QPE sources that are emitting an EM signal "today", such that they may also be observed in the future by LISA as GW sources. We extended our analysis to a particularly promising QPO source (where the 'O' now stands for oscillations, not eruptions, distinguishing their intensity), RE J1034+396. REJ has shown a decreasing time period over two observations separated by a decade, which is expected of EMRIs. We found that a compact object orbiting the MBH in REJ may be of mass \(\approx 47 M_\odot\) and that there is a \(\approx 25%\) probability that REJ (if it *is* an EMRI and follows its current inspiral trend) would be detected in the LISA band. Our study is a first of its kind to comment on the multimessenger prospects of LISA EMRIs.
 
 ---  
 
