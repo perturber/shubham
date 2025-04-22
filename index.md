@@ -80,6 +80,15 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at 
   
 ### Beyond Academia
 
+<figure>
+  <!-- Inline style on IMG sets DESKTOP max width -->
+  <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
+  <img src="{{ site.baseurl | default: '' }}/assets/leisure.jpg" alt="ice cave image" style="max-width: 400px;"/>
+  <figcaption>
+    <em> Inside an ice cave in Katla, Iceland.</em>
+  </figcaption>
+</figure> 
+
   When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriwal). I also love travelling and trying out different cuisines (which is however a restrictive hobby being vegetarian). I am a big Formula One fan. I enjoy trekking and swimming, so I am both a mountain *and* a beach person!  
     
 ---
