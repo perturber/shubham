@@ -85,7 +85,7 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at 
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
   <img src="{{ site.baseurl | default: '' }}/assets/leisure.jpg" alt="ice cave image" style="max-width: 400px;"/>
   <figcaption>
-    <em> Inside an ice cave in Katla, Iceland.</em>
+    <em> Inside an ice cave on top Katla Glacier, Iceland.</em>
   </figcaption>
 </figure> 
 
