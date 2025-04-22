@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Add this MathJax Configuration Block -->
+  <!-- MathJax Configuration -->
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
       tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']], // Use $...$ or \(...\) for inline
-        displayMath: [['$$','$$'], ['\\[','\\]']], // Use $$...$$ or \[...\] for display
-        processEscapes: true, // Allows you to use \$ to display a dollar sign
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] // Don't process math in these tags
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
       },
-      TeX: {
-        // extensions: ["AMSmath.js", "AMSsymbols.js"], // Uncomment if you need AMS packages
-        Macros: {
-          // Define custom LaTeX macros here if needed
-          // R: "{\\mathbb R}",
-          // C: "{\\mathbb C}",
-        }
-      },
-      messageStyle: "none" // Suppress "Loading MathJax..." message
+      TeX: { Macros: {} },
+      messageStyle: "none"
     });
   </script>
-  <!-- Original MathJax Script -->
   <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -70,8 +62,7 @@
 
     body {
       margin: 0;
-      /* --- UPDATED FONT --- */
-      font-family: 'Roboto', Arial, sans-serif; /* Use Roboto, fallback to Arial */
+      font-family: 'Roboto', Arial, sans-serif;
       display: flex;
       min-height: 100vh;
       flex-direction: row;
@@ -209,14 +200,15 @@
     /* --- Main Content Area --- */
     .content-wrapper {
       flex-grow: 1; display: flex; flex-direction: column;
-      min-width: 0;
+      min-width: 0; /* Important for flex items containing large content */
       width: 100%;
     }
     main {
-      padding: 30px; /* Base padding */
+      padding: 30px; /* Base padding for content */
       flex-grow: 1;
       background-color: var(--content-bg); color: var(--content-text);
-      /* Global width/margin settings removed from here, applied via @media query */
+      overflow-x: hidden; /* Prevent main content from causing horizontal scroll */
+      /* Desktop max-width is set in the media query */
     }
 
     /* === Link Styling in Main Content === */
@@ -232,94 +224,103 @@
     main a:active { color: var(--content-link-color); }
     /* === End Link Styling === */
 
-    /* --- Rules for spacing around figures/divs in main content --- */
+    /* --- Rules for spacing around figures in main content --- */
     main figure {
-      margin-top: 2em;    /* Adds space above the figure */
-      margin-bottom: 2em; /* Adds space below the figure */
-      /* Ensure figure itself doesn't cause overflow */
-      max-width: 100%;
-    }
-    /* Spacing after DIVs used like figures (e.g., video container) */
-    main div.video-container {
       margin-top: 2em;
       margin-bottom: 2em;
+      max-width: 100%; /* Ensure figure element itself is responsive */
+      text-align: center; /* Center content like img and figcaption within */
     }
-    /* --- End of spacing rules --- */
+    main figure figcaption {
+      margin-top: 0.5em; /* Space between image/video and caption */
+      font-size: 0.9em;
+      color: #555; /* Slightly lighter caption text */
+    }
 
-    /* --- ADDED: Responsive Images in Main Content --- */
+    /* --- BASE Responsive Styling for Images within Main Content --- */
+    /* This applies to ALL images within <main> unless overridden by inline styles */
     main img {
-      max-width: 100%; /* Never wider than its container */
-      height: auto;    /* Maintain aspect ratio */
-      display: block;  /* Prevents potential extra space below inline images */
-      margin-left: auto; /* Center images within their containers (like figure) */
-      margin-right: auto;
+      max-width: 100%;    /* CORE RULE 1: Never wider than container (mobile fix) */
+      height: auto;       /* Maintain aspect ratio */
+      display: block;     /* Remove extra space below image */
+      margin-left: auto;  /* Assists centering within the figure */
+      margin-right: auto; /* Assists centering within the figure */
+      /* Inline style="max-width: XXXpx;" can be added in Markdown */
+      /* to set a SPECIFIC max width for desktop */
     }
-    /* --- ADDED: Responsive Iframes (Aspect Ratio Box) --- */
+
+    /* --- Responsive Styling for IFrames (Video) --- */
+    /* The container sets the aspect ratio */
     main .video-container {
       position: relative;
       overflow: hidden;
-      width: 100%;
-      max-width: 560px; /* Optional: Set a max width for the video on large screens */
-      margin-left: auto; /* Center the container */
+      width: 100%;        /* Take up full width of its container (the figure) */
+      max-width: 560px;   /* Set a max width for the video itself */
+      margin-left: auto;  /* Center the video container within the figure */
       margin-right: auto;
+      /* Note: No margin-top/bottom needed here, handled by figure margin */
     }
+    /* The pseudo-element creates the height based on padding */
     main .video-container::before {
       content: "";
       display: block;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio (315 / 560 = 0.5625) */
+      padding-top: 56.25%; /* 16:9 Aspect Ratio (height/width) */
     }
+    /* The iframe fills the container */
     main .video-container iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      border: 0; /* Ensure no border is added by default styles */
+      border: 0;
     }
-    /* --- End Responsive Additions --- */
+    /* --- End Responsive Content Styling --- */
 
 
     /* --- Styles for Intro Section with Image (Mobile First) --- */
     .intro-section {
       display: flex;
-      flex-direction: column; /* Mobile First: Stack elements vertically */
-      margin-bottom: 1.5em; /* ADJUSTED: Reduced space below the section */
+      flex-direction: column;
+      margin-bottom: 1.5em;
     }
-
     .intro-image-container {
-      order: -1; /* Mobile: Show image *before* the text */
-      text-align: center; /* Center image container */
-      margin-bottom: 1.5em; /* Space between image and text on mobile */
+      order: -1;
+      text-align: center;
+      margin-bottom: 1.5em;
     }
-
     /* Make intro image responsive too */
     .intro-profile-image {
-      max-width: 300px; /* Increased max width */
-      width: 85%;     /* Increased percentage width */
-      height: auto;    /* Maintain aspect ratio */
+      /* Apply the same responsive logic */
+      max-width: 100%;
+      width: 85%; /* Relative width */
+      height: auto;
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: inline-block; /* Changed from block if centered by text-align */
+      display: inline-block;
+      /* Add an explicit pixel max-width for desktop if desired */
+      /* For example: max-width: 300px; */
     }
-
+    /* Mobile rule to ensure it fits viewport width */
+    @media (max-width: 768px) {
+      .intro-profile-image {
+        max-width: min(300px, calc(100vw - 60px)); /* Cap at 300px or viewport width minus padding */
+      }
+    }
     .intro-text {
-      order: 0; /* Mobile: Text comes after image (default order) */
+      order: 0;
     }
     .intro-text h1 { margin-top: 0; }
-
     /* --- End Styles for Intro Section --- */
 
 
-    /* --- Responsive Styles --- */
+    /* --- Responsive Styles for Layout --- */
 
     /* Desktop */
     @media (min-width: 769px) {
         body { flex-direction: row; }
         .sidebar {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            transform: none;
+            position: sticky; top: 0; height: 100vh; transform: none;
         }
         #desktop-sidebar-toggle { display: flex; }
         #mobile-top-bar { display: none; }
@@ -328,38 +329,24 @@
         body { padding-top: 0 !important; }
 
         main {
-            max-width: 960px;
+            max-width: 960px; /* Max width for main content area on desktop */
             margin-left: auto;
             margin-right: auto;
         }
 
         .intro-section {
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 40px;
+            flex-direction: row; align-items: flex-start; gap: 40px;
         }
-
         .intro-text {
-            order: 0;
-            flex: 1;
-            min-width: 0;
-            margin-bottom: 0;
+            order: 0; flex: 1; min-width: 0; margin-bottom: 0;
         }
-
         .intro-image-container {
-            order: 1;
-            flex-basis: 300px; /* Fixed width on desktop */
-            flex-shrink: 0;
-            margin-bottom: 0;
-            text-align: left; /* Align to left, not center */
+            order: 1; flex-basis: 300px; flex-shrink: 0;
+            margin-bottom: 0; text-align: left;
         }
-
         .intro-profile-image {
-            max-width: 100%; /* Fill the container */
-            width: 100%;
-            height: auto;
-            display: block; /* Back to block for container filling */
-            margin: 0; /* Remove auto margins */
+            /* Desktop override for intro image if using flex-basis */
+            max-width: 100%; width: 100%; display: block; margin: 0;
         }
     }
 
@@ -372,27 +359,16 @@
             transform: translateX(-100%);
             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
             z-index: 1010;
-            padding: 20px; padding-top: 50px;
-            width: min(80%, 300px) !important;
-            padding: 20px !important;
-            padding-top: 50px !important;
+            padding: 20px !important; padding-top: 50px !important;
         }
          .sidebar.collapsed h2,
          .sidebar.collapsed .sidebar-description,
-         .sidebar.collapsed .sidebar-nav {
-             display: block;
-         }
+         .sidebar.collapsed .sidebar-nav { display: block; }
          .sidebar.collapsed .sidebar-profile-pic {
-             max-width: 150px !important;
-             height: auto !important;
-             margin: 15px auto !important;
+             max-width: 150px !important; height: auto !important; margin: 15px auto !important;
          }
-         .sidebar.collapsed .sidebar-icon-links {
-            margin-top: 0; text-align: center;
-         }
-         .sidebar.collapsed .sidebar-icon-links a {
-            font-size: 20px; margin: 0 8px; display: inline-block;
-         }
+         .sidebar.collapsed .sidebar-icon-links { margin-top: 0; text-align: center; }
+         .sidebar.collapsed .sidebar-icon-links a { font-size: 20px; margin: 0 8px; display: inline-block; }
 
         #mobile-top-bar { display: flex; }
         #desktop-sidebar-toggle { display: none; }
@@ -401,6 +377,7 @@
         body.sidebar-open .sidebar { transform: translateX(0); }
 
         .content-wrapper { margin-left: 0; width: 100%; }
+        /* Mobile overlay */
         body::after {
            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
            background: rgba(0, 0, 0, 0.6); z-index: 999;
@@ -408,13 +385,7 @@
            transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
         }
         body.sidebar-open::after { opacity: 1; visibility: visible; }
-        body { padding-top: var(--mobile-top-bar-height); }
-
-        /* Ensure intro image doesn't exceed viewport width minus padding */
-        .intro-profile-image {
-          max-width: min(300px, calc(100vw - 60px)); /* Adjust 60px based on body/main padding */
-          width: 85%;
-        }
+        body { padding-top: var(--mobile-top-bar-height); } /* Adjust body for fixed top bar */
     }
 
   </style>
@@ -470,8 +441,8 @@ Science Drive 4, <br> Singapore-119077 </p>
   </div>
 
   <script>
+    // Standard sidebar and layout JavaScript (kept concise for brevity)
     document.addEventListener("DOMContentLoaded", function () {
-      // --- Keep all the existing variables and functions ---
       const sidebar = document.getElementById("sidebar");
       const body = document.body;
       const mobileTopBar = document.getElementById("mobile-top-bar");
@@ -481,148 +452,77 @@ Science Drive 4, <br> Singapore-119077 </p>
       const mainContent = document.querySelector('main');
 
       if (!sidebar || !body || !mobileTopBar || !desktopToggleBtn || !mobileToggleBtn || !sidebarCloseBtn || !mainContent) {
-          console.error("Essential layout element(s) not found. Check IDs and structure.");
-          return;
+          console.error("Essential layout element(s) not found."); return;
       }
 
       const adjustBodyPadding = () => {
           const isMobile = window.innerWidth <= 768;
           const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none';
           const topBarHeight = mobileTopBar.offsetHeight;
-          body.style.paddingTop = '0px'; // Reset first
-          if (isMobile && isTopBarVisible && topBarHeight > 0) {
-              body.style.paddingTop = `${topBarHeight}px`;
-          }
+          body.style.paddingTop = (isMobile && isTopBarVisible && topBarHeight > 0) ? `${topBarHeight}px` : '0px';
       };
 
       const setSidebarState = (shouldBeOpen) => {
           const isMobile = window.innerWidth <= 768;
           if (isMobile) {
               body.classList.toggle('sidebar-open', shouldBeOpen);
-              sidebar.classList.remove('collapsed'); // Ensure not collapsed on mobile
+              sidebar.classList.remove('collapsed');
               mobileToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
-              // Ensure desktop state is consistent visually if needed, but not functionally primary
-              desktopToggleBtn.setAttribute('aria-expanded', 'true'); // Assume expanded when mobile sidebar opens
-              const desktopIcon = desktopToggleBtn.querySelector('i');
-              if (desktopIcon) desktopIcon.className = 'fas fa-times'; // Reset desktop icon
+              desktopToggleBtn.setAttribute('aria-expanded', 'true');
+              const desktopIcon = desktopToggleBtn.querySelector('i'); if (desktopIcon) desktopIcon.className = 'fas fa-times';
           } else {
-              // Desktop behavior
               sidebar.classList.toggle('collapsed', !shouldBeOpen);
-              body.classList.remove('sidebar-open'); // Ensure mobile overlay class is removed
+              body.classList.remove('sidebar-open');
               desktopToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
-              const desktopIcon = desktopToggleBtn.querySelector('i');
-              if (desktopIcon) {
-                  desktopIcon.className = shouldBeOpen ? 'fas fa-times' : 'fas fa-bars';
-              }
-              mobileToggleBtn.setAttribute('aria-expanded', 'false'); // Ensure mobile button state is correct
+              const desktopIcon = desktopToggleBtn.querySelector('i'); if (desktopIcon) { desktopIcon.className = shouldBeOpen ? 'fas fa-times' : 'fas fa-bars'; }
+              mobileToggleBtn.setAttribute('aria-expanded', 'false');
           }
-          // Use rAF for smoother visual updates related to layout changes
           requestAnimationFrame(adjustBodyPadding);
       };
 
-
       const setInitialState = () => {
           const isMobile = window.innerWidth <= 768;
-          setSidebarState(!isMobile); // Open on desktop, closed on mobile initially
-          adjustBodyPadding(); // Adjust padding after setting initial state
+          setSidebarState(!isMobile); adjustBodyPadding();
       };
 
-
       const setupMainLinks = () => {
-         const links = mainContent.querySelectorAll('a');
-         links.forEach(link => {
+         mainContent.querySelectorAll('a').forEach(link => {
             const href = link.getAttribute('href');
-             if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:')) {
-                 const hasTarget = link.getAttribute('target');
-                 // Only add target blank if it's not explicitly set AND it's an external link
-                 if (!hasTarget) {
-                    try {
-                        // Use current page as base URL for relative links
-                        const linkUrl = new URL(href, window.location.href);
-                        // Check if the hostname differs from the current page's hostname
-                        if (linkUrl.hostname !== window.location.hostname) {
-                            link.setAttribute('target', '_blank');
-                            // Add rel="noopener noreferrer" for security with target="_blank"
-                            link.setAttribute('rel', 'noopener noreferrer');
-                        }
-                    } catch (e) {
-                        // Ignore invalid URLs, don't stop script execution
-                        // console.warn(`Could not parse link href: ${href}`, e);
+             if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:') && !link.hasAttribute('target')) {
+                try {
+                    const linkUrl = new URL(href, window.location.href);
+                    if (linkUrl.hostname !== window.location.hostname) {
+                        link.setAttribute('target', '_blank'); link.setAttribute('rel', 'noopener noreferrer');
                     }
-                 }
+                } catch (e) { /* Ignore invalid URLs */ }
              }
          });
       };
 
-
-      // --- Initialize everything ---
       setInitialState();
       setupMainLinks();
+      if (typeof MathJax !== "undefined" && MathJax.Hub) { MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.body]); }
 
-      // --- UPDATED MathJax Trigger ---
-      // Queue a typeset call for the entire document body again,
-      // ensuring it runs after other setup. Needs MathJax v2 Hub object.
-      if (typeof MathJax !== "undefined" && MathJax.Hub) {
-          MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.body]);
-      }
-      // --- End of MathJax Trigger ---
-
-      // --- Keep all the Event Listeners ---
-      desktopToggleBtn.addEventListener("click", function () {
-          const isCurrentlyCollapsed = sidebar.classList.contains('collapsed');
-          setSidebarState(isCurrentlyCollapsed); // Toggle based on current state
-      });
-
-      mobileToggleBtn.addEventListener("click", function () {
-          setSidebarState(true); // Always open when mobile toggle is clicked
-      });
-
-      sidebarCloseBtn.addEventListener("click", function () {
-          setSidebarState(false); // Always close
-      });
-
-      // Click outside to close on mobile
-      body.addEventListener('click', function(event) {
-           const isMobile = window.innerWidth <= 768;
-           if (isMobile && body.classList.contains('sidebar-open')) {
-               // Close if the click is not on the sidebar itself AND not on the toggle button
-               if (!sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target)) {
-                   setSidebarState(false);
-               }
+      desktopToggleBtn.addEventListener("click", () => setSidebarState(sidebar.classList.contains('collapsed')));
+      mobileToggleBtn.addEventListener("click", () => setSidebarState(true));
+      sidebarCloseBtn.addEventListener("click", () => setSidebarState(false));
+      body.addEventListener('click', event => {
+           if (window.innerWidth <= 768 && body.classList.contains('sidebar-open') && !sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target)) {
+               setSidebarState(false);
            }
        });
 
-      // Debounce resize function to avoid excessive calls
-      let resizeTimeout;
-      let currentWindowWidth = window.innerWidth; // Track width across resize events
-
-      window.addEventListener('resize', function() {
+      let resizeTimeout; let currentWindowWidth = window.innerWidth;
+      window.addEventListener('resize', () => {
           clearTimeout(resizeTimeout);
           resizeTimeout = setTimeout(() => {
-              const newWindowWidth = window.innerWidth;
-              const breakpoint = 768;
-              const isMobile = newWindowWidth <= breakpoint;
-              const wasMobile = currentWindowWidth <= breakpoint;
-
-              // Only reset state if crossing the breakpoint
-              if (isMobile !== wasMobile) {
-                  setInitialState(); // Recalculate initial state based on new mode
-              } else {
-                  // If not crossing breakpoint, just adjust padding if needed
-                  adjustBodyPadding();
-              }
-              // Update the tracked width AFTER processing
+              const newWindowWidth = window.innerWidth; const breakpoint = 768;
+              const isMobile = newWindowWidth <= breakpoint; const wasMobile = currentWindowWidth <= breakpoint;
+              if (isMobile !== wasMobile) { setInitialState(); } else { adjustBodyPadding(); }
               currentWindowWidth = newWindowWidth;
-          }, 150); // Adjust debounce delay as needed (e.g., 150ms)
+          }, 150);
       });
-
-
-      // Adjust padding on orientation change as well
-      window.addEventListener('orientationchange', () => {
-         // Give browser a moment to reflow before adjusting padding
-         requestAnimationFrame(adjustBodyPadding);
-      });
-
+      window.addEventListener('orientationchange', () => requestAnimationFrame(adjustBodyPadding));
     });
   </script>
 
