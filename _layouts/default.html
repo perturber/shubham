@@ -21,6 +21,7 @@
       messageStyle: "none" // Suppress "Loading MathJax..." message
     });
   </script>
+  <!-- Original MathJax Script -->
   <script type="text/javascript" async
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
@@ -230,6 +231,14 @@
     }
     main a:active { color: var(--content-link-color); }
     /* === End Link Styling === */
+
+    /* --- Add this rule for spacing around figures in main content --- */
+    main figure {
+      margin-top: 2em;    /* Adds space above the figure */
+      margin-bottom: 2em; /* Adds space below the figure */
+      /* You can adjust the '2em' value as needed (e.g., 1.5em, 25px, 1.8rem) */
+    }
+    /* --- End of added rule --- */
 
     /* --- Styles for Intro Section with Image (Mobile First) --- */
     .intro-section {
@@ -510,8 +519,19 @@ Science Drive 4, <br> Singapore-119077 </p>
          });
       };
 
+      // --- ADDED: Trigger MathJax typesetting after initial setup ---
+      const typesetMath = () => {
+          if (typeof MathJax !== "undefined") {
+              // Use MathJax.Hub.Queue for v2
+              MathJax.Hub.Queue(["Typeset", MathJax.Hub, mainContent]);
+          }
+      };
+
       setInitialState();
       setupMainLinks();
+      typesetMath(); // Call MathJax after page load
+
+      // --- End of added MathJax trigger ---
 
       desktopToggleBtn.addEventListener("click", function () {
           const isCurrentlyCollapsed = sidebar.classList.contains('collapsed');

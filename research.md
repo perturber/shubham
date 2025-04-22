@@ -24,6 +24,7 @@ Below, I provide a slightly more ellaborate (and mostly self-contained) overview
 I primarily work on developing the data analysis pipeline in various contexts (as you will see below) for the upcoming space-based gravitational wave observatory, i.e. the Laser Interferometer Space Antenna (LISA) [(1)](https://lisa.nasa.gov/). LISA was recently adopted by the European Space Agency, and is on track to be launched sometime in the middle of the next decade [(2)](https://www.esa.int/Science_Exploration/Space_Science/LISA/Capturing_the_ripples_of_spacetime_LISA_gets_go-ahead). Notably, the milli-Hz frequency band of LISA will be sensitive to many source-types, including a swarm of compact binaries evolving in the Milky Way, supermassive black hole binaries in the late-inspiral stage, and extreme-mass-ratio inspirals (EMRIs) in which a stellar-mass black hole is gravitationally bound to a supermassive black hole [(3)](https://arxiv.org/abs/2402.07571). EMRIs are the primary target of my study.  
 
 
+
 <div style="text-align: center;">
   <iframe width="560" height="315" 
           src="https://www.youtube.com/embed/WPvkzSvgHvc" 
@@ -38,6 +39,12 @@ I primarily work on developing the data analysis pipeline in various contexts (a
 </div>
 
 
-EMRIs are inspirals of a compact object (CO), most likely a stellar-origin black hole with mass \\(\sim 10 M_\odot\\) orbiting a supermassive black hole (MBH) of mass \\(\sim 10^6 M_\odot\\). Their gravitational wave signals are expected to spend years in the LISA band spanning hundreds of thousands of strong-field orbits. This will allow a unique opportunity to map the curvature of spacetime around MBHs, testing General Relativity (GR) to unprecedented precision. In addition, any environmental forces (for e.g. from an accretion disk surrounding the MBH) will have a cummulative effect on the long-term inspiral, which would make the measurements extremely sensitive to beyond-vacuum effects. 
+EMRIs are inspirals of a compact object (CO), most likely a stellar-origin black hole with mass \\(\sim 10 M_\odot\\) orbiting a supermassive black hole (MBH) of mass \\(\sim 10^6 M_\odot\\). Their gravitational wave signals are expected to spend years in the LISA band spanning hundreds of thousands of strong-field orbits. This will allow a unique opportunity to map the curvature of spacetime around MBHs, testing General Relativity (GR) to unprecedented precision. In addition, any environmental forces (for e.g. from an accretion disk surrounding the MBH) will have a cummulative effect on the long-term inspiral, which makes the measurements extremely sensitive to such effects.
+
+---
+
+## A study of correlations between "Beyond-Vacuum-GR" effects in EMRIs  
+
+
 
 © 2025 Shubham Kejriwal
