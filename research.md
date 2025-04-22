@@ -21,7 +21,17 @@ Below, I provide a slightly more ellaborate (and mostly self-contained) overview
   </figcaption>
 </figure>
 
-I primarily work on developing the data analysis pipeline in various contexts (as you will see below) for the upcoming space-based gravitational wave observatory, i.e. the Laser Interferometer Space Antenna, or LISA for short [(1)](https://lisa.nasa.gov/). LISA was recently adopted by the European Space Agency (ESA), which means it is now under construction, and is on track to be launched sometime in the middle of the next decade [(2)](https://www.esa.int/Science_Exploration/Space_Science/LISA/Capturing_the_ripples_of_spacetime_LISA_gets_go-ahead). 
+I primarily work on developing the data analysis pipeline in various contexts (as you will see below) for the upcoming space-based gravitational wave observatory, i.e. the Laser Interferometer Space Antenna, or LISA for short [(1)](https://lisa.nasa.gov/). LISA was recently adopted by the European Space Agency (ESA), which means it is now under construction, and is on track to be launched sometime in the middle of the next decade [(2)](https://www.esa.int/Science_Exploration/Space_Science/LISA/Capturing_the_ripples_of_spacetime_LISA_gets_go-ahead). Notably, the milli-Hz frequency band of LISA will be sensitive to many source-types, including a swarm of compact binaries evolving in the Milky Way, supermassive black hole binaries in the late-inspiral stage, and extreme-mass-ratio inspirals (EMRIs) in which a stellar-mass black hole is gravitationally bound to a supermassive black hole [3](https://arxiv.org/abs/2402.07571). EMRIs are also the primary targets of my study.
+
+<div style="text-align: center;">
+  <iframe width="560" height="315" 
+          src="https://www.youtube.com/embed/bqFHe7CM99g" 
+          title="Inspiralling EMRI video" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+  </iframe>
+</div>
 
 
 © 2025 Shubham Kejriwal
