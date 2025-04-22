@@ -429,6 +429,7 @@ Science Drive 4, <br> Singapore-119077 </p>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      // --- Keep all the existing variables and functions ---
       const sidebar = document.getElementById("sidebar");
       const body = document.body;
       const mobileTopBar = document.getElementById("mobile-top-bar");
@@ -442,7 +443,7 @@ Science Drive 4, <br> Singapore-119077 </p>
           return;
       }
 
-      const adjustBodyPadding = () => {
+      const adjustBodyPadding = () => { /* ... keep as is ... */
           const isMobile = window.innerWidth <= 768;
           const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none';
           const topBarHeight = mobileTopBar.offsetHeight;
@@ -452,7 +453,7 @@ Science Drive 4, <br> Singapore-119077 </p>
           }
       };
 
-      const setSidebarState = (shouldBeOpen) => {
+      const setSidebarState = (shouldBeOpen) => { /* ... keep as is ... */
           const isMobile = window.innerWidth <= 768;
           if (isMobile) {
               body.classList.toggle('sidebar-open', shouldBeOpen);
@@ -474,13 +475,13 @@ Science Drive 4, <br> Singapore-119077 </p>
           requestAnimationFrame(adjustBodyPadding);
       };
 
-       const setInitialState = () => {
+      const setInitialState = () => { /* ... keep as is ... */
           const isMobile = window.innerWidth <= 768;
           setSidebarState(!isMobile);
           adjustBodyPadding();
       };
 
-      const setupMainLinks = () => {
+      const setupMainLinks = () => { /* ... keep as is ... */
          const links = mainContent.querySelectorAll('a');
          links.forEach(link => {
             const href = link.getAttribute('href');
@@ -499,26 +500,19 @@ Science Drive 4, <br> Singapore-119077 </p>
          });
       };
 
-      // --- Trigger MathJax typesetting ---
-      const typesetMath = () => {
-          if (typeof MathJax !== "undefined") {
-              // Initial pass on the main content
-              MathJax.Hub.Queue(["Typeset", MathJax.Hub, mainContent]);
-
-              // **ADDED: Explicitly re-process figures for robustness**
-              const figures = mainContent.querySelectorAll('figure');
-              figures.forEach(figure => {
-                  MathJax.Hub.Queue(["Typeset", MathJax.Hub, figure]);
-              });
-              // ** End of added figure processing **
-          }
-      };
-
+      // --- Initialize everything ---
       setInitialState();
       setupMainLinks();
-      typesetMath(); // Call MathJax after page load
 
-      // --- Event Listeners ---
+      // --- UPDATED MathJax Trigger ---
+      // Queue a typeset call for the entire document body again,
+      // ensuring it runs after other setup.
+      if (typeof MathJax !== "undefined") {
+          MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.body]);
+      }
+      // --- End of MathJax Trigger ---
+
+      // --- Keep all the Event Listeners ---
       desktopToggleBtn.addEventListener("click", function () {
           const isCurrentlyCollapsed = sidebar.classList.contains('collapsed');
           setSidebarState(isCurrentlyCollapsed);
