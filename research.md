@@ -92,7 +92,7 @@ A major challenge in developing a systematic framework for inferring beyond-vacu
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
   <img src="{{ site.baseurl | default: '' }}/assets/QPE.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
-    <em>Figure 5: Time-domain signal from the August 2020 run of eRO-QPE2 quasi-periodic eruption source. Diagram from  Pasham, <strong>Kejriwal,</strong> et al. <a href="https://arxiv.org/abs/2411.00289" target="_blank">[arxiv.org/abs/2411.00289]</a>.</em>
+    <em>Figure 6: Time-domain signal from the August 2020 run of eRO-QPE2 quasi-periodic eruption source. Diagram from  Pasham, <strong>Kejriwal,</strong> et al. <a href="https://arxiv.org/abs/2411.00289" target="_blank">[arxiv.org/abs/2411.00289]</a>.</em>
   </figcaption>
 </figure> 
 
