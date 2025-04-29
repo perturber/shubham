@@ -55,10 +55,10 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at 
     
 ### Presentations
   Below is a short list of talks and posters I have presented for various research conferences and science outreach programs. Find a full list in my [Curriculum Vitae](/assets/Shubham_Kejriwal_CV.pdf).    
-  - [15th International LISA Symposium 2024 Talk](https://virtual.oxfordabstracts.com/event/5189/submission/77), July 2024, University College, Dublin, Ireland.  
-  - [27th Capra Meeting on Radiation Reaction in General Relativity Talk](https://www.caprameeting.org/capra-meetings/capra-27), June 2024, National University of Singapore.
-  - [LIGO Seminar Talk](https://www.caltech.edu/campus-life-events/calendar/ligo-seminar-86), April 2024, Caltech, USA.  
-  - Physics Engagement Camp Poster, March 2024, National University of Singapore.  
+  - ([Talk](https://virtual.oxfordabstracts.com/event/5189/submission/77)) 15th International LISA Symposium 2024, July 2024, University College, Dublin, Ireland.  
+  - ([Talk](https://www.caprameeting.org/capra-meetings/capra-27)) 27th Capra Meeting on Radiation Reaction in General Relativity, June 2024, National University of Singapore.
+  - ([Talk](https://www.caltech.edu/campus-life-events/calendar/ligo-seminar-86)) LIGO Seminar, April 2024, Caltech, USA.  
+  - (Poster) Physics Engagement Camp, March 2024, National University of Singapore.  
   
 
 ### Other Contributions  
