@@ -83,7 +83,7 @@ A major challenge in developing a systematic framework for inferring beyond-vacu
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
   <img src="{{ site.baseurl | default: '' }}/assets/EMcounterpart.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
-    <em>Figure 5: A schematic depiction of an EMRI evolving in a matter-rich environment (yellow disk). Diagram from </strong> <a href="https://arxiv.org/abs/2404.00941" target="_blank">Kejriwal et al. (2024)</a> courtesy of Vojtěch Witzany.</em>
+    <em>Figure 5: A schematic depiction of an EMRI evolving in a matter-rich environment (yellow disk). Diagram from <a href="https://arxiv.org/abs/2404.00941" target="_blank">Kejriwal et al. (2024)</a> courtesy of Vojtěch Witzany.</em>
   </figcaption>
 </figure> 
 
