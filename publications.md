@@ -14,7 +14,7 @@ Total *5* articles available as pre-prints or journal publications. Find my late
 - **S. Kejriwal**, F. Duque, A. J. K. Chua, J. Gair. (2025)  
     *Bias-Corrected Importance Sampling for Inferring Beyond Vacuum-GR Effects in Gravitational Wave Sources*, [arXiv](https://arxiv.org/abs/2503.01120)
 
-- **S. Kejriwal**, V. Witzany, M. Zajac\v{e}k, D. R. Pasham, A. J. K. Chua. (2024)  
+- **S. Kejriwal**, V. Witzany, M. Zajacěk, D. R. Pasham, A. J. K. Chua. (2024)  
     *Repeating Nuclear Transients as Candidate Electromagnetic Counterparts of LISA Extreme Mass Ratio Inspirals*, [MNRAS](https://doi.org/10.1093/mnras/stae1599)
 
 - **S. Kejriwal**, L. Speri, A. J. K. Chua. (2024)  
