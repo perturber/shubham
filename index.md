@@ -23,7 +23,7 @@ Singapore-119077
 ---
 ## About Me
 
-Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in Physics at the National University of Singapore. I am working on gravitational wave data analysis for the upcoming LISA mission. I am proficient in Bayesian statistics and machine learning, with a working knowledge of general-relativistic waveform modeling.
+Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in the gravitational waves group led by Prof. Alvin Chua in the department of Physics at the National University of Singapore. I primarily work on developing the data analysis pipeline for the upcoming LISA mission. I am proficient in Bayesian statistics and machine learning, with a working knowledge of general-relativistic waveform modeling.
 
 ---
 ## Education
