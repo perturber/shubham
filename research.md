@@ -57,7 +57,7 @@ EMRIs are inspirals of a compact object (CO) — most relevant to the context of
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
   <img src="{{ site.baseurl | default: '' }}/assets/joint_analysis/correlation_bias-1.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
-    <em>Figure 3: Biases induced on the EMRI's intrinsic parameters due to an environmental effect in the signal which was not accounted for in the inference. The biases scaled by the \(1\sigma\) measurement precision on each parameter are plotted along the vertical axis, showing biases of order \(10-100\sigma\). The horizontal axis shows the average correlations of the intrinsic and the unmeasured environmental effect parameter, showing a weak trend. Diagram from <strong>Kejriwal et al.</strong> <a href="https://arxiv.org/abs/2312.13028" target="_blank">[Kejriwal et al. (2023)]</a>.</em>
+    <em>Figure 3: Biases induced on the EMRI's intrinsic parameters due to an environmental effect in the signal which was not accounted for in the inference. The biases scaled by the \(1\sigma\) measurement precision on each parameter are plotted along the vertical axis, showing biases of order \(10-100\sigma\). The horizontal axis shows the average correlations of the intrinsic and the unmeasured environmental effect parameter, showing a weak trend. Diagram from <a href="https://arxiv.org/abs/2312.13028" target="_blank">Kejriwal et al. (2023)</a>.</em>
   </figcaption>
 </figure> 
 
@@ -68,7 +68,7 @@ Mathematically, environmental effects and beyond-GR modifications are generally 
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
   <img src="{{ site.baseurl | default: '' }}/assets/biascorrected.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
-    <em>Figure 4: (Left panel): Schematic representation of how biases are induced to the set of signal parameters \(\psi_S, \varphi_S\) (blue cross) in a larger "signal space" (red cube) when inferred over a template space (grey manifold) which holds fixed one or more signal parameters to a fixed null value, in this case \(\varphi = \varphi_0\). The "best-fit" point is obtained at a biased location: \(\psi_{\rm MAP}, \varphi_0\). (Right panel): The scheme proposed in <strong>Kejriwal et al.</strong> <a href="https://arxiv.org/abs/2503.01120" target="_blank">[Kejriwal et al. (2025)]</a> to correct the biases by obtaining posterior samples along the restricted axis (green stars along the vertical axis) and measuring the corresponding probability that \(\varphi \neq \varphi_0\).</em>
+    <em>Figure 4: (Left panel): Schematic representation of how biases are induced to the set of signal parameters \(\psi_S, \varphi_S\) (blue cross) in a larger "signal space" (red cube) when inferred over a template space (grey manifold) which holds fixed one or more signal parameters to a fixed null value, in this case \(\varphi = \varphi_0\). The "best-fit" point is obtained at a biased location: \(\psi_{\rm MAP}, \varphi_0\). (Right panel): The scheme proposed in <a href="https://arxiv.org/abs/2503.01120" target="_blank">Kejriwal et al. (2025)</a> to correct the biases by obtaining posterior samples along the restricted axis (green stars along the vertical axis) and measuring the corresponding probability that \(\varphi \neq \varphi_0\).</em>
   </figcaption>
 </figure> 
 
@@ -83,7 +83,7 @@ A major challenge in developing a systematic framework for inferring beyond-vacu
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
   <img src="{{ site.baseurl | default: '' }}/assets/EMcounterpart.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
-    <em>Figure 5: A schematic depiction of an EMRI evolving in a matter-rich environment (yellow disk). Diagram from <strong>Kejriwal et al.</strong> <a href="https://arxiv.org/abs/2404.00941" target="_blank">[Kejriwal et al. (2024)]</a> courtesy of Vojtěch Witzany.</em>
+    <em>Figure 5: A schematic depiction of an EMRI evolving in a matter-rich environment (yellow disk). Diagram from </strong> <a href="https://arxiv.org/abs/2404.00941" target="_blank">Kejriwal et al. (2024)</a> courtesy of Vojtěch Witzany.</em>
   </figcaption>
 </figure> 
 
@@ -92,7 +92,7 @@ A major challenge in developing a systematic framework for inferring beyond-vacu
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
   <img src="{{ site.baseurl | default: '' }}/assets/QPE.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
-    <em>Figure 6: Time-domain signal from the August 2020 run of eRO-QPE2 quasi-periodic eruption source. Diagram from  Pasham, <strong>Kejriwal,</strong> et al. <a href="https://arxiv.org/abs/2411.00289" target="_blank">[Pasham et al. (2024)]</a> courtesy of Dheeraj R. Pasham.</em>
+    <em>Figure 6: Time-domain signal from the August 2020 run of eRO-QPE2 quasi-periodic eruption source. Diagram from  <a href="https://arxiv.org/abs/2411.00289" target="_blank">Pasham, Kejriwal et al. (2024)</a> courtesy of Dheeraj R. Pasham.</em>
   </figcaption>
 </figure> 
 
