@@ -46,7 +46,7 @@ I primarily work on developing the data analysis pipeline in various contexts (a
 </figure>
 
 
-EMRIs are inspirals of a compact object (CO) — most relevant to the context of LISA a stellar-origin black hole with mass \\(\sim 10 M_\odot\\) — orbiting a supermassive black hole (MBH) of mass \\(\sim 10^6 M_\odot\\). Their gravitational wave signals are expected to spend years in the LISA band spanning hundreds of thousands of strong-field orbits. This will allow a unique opportunity to map the curvature of spacetime around MBHs, testing General Relativity (GR) to unprecedented precision. In addition, any environmental forces (for e.g. from an accretion disk surrounding the MBH) will have a cummulative effect on the long-term inspiral, which makes the measurements extremely sensitive to such effects.
+EMRIs are inspirals of a compact object (CO) — most relevant to the context of LISA a stellar-origin black hole with mass \\(\sim 10 M_\odot\\) — orbiting a supermassive black hole (MBH) of mass \\(\sim 10^6 M_\odot\\). Their gravitational wave signals are expected to spend years in the LISA band spanning hundreds of thousands of strong-field orbits. This will allow a unique opportunity to map the curvature of spacetime around MBHs, testing General Relativity (GR) to unprecedented precision. In addition, any environmental forces (for e.g. from an accretion disk surrounding the MBH) will have a cummulative effect on the binary's long-term inspiral, making measurements extremely sensitive to such effects.
 
 ---
 
