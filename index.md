@@ -63,7 +63,7 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in the gravita
 
 ### Other Contributions  
   I am a member of multiple international research collaborations including:  
-  - [LISA Consortium](https://www.lisamission.org/)  
+  - [LISA Consortium](https://www.lisamission.org/) (core member)
   - [FastEMRIWaveforms (FEW)](https://github.com/BlackHolePerturbationToolkit/FastEMRIWaveforms) Collaboration  
   
   I also enjoy contributing to science events, by organizing them:  
