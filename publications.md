@@ -25,7 +25,7 @@ Total *5* articles available as pre-prints or journal publications. Find my late
 ## Co-Author Papers  
 
 - C. E. A. Chapman-Bird, L. Speri, Z. Nasipak, O. Burke, M. L. Katz, A. Santini, **S. Kejriwal**, et al. (2025)  
-    *Efficient Waveforms for asymmetric-mass eccentric equatorial inspirals into rapidly-spinning black holes*, [arXiv](\href{https://arxiv.org/abs/2506.09470}).
+    *Efficient Waveforms for asymmetric-mass eccentric equatorial inspirals into rapidly-spinning black holes*, [arXiv](https://arxiv.org/abs/2506.09470).
 
 - F. Duque, **S. Kejriwal**, L. Sberna, L. Speri, J. Gair. (2025)  
     *Constraining accretion physics with gravitational waves from eccentric extreme-mass-ratio inspirals*, [PRD](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.111.084006)
