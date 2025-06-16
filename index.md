@@ -30,7 +30,7 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in the gravita
 
 - **Ph.D. in Physics (2023-)**  
     [National University of Singapore, Singapore](https://www.nus.edu.sg/).   
-    Thesis advisor: [Asst. Prof. Alvin J. K. Chua](https://www.physics.nus.edu.sg/faculty/chua-alvin-jk/)   
+    Thesis advisor: [Prof. Alvin J. K. Chua](https://www.physics.nus.edu.sg/faculty/chua-alvin-jk/)   
 
 - **B.Sc. (Research) in Physics with a Minor in Mathematics (2018-2022)**  
     [Shiv Nadar University, Delhi, India](https://snu.edu.in/home/).   
