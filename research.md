@@ -73,6 +73,8 @@ Many proposed environmental and beyond-GR effects are added perturbatively to th
 
 <div class="bubble" markdown="1">
 
+## Bias-Corrected Importance Sampling
+
 <figure>
   <!-- Inline style on IMG sets DESKTOP max width -->
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
