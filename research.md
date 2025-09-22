@@ -7,9 +7,13 @@ mathjax: true
 
 # Research Overview  
 
+<div class="bubble" markdown="1">
+
 Below, I provide a slightly more elaborate (and mostly self-contained) overview of my research. Still, the best way to learn about my research is to read my articles. You can find them on the [Publications](/shubham/publications) page.  
 
----
+</div>
+
+<div class="bubble" markdown="1">
 
 ## Background
 
@@ -48,7 +52,9 @@ I primarily work on developing the data analysis pipeline in various contexts (a
 
 EMRIs are inspirals of a compact object (CO) — most relevant to the context of LISA a stellar-origin black hole with mass \\(\sim 10 M_\odot\\) — orbiting a supermassive black hole (MBH) of mass \\(\sim 10^6 M_\odot\\). Their gravitational wave signals are expected to spend years in the LISA band spanning hundreds of thousands of strong-field orbits. This will allow a unique opportunity to map the curvature of spacetime around MBHs, testing General Relativity (GR) to unprecedented precision. In addition, any environmental forces (for e.g. from an accretion disk surrounding the MBH) will have a cummulative effect on the binary's long-term inspiral, making measurements extremely sensitive to such effects.
 
----
+</div>
+
+<div class="bubble" markdown="1">
 
 ## Measurability of "Beyond-Vacuum-GR" effects in EMRIs  
 
@@ -74,7 +80,9 @@ Mathematically, environmental effects and beyond-GR modifications are generally 
 
 A major challenge in developing a systematic framework for inferring beyond-vacuum-GR effects is the shear number of such effects proposed in the literature. Given the cost of sampling the posterior surface in a single run with techniques like Markov Chain Monte Carlo (MCMC), and especially in the context of the LISA global fit inference pipeline, it is impractical to try and constrain all such effects simultaneously. Our latest work [(Kejriwal et al. (2025))](https://arxiv.org/abs/2503.01120) proposes an inference-based method to consistently and inexpensively obtain samples from the posterior surface in alternate beyond-vacuum-GR hypothesis, given just posterior samples from the vacuum-GR hypothesis. Within this novel framework, beyond-vacuuum-GR hypotheses can be quickly tested in a "post-processing" inference step.  
 
----
+</div>
+
+<div class="bubble" markdown="1">
 
 ## Electromagnetic Counterparts of EMRIs
 
@@ -98,7 +106,9 @@ A major challenge in developing a systematic framework for inferring beyond-vacu
 
 Quasi-periodic eruption (QPE) events, which are low-frequency (\\(\sim 10^{-4}\\) Hz) signals of soft X-ray peaks over a quiescent background, are theorized to be electromagnetic (EM) counterparts of EMRIs. While EMRIs evolving in a vacuum are not expected to host EM counterparts, the presence of a disk around the MBH allows interactions with the compact object that can lead to EM counterparts in the X-ray or even ultraviolet bands, see e.g. [Linial and Metzger (2023)](https://arxiv.org/abs/2303.16231). This poses an exciting prospect of multimessenger astronomy with EMRIs. In our work, [(Kejriwal et al. (2024))](https://arxiv.org/abs/2404.00941), we calculated the frequency band of QPE sources that are emitting an EM signal "today", such that they may also be observed in the future by LISA as GW sources. We extended our analysis to a particularly promising QPO source (where the 'O' now stands for oscillations, not eruptions, distinguishing their intensity), RE J1034+396. REJ has shown a decreasing time period over two observations separated by a decade, which is expected of EMRIs. We found that a compact object orbiting the MBH in REJ may be of mass \\(\approx 47 M_\odot\\) and that there is a \\(\approx 25\%\\) probability that REJ (if it *is* an EMRI and follows its current inspiral trend) would be detected in the LISA band. Our study is a first of its kind to comment on the multimessenger prospects of LISA EMRIs.  
 
----
+</div>
+
+<div class="bubble" markdown="1">
 
 ## Developing Waveform Models and Data Analysis Tools
 
@@ -110,6 +120,19 @@ Quasi-periodic eruption (QPE) events, which are low-frequency (\\(\sim 10^{-4}\\
 
   - **`StableEMRIFishers (SEF)` Package:** Fisher Information Matrices (FIMs) describe the information content of the signal at a parameter point \\(\boldsymbol{\theta}\\), and its inverse provides an upper-bound on measurement precision of \\(\boldsymbol{\theta}\\). In preparatory science for LISA and EMRIs, FIMs thus play a significant role in studies spanning large parameter spaces, where more accurate but expensive methods like MCMC become impractical. However, obtaining the FIM for GW waveforms involves taking their derivatives, which can be especially challenging for highly-correlated posterior surfaces [(Vallisneri (2007))](https://arxiv.org/abs/gr-qc/0703086), characteristic of EMRIs. In addition, various approximations are made in practical waveform generation to enable their fast computation, which amplifies the problem by introducing small "jitters" in the likelihood surface, especially for strong-field signals. In a manuscript under preparation, we have formulated a robust FIM calculator, `StableEMRIFishers (SEF)`, that attempts to systematically calculate stable derivatives and hence the FIMs given an input EMRI parameter point \\(\boldsymbol{\theta}\\). The `StableEMRIFishers (SEF)` code is used in published and ongoing studies, see e.g. [Duque et al. (2024)](https://arxiv.org/abs/2411.03436).  
 
----  
+<style>
+.bubble {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.video-container {
+  position: relative; overflow: hidden; width: 100%; max-width: 560px; margin: auto;
+}
+.video-container::before { content: ""; display: block; padding-top: 56.25%; }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+</style> 
 
 © 2025 Shubham Kejriwal

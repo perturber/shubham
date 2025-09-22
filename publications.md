@@ -5,9 +5,14 @@ permalink: /publications/
 ---
 
 # Publication Summary
+
+<div class="bubble" markdown="1">
+
 Total *7* articles available as pre-prints or journal publications. Find my latest citation summary on [inspireHEP](https://inspirehep.net/authors/2739234?ui-citation-summary=true) and the most up-to-date list of articles on [arxiv](https://arxiv.org/search/advanced?advanced=&terms-0-operator=AND&terms-0-term=Kejriwal%2C+Shubham&terms-0-field=author&classification-physics=y&classification-physics_archives=all&classification-include_cross_list=include&date-year=&date-filter_by=date_range&date-from_date=2023&date-to_date=&date-date_type=submitted_date&abstracts=show&size=50&order=-announced_date_first).  
 
----
+</div>
+
+<div class="bubble" markdown="1">
 
 ## First Author Papers  
 
@@ -20,7 +25,9 @@ Total *7* articles available as pre-prints or journal publications. Find my late
 - **S. Kejriwal**, L. Speri, A. J. K. Chua. (2024)  
     *Impact of Correlations on the Modeling and Inference of Beyond Vacuum-GR Effects in Extreme-Mass-Ratio Inspirals*, [PRD](https://doi.org/10.1103/PhysRevD.110.084060)
 
----
+</div>
+
+<div class="bubble" markdown="1">
 
 ## Co-Author Papers  
 
@@ -36,6 +43,16 @@ Total *7* articles available as pre-prints or journal publications. Find my late
 - D. R. Pasham, **S. Kejriwal**, E. Coughlin, V. Witzany, A. J. K. Chua, M. Zajac\v{e}k, T. Wevers, Y. Ajay (2024)  
     *Alive and Strongly Kicking: Stable X-ray Quasi-Periodic Eruptions from eRO-QPE2 over 3.5 Years*, [arXiv](https://arxiv.org/abs/2411.00289)   
     
----
+</div>
+
+<style>
+.bubble {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+</style>
 
 © 2025 Shubham Kejriwal
