@@ -6,12 +6,15 @@ permalink: /about/
 
 # About Me
 
-::: bubble
+<div class="bubble" markdown="1">
+
 ## About Me
 Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in the gravitational waves group led by Prof. Alvin Chua in the department of Physics at the National University of Singapore. I primarily work on developing the data analysis pipeline for the upcoming LISA mission. I am proficient in Bayesian statistics and machine learning, with a working knowledge of general-relativistic waveform modeling.
-:::
 
-::: bubble
+</div>
+
+<div class="bubble" markdown="1">
+
 ## Education
 - **Ph.D. in Physics (2023-)**  
   [National University of Singapore, Singapore](https://www.nus.edu.sg/).  
@@ -19,9 +22,11 @@ Hi! My name is Shubham Kejriwal. I’m a third-year Ph.D. student in the gravita
 
 - **B.Sc. (Research) in Physics with a Minor in Mathematics (2018-2022)**  
   [Shiv Nadar University, Delhi, India](https://snu.edu.in/home/).  
-:::
 
-::: bubble
+</div>
+
+<div class="bubble" markdown="1">
+
 ## What I Do
 ### Research Work
 I primarily work on developing different aspects of the data analysis pipeline for the upcoming space-based gravitational wave observatory LISA. Some broad directions in this context are highlighted below. You can read more about my research [here](/shubham/research/) and access my full list of publications [here](/shubham/publications/).
@@ -44,9 +49,11 @@ Below is a short list of talks and posters I have presented for various research
 - ([Talk](https://www.caprameeting.org/capra-meetings/capra-27)) 27th Capra Meeting, June 2024, NUS.  
 - ([Talk](https://www.caltech.edu/campus-life-events/calendar/ligo-seminar-86)) LIGO Seminar, April 2024, Caltech.  
 - (Poster) Physics Engagement Camp, March 2024, NUS.  
-:::
 
-::: bubble
+</div>
+
+<div class="bubble" markdown="1">
+
 ## Other Contributions
 I am a member of multiple international research collaborations including:  
 
@@ -63,9 +70,11 @@ or by participating:
 - [Beyond the Horizon Program](https://icts.res.in/program/beyondhorizon), March 2025, ICTS-TIFR, India.  
 - [EMRI Search and Inference within the LISA Global Fit - Part 1](https://indico.in2p3.fr/event/34916/overview), June 2025, APC, Paris, France.  
 - [Enabling Future Gravitational Wave Astrophysics in the Milli-Hertz Regime](https://www.munich-iapbp.de/activities/activities-2025/gravitational-waves), July 2025, MIAPbP, Munich, Germany.  
-:::
 
-::: bubble
+</div>
+
+<div class="bubble" markdown="1">
+
 ## Beyond Academia
 <div class="gallery-container">
   <button class="gallery-btn prev" onclick="plusSlides(-1)">&#10094;</button>
@@ -104,7 +113,8 @@ or by participating:
 </div>
 
 When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriwal). I also love travelling and trying out different cuisines (though restrictive as a vegetarian). I am a big Formula One fan. I enjoy trekking and swimming, so I am both a mountain *and* a beach person!
-:::
+
+</div>
 
 <style>
 .bubble {
