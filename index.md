@@ -12,9 +12,10 @@ homepage: true
 **National University of Singapore**  
 Science Drive 4, Singapore-119077  
 
-📧 [shubhamkejriwal@u.nus.edu](mailto:shubhamkejriwal@u.nus.edu)  
+<i class="fas fa-envelope"></i> [shubhamkejriwal@u.nus.edu](mailto:shubhamkejriwal@u.nus.edu)  
+<i class="fab fa-orcid"></i> [ORCID](https://orcid.org/0009-0004-5838-1886)
 
-**Bayesian Inference | Machine Learning | Gravitational Waves**
+Gravitational Waves | Bayesian Inference | Machine Learning
   </div>
 
   <div class="intro-image-container">
