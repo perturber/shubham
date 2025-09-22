@@ -171,11 +171,22 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
 }
 
 .gallery-btn {
-  cursor: pointer; position: absolute; top: 50%;
-  padding: 12px; margin-top: -22px; color: white; font-weight: bold;
-  font-size: 18px; border: none; background: rgba(0,0,0,0.4);
-  border-radius: 50%; user-select: none; transition: 0.3s;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 12px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px; /* slightly bigger */
+  border: none;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  user-select: none;
+  transition: 0.3s;
+  z-index: 10; /* ensure buttons stay above the slides */
 }
+
 .gallery-btn:hover { background: rgba(0,0,0,0.8); }
 .prev { left: 0; } .next { right: 0; }
 </style>
