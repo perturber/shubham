@@ -126,9 +126,9 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
 
 .gallery-container {
   position: relative;
-  max-width: 600px; /* you can adjust this width */
+  max-width: 800px; /* you can adjust this width */
   margin: auto;
-  aspect-ratio: 16/9; /* set to the aspect ratio of your first image */
+  aspect-ratio: 4/3; /* set to the aspect ratio of your first image */
   background: #000;   /* background fill when images don't cover full area */
   overflow: hidden;
   border-radius: 8px;
