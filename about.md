@@ -126,7 +126,7 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
 
 .gallery-container {
   position: relative;
-  max-width: 800px; /* you can adjust this width */
+  max-width: 600px; /* you can adjust this width */
   margin: auto;
   aspect-ratio: 16/9; /* set to the aspect ratio of your first image */
   background: #000;   /* background fill when images don't cover full area */
@@ -139,6 +139,7 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
   display: none;
   text-align: center;
   height: 100%;
+  position: relative;
 }
 
 .gallery-slide img {
@@ -147,7 +148,21 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
   object-fit: contain; /* fit images inside the fixed frame */
 }
 
-.caption { margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; color: #555; }
+.caption {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  color: #fff;
+  font-size: 1rem;
+  padding: 8px 12px;
+  text-align: center;
+  font-style: italic;
+  border-radius: 0 0 8px 8px; /* match gallery border radius */
+}
+
 .gallery-btn {
   cursor: pointer; position: absolute; top: 50%;
   padding: 12px; margin-top: -22px; color: white; font-weight: bold;
