@@ -14,6 +14,7 @@ Science Drive 4, Singapore-119077
 
 <i class="fas fa-envelope"></i> [shubhamkejriwal@u.nus.edu](mailto:shubhamkejriwal@u.nus.edu)  
 <i class="fab fa-orcid"></i> [ORCID](https://orcid.org/0009-0004-5838-1886)
+<i class="fas fa-book"></i> [INSPIRE-HEP](https://inspirehep.net/authors/2739234)
 
 Gravitational Waves | Bayesian Inference | Machine Learning
   </div>
