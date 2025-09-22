@@ -78,34 +78,36 @@ or by participating:
 <div class="gallery-container">
   <button class="gallery-btn prev" onclick="plusSlides(-1)">&#10094;</button>
   
-  <div class="gallery-slide fade">
-    <img src="{{ site.baseurl }}/assets/icecave.jpg" alt="Iceland Ice Cave">
-    <div class="caption">Inside an ice cave on Katla Glacier, Iceland.</div>
-  </div>
+  <div class="gallery-track">
+    <div class="gallery-slide">
+      <img src="{{ site.baseurl }}/assets/icecave.jpg" alt="Iceland Ice Cave">
+      <div class="caption">Inside an ice cave on Katla Glacier, Iceland.</div>
+    </div>
 
-  <div class="gallery-slide fade">
-    <img src="{{ site.baseurl }}/assets/mtbromo.jpg" alt="Mt Bromo Portrait">
-    <div class="caption">A view of Mt. Bromo, Indonesia.</div>
-  </div>
+    <div class="gallery-slide">
+      <img src="{{ site.baseurl }}/assets/mtbromo.jpg" alt="Mt Bromo Portrait">
+      <div class="caption">A view of Mt. Bromo, Indonesia.</div>
+    </div>
 
-  <div class="gallery-slide fade">
-    <img src="{{ site.baseurl }}/assets/joshuatree.jpg" alt="Joshua Tree National Park">
-    <div class="caption">The night sky in Joshua Tree National Park, USA.</div>
-  </div>
+    <div class="gallery-slide">
+      <img src="{{ site.baseurl }}/assets/joshuatree.jpg" alt="Joshua Tree National Park">
+      <div class="caption">The night sky in Joshua Tree National Park, USA.</div>
+    </div>
 
-  <div class="gallery-slide fade">
-    <img src="{{ site.baseurl }}/assets/krabi.jpg" alt="Krabi Beach">
-    <div class="caption">Ao Nang Beach, Krabi, Thailand.</div>
-  </div>
+    <div class="gallery-slide">
+      <img src="{{ site.baseurl }}/assets/krabi.jpg" alt="Krabi Beach">
+      <div class="caption">Ao Nang Beach, Krabi, Thailand.</div>
+    </div>
 
-  <div class="gallery-slide fade">
-    <img src="{{ site.baseurl }}/assets/swissalps.jpg" alt="Alpine Range from Pilatus">
-    <div class="caption">A view of the Alpine Range from Mt. Pilatus, Switzerland.</div>
-  </div>
+    <div class="gallery-slide">
+      <img src="{{ site.baseurl }}/assets/swissalps.jpg" alt="Alpine Range from Pilatus">
+      <div class="caption">A view of the Alpine Range from Mt. Pilatus, Switzerland.</div>
+    </div>
 
-  <div class="gallery-slide fade">
-    <img src="{{ site.baseurl }}/assets/bambooforestjapan.jpg" alt="Bamboo forest Japan">
-    <div class="caption">Inside a Bamboo Forest near Kyoto, Japan.</div>
+    <div class="gallery-slide">
+      <img src="{{ site.baseurl }}/assets/bambooforestjapan.jpg" alt="Bamboo forest Japan">
+      <div class="caption">Inside a Bamboo Forest near Kyoto, Japan.</div>
+    </div>
   </div>
 
   <button class="gallery-btn next" onclick="plusSlides(1)">&#10095;</button>
@@ -126,18 +128,23 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
 
 .gallery-container {
   position: relative;
-  max-width: 800px; /* you can adjust this width */
+  max-width: 800px;
   margin: auto;
-  aspect-ratio: 4/3; /* set to the aspect ratio of your first image */
-  background: #000;   /* background fill when images don't cover full area */
+  aspect-ratio: 4/3;
+  background: #000;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
+.gallery-track {
+  display: flex;
+  transition: transform 0.8s ease-in-out; /* smooth slide */
+  height: 100%;
+}
+
 .gallery-slide {
-  display: none;
-  text-align: center;
+  min-width: 100%;
   height: 100%;
   position: relative;
 }
@@ -145,7 +152,7 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
 .gallery-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* fit images inside the fixed frame */
+  object-fit: contain;
 }
 
 .caption {
@@ -154,13 +161,13 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  background: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   font-size: 1rem;
   padding: 8px 12px;
   text-align: center;
   font-style: italic;
-  border-radius: 0 0 8px 8px; /* match gallery border radius */
+  border-radius: 0 0 8px 8px;
 }
 
 .gallery-btn {
@@ -174,35 +181,57 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
 </style>
 
 <script>
-let slideIndex = 1;
+let slideIndex = 0;
 let slideTimer;
 
-// show first slide
-showSlides(slideIndex);
+const track = document.querySelector(".gallery-track");
+const slides = document.querySelectorAll(".gallery-slide");
+const totalSlides = slides.length;
 
-// next/prev controls
+function updateSlidePosition() {
+  track.style.transform = `translateX(-${slideIndex * 100}%)`;
+}
+
 function plusSlides(n) {
-  clearTimeout(slideTimer); // reset timer when manually navigating
-  showSlides(slideIndex += n);
+  clearTimeout(slideTimer);
+  slideIndex = (slideIndex + n + totalSlides) % totalSlides;
+  updateSlidePosition();
+  slideTimer = setTimeout(autoSlide, 10000);
 }
 
-// main showSlides function
-function showSlides(n) {
-  let slides = document.getElementsByClassName("gallery-slide");
+function autoSlide() {
+  slideIndex = (slideIndex + 1) % totalSlides;
+  updateSlidePosition();
+  slideTimer = setTimeout(autoSlide, 10000);
+}
 
-  if (n > slides.length) { slideIndex = 1 }
-  if (n < 1) { slideIndex = slides.length }
+// Swipe support
+let startX = 0;
+let endX = 0;
 
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+track.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener("touchmove", (e) => {
+  endX = e.touches[0].clientX;
+});
+
+track.addEventListener("touchend", () => {
+  let deltaX = endX - startX;
+  if (Math.abs(deltaX) > 50) {  // threshold to prevent accidental taps
+    if (deltaX > 0) {
+      plusSlides(-1); // swipe right → previous
+    } else {
+      plusSlides(1);  // swipe left → next
+    }
   }
+  startX = 0;
+  endX = 0;
+});
 
-  slides[slideIndex-1].style.display = "block";
-
-  // auto-advance every 10 seconds
-  slideTimer = setTimeout(function() {
-    showSlides(slideIndex += 1);
-  }, 10000);
-}
+// init
+updateSlidePosition();
+slideTimer = setTimeout(autoSlide, 10000);
 </script>
 
