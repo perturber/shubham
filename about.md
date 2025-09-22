@@ -128,7 +128,7 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
 
 .gallery-container {
   position: relative;
-  max-width: 800px;
+  max-width: 600px;
   margin: auto;
   aspect-ratio: 4/3;
   background: #000;
