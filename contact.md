@@ -8,6 +8,8 @@ permalink: /contact/
 
 <div class="bubble contact-bubble" markdown="1">
 
+<div class="contact-text" markdown="1">
+  
 <h2 class="contact-name">Shubham Kejriwal</h2>
 <p class="contact-title">Gravitational Waves | Bayesian Inference | Machine Learning</p>
 
@@ -23,24 +25,17 @@ Science Drive 4, Singapore-119077
 <i class="fab fa-linkedin"></i> [LinkedIn/shubham-kejriwal-919976192](https://www.linkedin.com/in/shubham-kejriwal-919976192/)  
 
 </div>
+</div>
 
 <style>
-/* Full page centering */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* full viewport height */
-  margin: 0;
-}
-
-/* Bubble card */
 .bubble {
   background: #fff;
   border-radius: 12px;
-  padding: 20px 30px;
+  padding: 20px 25px;
+  margin: 40px auto;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   max-width: 700px;
+  min-height: 220px; /* card-like height */
   border-left: 6px solid #444; /* dark grey accent border */
 }
 
@@ -51,14 +46,14 @@ body {
 }
 
 .contact-name {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 4px;
   color: #222;
 }
 
 .contact-title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 400;
   margin-bottom: 12px;
   color: #666;
