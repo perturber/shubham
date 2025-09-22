@@ -28,7 +28,7 @@ Below, I provide a slightly more elaborate (and mostly self-contained) overview 
   </figcaption>
 </figure>  
 
-I primarily work on developing the data analysis pipeline in various contexts (as you will see below) for the upcoming space-based gravitational wave observatory, i.e. the Laser Interferometer Space Antenna (LISA) [(NASA)](https://lisa.nasa.gov/). LISA was recently adopted by the European Space Agency (ESA), and is on track to be launched sometime in the middle of the next decade [(ESA)](https://www.esa.int/Science_Exploration/Space_Science/LISA/Capturing_the_ripples_of_spacetime_LISA_gets_go-ahead). Notably, the milli-Hz frequency band of LISA will be sensitive to many source-types, including a swarm of compact binaries evolving in the Milky Way, supermassive black hole binaries in the late-inspiral stage, and extreme-mass-ratio inspirals (EMRIs) in which a stellar-mass black hole is gravitationally bound to a supermassive black hole [(LISA Collaboration)](https://arxiv.org/abs/2402.07571). EMRIs are the primary target of my study.  
+I work on the data analysis pipeline for the Laser Interferometer Space Antenna (LISA) [(NASA)](https://lisa.nasa.gov/), scheduled for launch in the mid-2030s [(ESA)](https://www.esa.int/Science_Exploration/Space_Science/LISA/Capturing_the_ripples_of_spacetime_LISA_gets_go-ahead). LISA will be sensitive to gravitational waves from galactic binaries, supermassive black hole mergers, and extreme-mass-ratio inspirals (EMRIs) in which a stellar-mass black hole orbits a supermassive one [(LISA Collaboration)](https://arxiv.org/abs/2402.07571). EMRIs are my primary focus.
 
 
 ### Extreme-mass-ratio inspirals (EMRIs)  
@@ -50,7 +50,7 @@ I primarily work on developing the data analysis pipeline in various contexts (a
 </figure>
 
 
-EMRIs are inspirals of a compact object (CO) — most relevant to the context of LISA a stellar-origin black hole with mass \\(\sim 10 M_\odot\\) — orbiting a supermassive black hole (MBH) of mass \\(\sim 10^6 M_\odot\\). Their gravitational wave signals are expected to spend years in the LISA band spanning hundreds of thousands of strong-field orbits. This will allow a unique opportunity to map the curvature of spacetime around MBHs, testing General Relativity (GR) to unprecedented precision. In addition, any environmental forces (for e.g. from an accretion disk surrounding the MBH) will have a cummulative effect on the binary's long-term inspiral, making measurements extremely sensitive to such effects.
+Gravitational wave signals from EMRIs will last in the LISA band for years, allowing us to map the curvature of spacetime around supermassive black holes and test General Relativity (GR) with high precision. Their long inspirals also make them sensitive to environmental effects, such as migration torques from accretion disks.
 
 </div>
 
@@ -63,22 +63,26 @@ EMRIs are inspirals of a compact object (CO) — most relevant to the context of
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
   <img src="{{ site.baseurl | default: '' }}/assets/joint_analysis/correlation_bias-1.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
-    <em>Figure 3: Biases induced on the EMRI's intrinsic parameters due to an environmental effect in the signal which was not accounted for in the inference. The biases scaled by the \(1\sigma\) measurement precision on each parameter are plotted along the vertical axis, showing biases of order \(10-100\sigma\). The horizontal axis shows the average correlations of the intrinsic and the unmeasured environmental effect parameter, showing a weak trend. Diagram from <a href="https://arxiv.org/abs/2312.13028" target="_blank">Kejriwal et al. (2023)</a>.</em>
+    <em>Figure 3: Biases (in \(\sigma\)'s) induced on the EMRI's intrinsic parameters due to an environmental effect in the signal which was not accounted for in the inference. Diagram from <a href="https://arxiv.org/abs/2312.13028" target="_blank">Kejriwal et al. (2023)</a>.</em>
   </figcaption>
 </figure> 
 
-Mathematically, environmental effects and beyond-GR modifications are generally expressed using simple power law expressions, added perturbatively to the leading-order equations of motion of the binary, see e.g. [Kocsis et al. (2011)](https://arxiv.org/abs/1104.2322) and [Barausse et al. (2014)](https://arxiv.org/abs/1404.7149), or directly to the final waveform in frequency domain, see e.g. [Yunes and Pretorius (2009)](https://arxiv.org/abs/0909.3328). When multiple such effects, which we generically tag as "beyond-vacuum-GR" effects, are being tested for during inference, the general expectation in the literature is then that they can simply be added together. However, using a generic mathematical framework, we show in our work [(Kejriwal et al. (2023))](https://arxiv.org/abs/2312.13028), that such setups can lead to extremely correlated posterior surfaces. Along with worsened inference efficiency, this also degrades the precision with which EMRI parameters can be measured. On the flip side, if such effects are excluded from the analysis but are present in the true signal, this can significantly bias the inference of EMRI's intrinsic parameters (more than \\(10\sigma\\)), effectively washing away any prospects of testing GR. Our study is a first of its kind to establish the severe impact that beyond-vacuum-GR effects can have on EMRI systems, and motivates further work to develop a consistent and systematic procedure to include such effects in the data analysis pipeline.  
+Many proposed environmental and beyond-GR effects are added perturbatively to the EMRI's dynamics, see e.g. [Kocsis et al. (2011)](https://arxiv.org/abs/1104.2322), [Barausse et al. (2014)](https://arxiv.org/abs/1404.7149), and [Yunes and Pretorius (2009)](https://arxiv.org/abs/0909.3328). Using a generic mathematical framework, we show in our work [(Kejriwal et al. (2023))](https://arxiv.org/abs/2312.13028), that such setups can cause strong parameter correlations when multiple effects are measured simultaneously, worsening inference. On the other hand, excluding such effects from the analysis can significantly bias the inferred parameters (by \\(\gtrsim 10\sigma\\)).
+
+</div>
+
+<div class="bubble" markdown="1">
 
 <figure>
   <!-- Inline style on IMG sets DESKTOP max width -->
   <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
   <img src="{{ site.baseurl | default: '' }}/assets/biascorrected.png" alt="biases intrinsic" style="max-width: 450px;"/>
   <figcaption>
-    <em>Figure 4: (Left panel): Schematic representation of how biases are induced to the set of signal parameters \(\psi_S, \varphi_S\) (blue cross) in a larger "signal space" (red cube) when inferred over a template space (grey manifold) which holds fixed one or more signal parameters to a fixed null value, in this case \(\varphi = \varphi_0\). The "best-fit" point is obtained at a biased location: \(\psi_{\rm MAP}, \varphi_0\). (Right panel): The scheme proposed in <a href="https://arxiv.org/abs/2503.01120" target="_blank">Kejriwal et al. (2025)</a> to correct the biases by obtaining posterior samples along the restricted axis (green stars along the vertical axis) and measuring the corresponding probability that \(\varphi \neq \varphi_0\).</em>
+    <em>Figure 4: (Left panel): How biases are induced to the set of signal parameters \(\psi_S, \varphi_S\). (Right panel): The scheme proposed in <a href="https://arxiv.org/abs/2503.01120" target="_blank">Kejriwal et al. (2025)</a> to correct the biases by obtaining posterior samples along a "correction" axis.</em>
   </figcaption>
 </figure> 
 
-A major challenge in developing a systematic framework for inferring beyond-vacuum-GR effects is the shear number of such effects proposed in the literature. Given the cost of sampling the posterior surface in a single run with techniques like Markov Chain Monte Carlo (MCMC), and especially in the context of the LISA global fit inference pipeline, it is impractical to try and constrain all such effects simultaneously. Our latest work [(Kejriwal et al. (2025))](https://arxiv.org/abs/2503.01120) proposes an inference-based method to consistently and inexpensively obtain samples from the posterior surface in alternate beyond-vacuum-GR hypothesis, given just posterior samples from the vacuum-GR hypothesis. Within this novel framework, beyond-vacuuum-GR hypotheses can be quickly tested in a "post-processing" inference step.  
+The cost of inference under a single hypothesis can be overwhelming, especially in the context of the LISA global fit pipeline. It is thus impractical to perform tests of environmental and beyond-GR modifications using conventional methods. In our work [(Kejriwal et al. (2025))](https://arxiv.org/abs/2503.01120), we proposes bias-corrected importance sampling, which can consistently and inexpensively obtain samples from the posterior in alternative hypotheses, given just the posterior samples under vacuum-GR.
 
 </div>
 
@@ -104,7 +108,7 @@ A major challenge in developing a systematic framework for inferring beyond-vacu
   </figcaption>
 </figure> 
 
-Quasi-periodic eruption (QPE) events, which are low-frequency (\\(\sim 10^{-4}\\) Hz) signals of soft X-ray peaks over a quiescent background, are theorized to be electromagnetic (EM) counterparts of EMRIs. While EMRIs evolving in a vacuum are not expected to host EM counterparts, the presence of a disk around the MBH allows interactions with the compact object that can lead to EM counterparts in the X-ray or even ultraviolet bands, see e.g. [Linial and Metzger (2023)](https://arxiv.org/abs/2303.16231). This poses an exciting prospect of multimessenger astronomy with EMRIs. In our work, [(Kejriwal et al. (2024))](https://arxiv.org/abs/2404.00941), we calculated the frequency band of QPE sources that are emitting an EM signal "today", such that they may also be observed in the future by LISA as GW sources. We extended our analysis to a particularly promising QPO source (where the 'O' now stands for oscillations, not eruptions, distinguishing their intensity), RE J1034+396. REJ has shown a decreasing time period over two observations separated by a decade, which is expected of EMRIs. We found that a compact object orbiting the MBH in REJ may be of mass \\(\approx 47 M_\odot\\) and that there is a \\(\approx 25\%\\) probability that REJ (if it *is* an EMRI and follows its current inspiral trend) would be detected in the LISA band. Our study is a first of its kind to comment on the multimessenger prospects of LISA EMRIs.  
+Quasi-periodic eruptions (QPEs) are low-frequency (\\(\sim 10^{-4}\\) Hz) soft X-ray band signals, and are emerging as candidate electromagnetic counterparts of EMRIs with accretion disks, see e.g. [Linial and Metzger (2023)](https://arxiv.org/abs/2303.16231). This poses an exciting prospect of multimessenger astronomy with EMRIs. In our work, [(Kejriwal et al. (2024))](https://arxiv.org/abs/2404.00941), we analyzed the prospect of simultaneously observing EMRIs in the X-ray band and as GWs. Such sources open a new avenue of multimessenger astronomy with EMRIs. We also analyzed RE J1034+396, a QP'O' (where 'O' is now for 'oscillations'). We found that REJ may host an orbiting compact object of mass \\(\approx 47 M_\odot\\). We also estimated that there is a \\(\approx 25\%\\) probability that REJ may be detected by LISA.
 
 </div>
 
@@ -112,13 +116,13 @@ Quasi-periodic eruption (QPE) events, which are low-frequency (\\(\sim 10^{-4}\\
 
 ## Developing Waveform Models and Data Analysis Tools
 
-  These are ongoing projects under this theme:  
+  There are multiple ongoing projects that I am actively contributing to:
   
-  - **Latest waveform models:** As described in the first section, EMRIs in the LISA band will be late-stage inspirals of compact objects around MBHs. They are modeled using black hole perturbation theory and self-force theory [(Barack and Pound (2018))](https://arxiv.org/abs/1805.10385), solving Einstein's field equations perturbatively expanded in the small-mass-ratio. Waveform models can differ in accuracy or coverage of the parameter space, although ultimately, both aspects will need to be married for EMRI science with LISA. An ongoing project aims to close this gap with a waveform model that is fully relativistic at the adiabatic (leading)-order, and approximates higher-order corrections using a post-Newtonian expansion. I am involved in the code implementation of this model and in studying its data analysis implications for LISA search and inference.  
+  - **Waveform modeling:** We are developing the `SuperKludge`: a hybridized waveform model that can be used for practical data analysis of EMRIs.
   
-  - **`FastEMRIWaveforms (FEW)` Suite:** To perform data analysis with a given model, rapid waveform evaluation is required at each parameter point. The `FastEMRIWaveforms (FEW)` package [(Katz et al. (2021))](https://arxiv.org/abs/2104.04582) provides the framework to generate such waveforms, augmented by GPU-acceleration and strategically setting mode-selection cutoffs. I am involved in the development of the latest version of `FEW` and studying the data analysis implications for the latest KerrEccentricEquatorial model being introduced in this release. The manuscript is currently under preparation.  
+  - **`FastEMRIWaveforms (FEW)`:** I am involved in the development of `FEW v2.0` and its data analysis implications. The pre-print is now available [here](https://arxiv.org/abs/2506.09470v1). 
 
-  - **`StableEMRIFishers (SEF)` Package:** Fisher Information Matrices (FIMs) describe the information content of the signal at a parameter point \\(\boldsymbol{\theta}\\), and its inverse provides an upper-bound on measurement precision of \\(\boldsymbol{\theta}\\). In preparatory science for LISA and EMRIs, FIMs thus play a significant role in studies spanning large parameter spaces, where more accurate but expensive methods like MCMC become impractical. However, obtaining the FIM for GW waveforms involves taking their derivatives, which can be especially challenging for highly-correlated posterior surfaces [(Vallisneri (2007))](https://arxiv.org/abs/gr-qc/0703086), characteristic of EMRIs. In addition, various approximations are made in practical waveform generation to enable their fast computation, which amplifies the problem by introducing small "jitters" in the likelihood surface, especially for strong-field signals. In a manuscript under preparation, we have formulated a robust FIM calculator, `StableEMRIFishers (SEF)`, that attempts to systematically calculate stable derivatives and hence the FIMs given an input EMRI parameter point \\(\boldsymbol{\theta}\\). The `StableEMRIFishers (SEF)` code is used in published and ongoing studies, see e.g. [Duque et al. (2024)](https://arxiv.org/abs/2411.03436).  
+  - **`StableEMRIFisher (SEF)`:** I am the creater of `StableEMRIFisher (SEF)`, a package to generate fast and robust information matrices for EMRIs. `SEF` is available publically on [Github](https://github.com/perturber/StableEMRIFisher).
 
 <style>
 .bubble {
