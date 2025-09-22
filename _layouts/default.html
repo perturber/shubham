@@ -204,7 +204,7 @@
       width: 100%;
     }
     main {
-      padding: 30px; /* Padding around content */
+      padding: 30px; /* Base padding for content */
       flex-grow: 1;
       background-color: var(--content-bg); color: var(--content-text);
       overflow-x: hidden; /* Prevent main content from causing horizontal scroll */
@@ -224,11 +224,12 @@
     main a:active { color: var(--content-link-color); }
     /* === End Link Styling === */
 
-    /* --- Rules for spacing and styling figures --- */
+    /* --- Rules for spacing around figures in main content --- */
     main figure {
-      margin: 2em auto; /* Vertical margin + auto horizontal for centering */
-      max-width: 100%; /* Ensure figure element itself respects container */
-      text-align: center; /* Center figcaption text */
+      margin-top: 2em;
+      margin-bottom: 2em;
+      max-width: 100%; /* Ensure figure element itself is responsive */
+      text-align: center; /* Center content like img and figcaption within */
     }
     main figure figcaption {
       margin-top: 0.5em; /* Space between image/video and caption */
@@ -236,23 +237,17 @@
       color: #555; /* Slightly lighter caption text */
     }
 
-    /* --- *** THIS IS THE MODIFIED BLOCK *** --- */
     /* --- BASE Responsive Styling for Images within Main Content --- */
+    /* This applies to ALL images within <main> unless overridden by inline styles */
     main img {
-      display: block;       /* Remove extra space */
-      margin-left: auto;   /* Center within figure */
-      margin-right: auto;  /* Center within figure */
-      /* CORE RULES FOR RESPONSIVENESS */
-      width: 100%;        /* Try to fill container width */
-      max-width: 100%;    /* BUT don't exceed container width (mobile safety) */
+      max-width: 100%;    /* CORE RULE 1: Never wider than container (mobile fix) */
       height: auto;       /* Maintain aspect ratio */
-      box-sizing: border-box; /* Include padding/border in width calculation */
-      /* An INLINE style="max-width: XXXpx;" on the <img> tag in Markdown */
-      /* will act as an ADDITIONAL constraint, limiting the size on desktop */
-      /* because the browser takes the MINIMUM of all max-width rules. */
+      display: block;     /* Remove extra space below image */
+      margin-left: auto;  /* Assists centering within the figure */
+      margin-right: auto; /* Assists centering within the figure */
+      /* Inline style="max-width: XXXpx;" can be added in Markdown */
+      /* to set a SPECIFIC max width for desktop */
     }
-    /* --- *** END OF MODIFIED BLOCK *** --- */
-
 
     /* --- Responsive Styling for IFrames (Video) --- */
     /* The container sets the aspect ratio */
@@ -392,7 +387,6 @@
         body.sidebar-open::after { opacity: 1; visibility: visible; }
         body { padding-top: var(--mobile-top-bar-height); } /* Adjust body for fixed top bar */
     }
-    /* --- End Responsive Layout Styles --- */
 
   </style>
 </head>
@@ -400,7 +394,9 @@
 
   <!-- Mobile Only Top Bar -->
   <div id="mobile-top-bar">
-      <button id="mobile-sidebar-toggle" aria-label="Open Menu" aria-controls="sidebar" aria-expanded="false"><i class="fas fa-bars"></i></button>
+      <button id="mobile-sidebar-toggle" aria-label="Open Menu" aria-controls="sidebar" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+      </button>
       <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham" class="mobile-top-profile-pic">
       <div class="mobile-top-icons">
           <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
@@ -412,11 +408,17 @@
 
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
-    <button id="desktop-sidebar-toggle" aria-label="Toggle Menu" aria-controls="sidebar" aria-expanded="true"><i class="fas fa-times"></i></button>
-    <button id="sidebar-close-button" aria-label="Close Menu"><i class="fas fa-times"></i></button>
+    <button id="desktop-sidebar-toggle" aria-label="Toggle Menu" aria-controls="sidebar" aria-expanded="true">
+      <i class="fas fa-times"></i> <!-- Icon changes via JS -->
+    </button>
+    <button id="sidebar-close-button" aria-label="Close Menu">
+        <i class="fas fa-times"></i>
+    </button>
+
     <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham" class="sidebar-profile-pic">
     <h2>Shubham Kejriwal</h2>
-    <p class="sidebar-description"><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>Science Drive 4, <br> Singapore-119077 </p>
+    <p class="sidebar-description"><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>
+Science Drive 4, <br> Singapore-119077 </p>
     <div class="sidebar-icon-links">
       <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
       <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
@@ -424,11 +426,14 @@
       <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
     <nav class="sidebar-nav">
-      <a href="{{ site.baseurl | default: '' }}/">Home</a>
-      <a href="{{ site.baseurl | default: '' }}/publications/">Publications</a>
-      <a href="{{ site.baseurl | default: '' }}/research/">Research</a>
-      <a href="{{ site.baseurl | default: '' }}/assets/Shubham_Kejriwal_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
-    </nav>
+  <a href="{{ site.baseurl | default: '' }}/">Home</a>
+  <a href="{{ site.baseurl | default: '' }}/about/">About</a>
+  <a href="{{ site.baseurl | default: '' }}/research/">Research</a>
+  <a href="{{ site.baseurl | default: '' }}/publications/">Publications</a>
+  <a href="{{ site.baseurl | default: '' }}/contact/">Contact</a>
+  <a href="{{ site.baseurl | default: '' }}/assets/Shubham_Kejriwal_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+</nav>
+
   </div>
 
   <!-- Main Content Area -->
@@ -439,19 +444,87 @@
   </div>
 
   <script>
-    // Standard sidebar and layout JavaScript (Unchanged from your version)
+    // Standard sidebar and layout JavaScript (kept concise for brevity)
     document.addEventListener("DOMContentLoaded", function () {
-      const sidebar = document.getElementById("sidebar"); const body = document.body; const mobileTopBar = document.getElementById("mobile-top-bar"); const desktopToggleBtn = document.getElementById("desktop-sidebar-toggle"); const mobileToggleBtn = document.getElementById("mobile-sidebar-toggle"); const sidebarCloseBtn = document.getElementById("sidebar-close-button"); const mainContent = document.querySelector('main');
-      if (!sidebar || !body || !mobileTopBar || !desktopToggleBtn || !mobileToggleBtn || !sidebarCloseBtn || !mainContent) { console.error("Essential layout element(s) not found."); return; }
-      const adjustBodyPadding = () => { const isMobile = window.innerWidth <= 768; const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none'; const topBarHeight = mobileTopBar.offsetHeight; body.style.paddingTop = (isMobile && isTopBarVisible && topBarHeight > 0) ? `${topBarHeight}px` : '0px'; };
-      const setSidebarState = (shouldBeOpen) => { const isMobile = window.innerWidth <= 768; if (isMobile) { body.classList.toggle('sidebar-open', shouldBeOpen); sidebar.classList.remove('collapsed'); mobileToggleBtn.setAttribute('aria-expanded', shouldBeOpen); desktopToggleBtn.setAttribute('aria-expanded', 'true'); const desktopIcon = desktopToggleBtn.querySelector('i'); if (desktopIcon) desktopIcon.className = 'fas fa-times'; } else { sidebar.classList.toggle('collapsed', !shouldBeOpen); body.classList.remove('sidebar-open'); desktopToggleBtn.setAttribute('aria-expanded', shouldBeOpen); const desktopIcon = desktopToggleBtn.querySelector('i'); if (desktopIcon) { desktopIcon.className = shouldBeOpen ? 'fas fa-times' : 'fas fa-bars'; } mobileToggleBtn.setAttribute('aria-expanded', 'false'); } requestAnimationFrame(adjustBodyPadding); };
-      const setInitialState = () => { const isMobile = window.innerWidth <= 768; setSidebarState(!isMobile); adjustBodyPadding(); };
-      const setupMainLinks = () => { mainContent.querySelectorAll('a').forEach(link => { const href = link.getAttribute('href'); if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:') && !link.hasAttribute('target')) { try { const linkUrl = new URL(href, window.location.href); if (linkUrl.hostname !== window.location.hostname) { link.setAttribute('target', '_blank'); link.setAttribute('rel', 'noopener noreferrer'); } } catch (e) { /* Ignore invalid URLs */ } } }); };
-      setInitialState(); setupMainLinks(); if (typeof MathJax !== "undefined" && MathJax.Hub) { MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.body]); }
-      desktopToggleBtn.addEventListener("click", () => setSidebarState(sidebar.classList.contains('collapsed'))); mobileToggleBtn.addEventListener("click", () => setSidebarState(true)); sidebarCloseBtn.addEventListener("click", () => setSidebarState(false));
-      body.addEventListener('click', event => { if (window.innerWidth <= 768 && body.classList.contains('sidebar-open') && !sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target)) { setSidebarState(false); } });
+      const sidebar = document.getElementById("sidebar");
+      const body = document.body;
+      const mobileTopBar = document.getElementById("mobile-top-bar");
+      const desktopToggleBtn = document.getElementById("desktop-sidebar-toggle");
+      const mobileToggleBtn = document.getElementById("mobile-sidebar-toggle");
+      const sidebarCloseBtn = document.getElementById("sidebar-close-button");
+      const mainContent = document.querySelector('main');
+
+      if (!sidebar || !body || !mobileTopBar || !desktopToggleBtn || !mobileToggleBtn || !sidebarCloseBtn || !mainContent) {
+          console.error("Essential layout element(s) not found."); return;
+      }
+
+      const adjustBodyPadding = () => {
+          const isMobile = window.innerWidth <= 768;
+          const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none';
+          const topBarHeight = mobileTopBar.offsetHeight;
+          body.style.paddingTop = (isMobile && isTopBarVisible && topBarHeight > 0) ? `${topBarHeight}px` : '0px';
+      };
+
+      const setSidebarState = (shouldBeOpen) => {
+          const isMobile = window.innerWidth <= 768;
+          if (isMobile) {
+              body.classList.toggle('sidebar-open', shouldBeOpen);
+              sidebar.classList.remove('collapsed');
+              mobileToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
+              desktopToggleBtn.setAttribute('aria-expanded', 'true');
+              const desktopIcon = desktopToggleBtn.querySelector('i'); if (desktopIcon) desktopIcon.className = 'fas fa-times';
+          } else {
+              sidebar.classList.toggle('collapsed', !shouldBeOpen);
+              body.classList.remove('sidebar-open');
+              desktopToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
+              const desktopIcon = desktopToggleBtn.querySelector('i'); if (desktopIcon) { desktopIcon.className = shouldBeOpen ? 'fas fa-times' : 'fas fa-bars'; }
+              mobileToggleBtn.setAttribute('aria-expanded', 'false');
+          }
+          requestAnimationFrame(adjustBodyPadding);
+      };
+
+      const setInitialState = () => {
+          const isMobile = window.innerWidth <= 768;
+          setSidebarState(!isMobile); adjustBodyPadding();
+      };
+
+      const setupMainLinks = () => {
+         mainContent.querySelectorAll('a').forEach(link => {
+            const href = link.getAttribute('href');
+             if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:') && !link.hasAttribute('target')) {
+                try {
+                    const linkUrl = new URL(href, window.location.href);
+                    if (linkUrl.hostname !== window.location.hostname) {
+                        link.setAttribute('target', '_blank'); link.setAttribute('rel', 'noopener noreferrer');
+                    }
+                } catch (e) { /* Ignore invalid URLs */ }
+             }
+         });
+      };
+
+      setInitialState();
+      setupMainLinks();
+      if (typeof MathJax !== "undefined" && MathJax.Hub) { MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.body]); }
+
+      desktopToggleBtn.addEventListener("click", () => setSidebarState(sidebar.classList.contains('collapsed')));
+      mobileToggleBtn.addEventListener("click", () => setSidebarState(true));
+      sidebarCloseBtn.addEventListener("click", () => setSidebarState(false));
+      body.addEventListener('click', event => {
+           if (window.innerWidth <= 768 && body.classList.contains('sidebar-open') && !sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target)) {
+               setSidebarState(false);
+           }
+       });
+
       let resizeTimeout; let currentWindowWidth = window.innerWidth;
-      window.addEventListener('resize', () => { clearTimeout(resizeTimeout); resizeTimeout = setTimeout(() => { const newWindowWidth = window.innerWidth; const breakpoint = 768; const isMobile = newWindowWidth <= breakpoint; const wasMobile = currentWindowWidth <= breakpoint; if (isMobile !== wasMobile) { setInitialState(); } else { adjustBodyPadding(); } currentWindowWidth = newWindowWidth; }, 150); });
+      window.addEventListener('resize', () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+              const newWindowWidth = window.innerWidth; const breakpoint = 768;
+              const isMobile = newWindowWidth <= breakpoint; const wasMobile = currentWindowWidth <= breakpoint;
+              if (isMobile !== wasMobile) { setInitialState(); } else { adjustBodyPadding(); }
+              currentWindowWidth = newWindowWidth;
+          }, 150);
+      });
       window.addEventListener('orientationchange', () => requestAnimationFrame(adjustBodyPadding));
     });
   </script>
