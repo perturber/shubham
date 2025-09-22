@@ -8,7 +8,7 @@ permalink: /about/
 
 <div class="bubble" markdown="1">
 
-My name is Shubham Kejriwal. I’m a final-year Ph.D. student in the gravitational waves group led by Prof. Alvin Chua in the department of Physics at the National University of Singapore. I primarily work on developing the data analysis pipeline for the upcoming LISA mission. I am proficient in Bayesian statistics and machine learning, with a working knowledge of general-relativistic waveform modeling.
+My name is Shubham Kejriwal, a final-year Ph.D. student in gravitational wave data analysis at the National University of Singapore. My PhD is supervised by Prof. Alvin Chua. My research focuses on developing the data analysis pipeline for the upcoming LISA mission. I am proficient in Bayesian statistics and machine learning, with a working knowledge of general-relativistic waveform modeling.
 
 </div>
 
@@ -28,14 +28,14 @@ My name is Shubham Kejriwal. I’m a final-year Ph.D. student in the gravitation
 
 ## What I Do
 ### Research Work
-I primarily work on developing different aspects of the data analysis pipeline for the upcoming space-based gravitational wave observatory LISA. Some broad directions in this context are highlighted below. You can read more about my research [here](/shubham/research/) and access my full list of publications [here](/shubham/publications/).
+Some broad directions of my research are highlighted below. You can read more about my research [here](/shubham/research/) and access my full list of publications [here](/shubham/publications/).
 
 - GW waveform modeling and inference of extreme-mass-ratio inspirals (EMRIs).  
 - Inferring environments and beyond-GR ("beyond-vacuum-GR") effects using the LISA mission.  
 - Search for electromagnetic counterparts of EMRIs.  
 
 ### Teaching
-I have contributed as a Teaching Assistant for multiple courses (both graduate and undergraduate) during my Ph.D. In my role, I have instructed tutorials, invigilated, assessed assignment submissions, and provided general guidance to class sizes of roughly 40-100 students.  
+I have served as a Teaching Assistant for graduate and undergraduate courses, leading tutorials, grading, and mentoring classes of 40-100 students. Below is a list of courses I have helped with.
 
 - [PC5252](https://nusmods.com/courses/PC5252/bayesian-statistics-and-machine-learning) "Bayesian Statistics and Machine Learning" (2 semesters).  
 - [COS1000](https://nusmods.com/courses/COS1000/computational-thinking-for-scientists) "Computational Thinking for Scientists" (3 semesters).  
