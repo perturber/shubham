@@ -124,7 +124,7 @@ Quasi-periodic eruptions (QPEs) are low-frequency (\\(\sim 10^{-4}\\) Hz) soft X
   
   - **`FastEMRIWaveforms (FEW)`:** I am involved in the development of `FEW v2.0` and its data analysis implications. The pre-print is now available [here](https://arxiv.org/abs/2506.09470v1). 
 
-  - **`StableEMRIFisher (SEF)`:** I am the creater of `StableEMRIFisher (SEF)`, a package to generate fast and robust information matrices for EMRIs. `SEF` is available publically on [Github](https://github.com/perturber/StableEMRIFisher).
+  - **`StableEMRIFisher (SEF)`:** I am the creater of `StableEMRIFisher (SEF)`, a package to generate fast and robust information matrices for EMRIs. `SEF` is available publicly on [Github](https://github.com/perturber/StableEMRIFisher).
 
 <style>
 .bubble {
