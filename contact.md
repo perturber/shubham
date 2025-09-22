@@ -39,11 +39,11 @@ permalink: /contact/
 .bubble {
   background: #fff;
   border-radius: 12px;
-  padding: 20px 30px;
+  padding: 20px 25px;
   margin: 40px auto;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  max-width: 700px;
-  aspect-ratio: 3 / 1;
+  max-width: 750px;
+  min-height: 220px; /* ensures enough height like a business card */
   border-left: 6px solid #444; /* dark grey left border */
 }
 
@@ -52,14 +52,13 @@ permalink: /contact/
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  height: 100%;
 }
 
 .contact-text {
   flex: 2;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   text-align: left;
-  line-height: 1.4;
+  line-height: 1.2; /* tighter line spacing */
 }
 
 .contact-name {
@@ -70,14 +69,14 @@ permalink: /contact/
 }
 
 .contact-title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 400;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: #666;
 }
 
 .contact-text i {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-right: 8px;
   color: #444;
 }
@@ -89,7 +88,7 @@ permalink: /contact/
 }
 
 .contact-profile-pic {
-  max-width: 150px;
+  max-width: 130px;
   height: auto;
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
