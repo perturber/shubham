@@ -123,9 +123,30 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
   margin: 20px 0;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-.gallery-container { position: relative; max-width: 600px; margin: auto; }
-.gallery-slide { display: none; text-align: center; }
-.gallery-slide img { width: 100%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+
+.gallery-container {
+  position: relative;
+  max-width: 800px; /* you can adjust this width */
+  margin: auto;
+  aspect-ratio: 16/9; /* set to the aspect ratio of your first image */
+  background: #000;   /* background fill when images don't cover full area */
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.gallery-slide {
+  display: none;
+  text-align: center;
+  height: 100%;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* fit images inside the fixed frame */
+}
+
 .caption { margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; color: #555; }
 .gallery-btn {
   cursor: pointer; position: absolute; top: 50%;
@@ -138,17 +159,35 @@ When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriw
 </style>
 
 <script>
-let slideIndex = 0;
-showSlides();
-function plusSlides(n) { slideIndex += n - 1; showSlides(); }
-function showSlides() {
+let slideIndex = 1;
+let slideTimer;
+
+// show first slide
+showSlides(slideIndex);
+
+// next/prev controls
+function plusSlides(n) {
+  clearTimeout(slideTimer); // reset timer when manually navigating
+  showSlides(slideIndex += n);
+}
+
+// main showSlides function
+function showSlides(n) {
   let slides = document.getElementsByClassName("gallery-slide");
-  for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-  slideIndex++;
-  if (slideIndex > slides.length) { slideIndex = 1 }
-  if (slideIndex < 1) { slideIndex = slides.length }
+
+  if (n > slides.length) { slideIndex = 1 }
+  if (n < 1) { slideIndex = slides.length }
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
   slides[slideIndex-1].style.display = "block";
-  setTimeout(showSlides, 10000);
+
+  // auto-advance every 10 seconds
+  slideTimer = setTimeout(function() {
+    showSlides(slideIndex += 1);
+  }, 10000);
 }
 </script>
 
