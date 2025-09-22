@@ -39,11 +39,12 @@ permalink: /contact/
 .bubble {
   background: #fff;
   border-radius: 12px;
-  padding: 20px 30px; /* less padding */
+  padding: 20px 30px;
   margin: 40px auto;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   max-width: 700px;
-  aspect-ratio: 3 / 1; /* card-like aspect ratio */
+  aspect-ratio: 3 / 1;
+  border-left: 6px solid #444; /* dark grey left border */
 }
 
 .contact-wrapper {
