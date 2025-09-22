@@ -12,16 +12,19 @@ permalink: /contact/
 
   <div class="contact-text" markdown="1">
   
-<i class="fas fa-envelope"></i> [shubhamkejriwal@u.nus.edu](mailto:shubhamkejriwal@u.nus.edu)  
-
+  <h2 class="contact-name">Shubham Kejriwal</h2>
+  
 <i class="fas fa-university"></i> Department of Physics, National University of Singapore,  
 Science Drive 4, Singapore-119077  
+  
+<i class="fas fa-envelope"></i> [shubhamkejriwal@u.nus.edu](mailto:shubhamkejriwal@u.nus.edu)  
 
 <i class="fab fa-github"></i> [GitHub/perturber](https://github.com/perturber)  
 
 <i class="fab fa-orcid"></i> [ORCID/0009-0004-5838-1886](https://orcid.org/0009-0004-5838-1886)  
 
 <i class="fab fa-linkedin"></i> [LinkedIn/shubham-kejriwal-919976192](https://www.linkedin.com/in/shubham-kejriwal-919976192/)  
+
 
    </div>
    
