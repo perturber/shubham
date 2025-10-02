@@ -20,9 +20,7 @@ Below, I provide a slightly more elaborate (and mostly self-contained) overview 
 ### Laser Interferometer Space Antenna (LISA)
 
 <figure>
-  <!-- Inline style on IMG sets DESKTOP max width -->
-  <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
-  <img src="{{ site.baseurl | default: '' }}/assets/LISA.jpg" alt="LISA image" style="max-width: 450px;"/>
+  <img src="{{ site.baseurl | default: '' }}/assets/LISA.jpg" alt="LISA image"/>
   <figcaption>
     <em>Figure 1: The space-based gravitational wave observatory LISA. Image from <a href="https://www.esa.int/ESA_Multimedia/Images/2002/02/LISA_Laser_Interferometer_Space_Antenna_line_drawing" target="_blank">ESA</a>.</em>
   </figcaption>
@@ -59,9 +57,7 @@ Gravitational wave signals from EMRIs will last in the LISA band for years, allo
 ## Measurability of "Beyond-Vacuum-GR" effects in EMRIs  
 
 <figure>
-  <!-- Inline style on IMG sets DESKTOP max width -->
-  <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
-  <img src="{{ site.baseurl | default: '' }}/assets/joint_analysis/correlation_bias-1.png" alt="biases intrinsic" style="max-width: 450px;"/>
+  <img src="{{ site.baseurl | default: '' }}/assets/joint_analysis/correlation_bias-1.png" alt="biases intrinsic"/>
   <figcaption>
     <em>Figure 3: Biases (in \(\sigma\)'s) induced on the EMRI's intrinsic parameters due to an environmental effect in the signal which was not accounted for in the inference. Diagram from <a href="https://arxiv.org/abs/2312.13028" target="_blank">Kejriwal et al. (2023)</a>.</em>
   </figcaption>
@@ -76,9 +72,7 @@ Many proposed environmental and beyond-GR effects are added perturbatively to th
 ## Bias-Corrected Importance Sampling
 
 <figure>
-  <!-- Inline style on IMG sets DESKTOP max width -->
-  <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
-  <img src="{{ site.baseurl | default: '' }}/assets/biascorrected.png" alt="biases intrinsic" style="max-width: 450px;"/>
+  <img src="{{ site.baseurl | default: '' }}/assets/biascorrected.png" alt="biases intrinsic"/>
   <figcaption>
     <em>Figure 4: (Left panel): How biases are induced to the set of signal parameters \(\psi_S, \varphi_S\). (Right panel): The scheme proposed in <a href="https://arxiv.org/abs/2503.01120" target="_blank">Kejriwal et al. (2025)</a> to correct the biases by obtaining posterior samples along a "correction" axis.</em>
   </figcaption>
@@ -93,18 +87,14 @@ The cost of inference under a single hypothesis can be overwhelming, especially 
 ## Electromagnetic Counterparts of EMRIs
 
 <figure>
-  <!-- Inline style on IMG sets DESKTOP max width -->
-  <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
-  <img src="{{ site.baseurl | default: '' }}/assets/EMcounterpart.png" alt="biases intrinsic" style="max-width: 450px;"/>
+ <img src="{{ site.baseurl | default: '' }}/assets/EMcounterpart.png" alt="biases intrinsic"/>
   <figcaption>
     <em>Figure 5: A schematic depiction of an EMRI evolving in a matter-rich environment (yellow disk). Diagram from <a href="https://arxiv.org/abs/2404.00941" target="_blank">Kejriwal et al. (2024)</a> courtesy of Vojtěch Witzany.</em>
   </figcaption>
 </figure> 
 
 <figure>
-  <!-- Inline style on IMG sets DESKTOP max width -->
-  <!-- CSS handles mobile scaling (width: 100%, max-width: 100%) -->
-  <img src="{{ site.baseurl | default: '' }}/assets/QPE.png" alt="biases intrinsic" style="max-width: 450px;"/>
+  <img src="{{ site.baseurl | default: '' }}/assets/QPE.png" alt="biases intrinsic"/>
   <figcaption>
     <em>Figure 6: Time-domain signal from the August 2020 run of eRO-QPE2 quasi-periodic eruption source. Diagram from  <a href="https://arxiv.org/abs/2411.00289" target="_blank">Pasham, Kejriwal et al. (2024)</a> courtesy of Dheeraj R. Pasham.</em>
   </figcaption>
@@ -140,5 +130,12 @@ Quasi-periodic eruptions (QPEs) are low-frequency (\\(\sim 10^{-4}\\) Hz) soft X
 .video-container::before { content: ""; display: block; padding-top: 56.25%; }
 .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 </style> 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 © 2025 Shubham Kejriwal
