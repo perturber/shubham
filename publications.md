@@ -8,7 +8,7 @@ permalink: /publications/
 
 <div class="bubble" markdown="1">
 
-Total *7* articles available as pre-prints or journal publications. Find my latest citation summary on [inspireHEP](https://inspirehep.net/authors/2739234?ui-citation-summary=true) and the most up-to-date list of articles on [arxiv](https://arxiv.org/search/advanced?advanced=&terms-0-operator=AND&terms-0-term=Kejriwal%2C+Shubham&terms-0-field=author&classification-physics=y&classification-physics_archives=all&classification-include_cross_list=include&date-year=&date-filter_by=date_range&date-from_date=2023&date-to_date=&date-date_type=submitted_date&abstracts=show&size=50&order=-announced_date_first).  
+Total *8* articles available as pre-prints or journal publications. Find my latest citation summary on [inspireHEP](https://inspirehep.net/authors/2739234?ui-citation-summary=true) and the most up-to-date list of articles on [arxiv](https://arxiv.org/search/advanced?advanced=&terms-0-operator=AND&terms-0-term=Kejriwal%2C+Shubham&terms-0-field=author&classification-physics=y&classification-physics_archives=all&classification-include_cross_list=include&date-year=&date-filter_by=date_range&date-from_date=2023&date-to_date=&date-date_type=submitted_date&abstracts=show&size=50&order=-announced_date_first).  
 
 </div>
 
@@ -16,8 +16,11 @@ Total *7* articles available as pre-prints or journal publications. Find my late
 
 ## First Author Papers  
 
+- **S. Kejriwal**, E. Barausse, A. J. K. Chua. (2025)  
+    *Hierarchical modeling of gravitational-wave populations for disentangling environmental and modified-gravity effects*, [arXiv](https://arxiv.org/abs/2510.17398)
+    
 - **S. Kejriwal**, F. Duque, A. J. K. Chua, J. Gair. (2025)  
-    *Bias-Corrected Importance Sampling for Inferring Beyond Vacuum-GR Effects in Gravitational Wave Sources*, [arXiv](https://arxiv.org/abs/2503.01120)
+    *Bias-Corrected Importance Sampling for Inferring Beyond Vacuum-GR Effects in Gravitational Wave Sources*, [PRD](https://journals.aps.org/prd/abstract/10.1103/7f8h-w4yz)
 
 - **S. Kejriwal**, V. Witzany, M. Zajacěk, D. R. Pasham, A. J. K. Chua. (2024)  
     *Repeating Nuclear Transients as Candidate Electromagnetic Counterparts of LISA Extreme Mass Ratio Inspirals*, [MNRAS](https://doi.org/10.1093/mnras/stae1599)
@@ -32,7 +35,7 @@ Total *7* articles available as pre-prints or journal publications. Find my late
 ## Co-Author Papers  
 
 - J. Chakraborty, L. V. Drummond, M. Bonetti, A. Franchini, **S. Kejriwal**, et al. (2025)
-    *Prospects for EMRI/MBH parameter estimation using Quasi-Periodic Eruption timings*, [arXiv](https://arxiv.org/abs/2508.20162)
+    *Prospects for EMRI/MBH parameter estimation using Quasi-Periodic Eruption timings*, [ApJ](https://iopscience.iop.org/article/10.3847/1538-4357/ae003b)
     
 - C. E. A. Chapman-Bird, L. Speri, Z. Nasipak, O. Burke, M. L. Katz, A. Santini, **S. Kejriwal**, et al. (2025)
     *Efficient Waveforms for asymmetric-mass eccentric equatorial inspirals into rapidly-spinning black holes*, [arXiv](https://arxiv.org/abs/2506.09470)
