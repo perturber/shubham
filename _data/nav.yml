@@ -1,0 +1,17 @@
+- title: Home
+  url: /
+- title: Research
+  url: /research/
+- title: Publications
+  url: /publications/
+- title: Talks
+  url: /talks/
+- title: Teaching & Service
+  url: /activities/
+- title: About
+  url: /about/
+- title: Contact
+  url: /contact/
+- title: CV
+  url: /assets/Shubham_Kejriwal_CV.pdf
+  external: true

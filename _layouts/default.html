@@ -1,533 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- MathJax Configuration -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [['$','$'], ['\\(','\\)']],
-        displayMath: [['$$','$$'], ['\\[','\\]']],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: { Macros: {} },
-      messageStyle: "none"
-    });
-  </script>
-  <script type="text/javascript" async
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title | default: site.title }}</title>
+  <title>{% if page.title and page.title != "Home" %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ site.baseurl }}/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="{{ site.baseurl }}/assets/favicon-180.png">
+  <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/favicon-180.png">
 
-  <!-- Google Font Link -->
+  <!-- Apply saved theme before paint to avoid a flash -->
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css?v={{ site.time | date: '%s' }}">
 
-  <style>
-    :root {
-      /* Color Palette */
-      --panel-bg-dark: #333;
-      --text-color-light: #f0f0f0;
-      --link-color-light: #7fdbff;
-      --link-hover-light: #aaddff;
-      --icon-color-light: #ccc;
-      --icon-hover-light: #fff;
-      --content-bg: #f5f5f5;
-      --content-text: #333;
-      --content-link-color: crimson; /* Define crimson color */
-
-      /* Layout */
-      --mobile-breakpoint: 768px;
-      --sidebar-width-expanded: 280px;
-      --sidebar-width-collapsed: 75px;
-      --collapsed-image-size: 45px;
-      --mobile-top-bar-height: 55px;
-      --transition-speed: 0.3s;
-    }
-
-    /* --- Basic reset --- */
-    html {
-        margin: 0; padding: 0; box-sizing: border-box;
-    }
-    *, *:before, *:after {
-        box-sizing: inherit;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Roboto', Arial, sans-serif;
-      display: flex;
-      min-height: 100vh;
-      flex-direction: row;
-      background-color: var(--content-bg);
-      color: var(--content-text);
-      transition: padding-left var(--transition-speed) ease, padding-top var(--transition-speed) ease;
-    }
-
-    /* --- Sidebar Base Styles --- */
-    .sidebar {
-      background-color: var(--panel-bg-dark);
-      color: var(--text-color-light);
-      padding: 20px;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-      text-align: center;
-      flex-shrink: 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      z-index: 1000;
-      width: var(--sidebar-width-expanded);
-      height: 100vh;
-      position: sticky;
-      top: 0;
-      transform: none;
-      transition: width var(--transition-speed) ease,
-                  padding var(--transition-speed) ease,
-                  transform var(--transition-speed) ease;
-    }
-
-    /* --- Desktop Collapsed State --- */
-    .sidebar.collapsed {
-      width: var(--sidebar-width-collapsed);
-      padding: 10px;
-      padding-top: 70px;
-    }
-    .sidebar.collapsed .sidebar-profile-pic {
-      display: block !important; max-width: var(--collapsed-image-size) !important;
-      height: var(--collapsed-image-size); margin: 15px auto;
-      opacity: 1 !important; object-fit: cover;
-    }
-    .sidebar.collapsed h2,
-    .sidebar.collapsed .sidebar-description,
-    .sidebar.collapsed .sidebar-nav {
-      display: none;
-    }
-    .sidebar.collapsed .sidebar-icon-links {
-      margin-top: 20px;
-      text-align: center;
-    }
-     .sidebar.collapsed .sidebar-icon-links a {
-       font-size: 24px; margin: 10px 0; display: block;
-     }
-
-    /* --- Common Sidebar Child Styles --- */
-    .sidebar-profile-pic {
-      max-width: 150px; height: auto; border-radius: 50%;
-      margin-bottom: 15px; display: block; margin-left: auto; margin-right: auto;
-      transition: opacity var(--transition-speed) ease, max-width var(--transition-speed) ease, height var(--transition-speed) ease;
-    }
-    .sidebar h2 { margin-top: 0; font-size: 1.5em; transition: opacity var(--transition-speed) ease; }
-    .sidebar-description {
-      font-size: 0.95em; line-height: 1.4; text-align: justify;
-      margin-bottom: 20px; transition: opacity var(--transition-speed) ease;
-    }
-    .sidebar a { color: var(--link-color-light); text-decoration: none; }
-    .sidebar a:hover { text-decoration: underline; color: var(--link-hover-light); }
-    .sidebar-icon-links { margin-top: 0; margin-bottom: 25px; text-align: center; }
-    .sidebar-icon-links a { margin: 0 8px; display: inline-block; color: var(--icon-color-light); font-size: 20px; transition: color 0.2s ease; }
-    .sidebar-icon-links a:hover { color: var(--icon-hover-light); }
-
-    /* --- Navigation Styles Inside Sidebar --- */
-    .sidebar-nav {
-        border-top: 1px solid #555; margin-top: 20px; padding-top: 15px;
-        text-align: left; transition: opacity var(--transition-speed) ease;
-    }
-    .sidebar-nav a {
-        display: block; margin: 0; padding: 10px 0; font-weight: bold;
-        color: var(--text-color-light);
-        transition: color 0.2s ease; text-decoration: none;
-    }
-    .sidebar-nav a:hover {
-        color: var(--link-color-light);
-        text-decoration: none;
-    }
-
-    /* --- Desktop Toggle Button --- */
-    #desktop-sidebar-toggle {
-      display: none;
-      position: absolute; top: 15px; left: 15px;
-      background: rgba(255, 255, 255, 0.1); color: var(--text-color-light);
-      border: none; width: 40px; height: 40px; font-size: 1.2em;
-      cursor: pointer; z-index: 1001; border-radius: 4px;
-      align-items: center; justify-content: center;
-      transition: background-color 0.2s ease, left var(--transition-speed) ease;
-    }
-    #desktop-sidebar-toggle:hover { background: rgba(255, 255, 255, 0.2); }
-    .sidebar.collapsed #desktop-sidebar-toggle {
-       left: calc( (var(--sidebar-width-collapsed) - 40px) / 2 );
-       top: 15px;
-    }
-
-    /* --- Mobile-Only Top Bar --- */
-    #mobile-top-bar {
-        display: none;
-        background-color: var(--panel-bg-dark);
-        color: var(--text-color-light); padding: 5px 15px;
-        position: fixed; top: 0; left: 0; width: 100%;
-        z-index: 1005; align-items: center; min-height: var(--mobile-top-bar-height);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    #mobile-sidebar-toggle {
-        background: none; border: none; color: var(--text-color-light);
-        font-size: 1.8em; cursor: pointer;
-        padding: 5px; margin-right: 15px; line-height: 1;
-    }
-    .mobile-top-profile-pic {
-        height: 35px; width: 35px; border-radius: 50%;
-        object-fit: cover; margin-right: auto;
-    }
-    .mobile-top-icons { display: flex; align-items: center; }
-    .mobile-top-icons a {
-        color: var(--icon-color-light); font-size: 20px;
-        margin-left: 12px; transition: color 0.2s ease;
-    }
-    .mobile-top-icons a:hover { color: var(--icon-hover-light); }
-
-    /* --- Close button inside the slide-out sidebar (Mobile only) --- */
-    #sidebar-close-button {
-        display: none;
-        position: absolute; top: 10px; right: 15px;
-        background: none; border: none; color: var(--text-color-light);
-        font-size: 1.8em; cursor: pointer; z-index: 1011;
-    }
-
-    /* --- Main Content Area --- */
-    .content-wrapper {
-      flex-grow: 1; display: flex; flex-direction: column;
-      min-width: 0; /* Important for flex items containing large content */
-      width: 100%;
-    }
-    main {
-      padding: 30px; /* Base padding for content */
-      flex-grow: 1;
-      background-color: var(--content-bg); color: var(--content-text);
-      overflow-x: hidden; /* Prevent main content from causing horizontal scroll */
-      /* Desktop max-width is set in the media query */
-    }
-
-    /* === Link Styling in Main Content === */
-    main a {
-      color: var(--content-link-color); text-decoration: none;
-      transition: text-decoration 0.2s ease;
-    }
-    main a:visited { color: var(--content-link-color); }
-    main a:hover,
-    main a:focus {
-      color: var(--content-link-color); text-decoration: underline;
-    }
-    main a:active { color: var(--content-link-color); }
-    /* === End Link Styling === */
-
-    /* --- Rules for spacing around figures in main content --- */
-    main figure {
-      margin-top: 2em;
-      margin-bottom: 2em;
-      max-width: 100%; /* Ensure figure element itself is responsive */
-      text-align: center; /* Center content like img and figcaption within */
-    }
-    main figure figcaption {
-      margin-top: 0.5em; /* Space between image/video and caption */
-      font-size: 0.9em;
-      color: #555; /* Slightly lighter caption text */
-    }
-
-    /* --- BASE Responsive Styling for Images within Main Content --- */
-    /* This applies to ALL images within <main> unless overridden by inline styles */
-    main img {
-      max-width: 100%;    /* CORE RULE 1: Never wider than container (mobile fix) */
-      height: auto;       /* Maintain aspect ratio */
-      display: block;     /* Remove extra space below image */
-      margin-left: auto;  /* Assists centering within the figure */
-      margin-right: auto; /* Assists centering within the figure */
-      /* Inline style="max-width: XXXpx;" can be added in Markdown */
-      /* to set a SPECIFIC max width for desktop */
-    }
-
-    /* --- Responsive Styling for IFrames (Video) --- */
-    /* The container sets the aspect ratio */
-    main .video-container {
-      position: relative;
-      overflow: hidden;
-      width: 100%;        /* Take up full width of its container (the figure) */
-      max-width: 560px;   /* Set a max width for the video itself */
-      margin-left: auto;  /* Center the video container within the figure */
-      margin-right: auto;
-      /* Note: No margin-top/bottom needed here, handled by figure margin */
-    }
-    /* The pseudo-element creates the height based on padding */
-    main .video-container::before {
-      content: "";
-      display: block;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio (height/width) */
-    }
-    /* The iframe fills the container */
-    main .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    /* --- End Responsive Content Styling --- */
-
-
-    /* --- Styles for Intro Section with Image (Mobile First) --- */
-    .intro-section {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 1.5em;
-    }
-    .intro-image-container {
-      order: -1;
-      text-align: center;
-      margin-bottom: 1.5em;
-    }
-    /* Make intro image responsive too */
-    .intro-profile-image {
-      /* Apply the same responsive logic */
-      max-width: 100%;
-      width: 85%; /* Relative width */
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: inline-block;
-      /* Add an explicit pixel max-width for desktop if desired */
-      /* For example: max-width: 300px; */
-    }
-    /* Mobile rule to ensure it fits viewport width */
-    @media (max-width: 768px) {
-      .intro-profile-image {
-        max-width: min(300px, calc(100vw - 60px)); /* Cap at 300px or viewport width minus padding */
-      }
-    }
-    .intro-text {
-      order: 0;
-    }
-    .intro-text h1 { margin-top: 0; }
-    /* --- End Styles for Intro Section --- */
-
-
-    /* --- Responsive Styles for Layout --- */
-
-    /* Desktop */
-    @media (min-width: 769px) {
-        body { flex-direction: row; }
-        .sidebar {
-            position: sticky; top: 0; height: 100vh; transform: none;
-        }
-        #desktop-sidebar-toggle { display: flex; }
-        #mobile-top-bar { display: none; }
-        #sidebar-close-button { display: none; }
-        .content-wrapper { margin-left: 0; }
-        body { padding-top: 0 !important; }
-
-        main {
-            max-width: 960px; /* Max width for main content area on desktop */
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .intro-section {
-            flex-direction: row; align-items: flex-start; gap: 40px;
-        }
-        .intro-text {
-            order: 0; flex: 1; min-width: 0; margin-bottom: 0;
-        }
-        .intro-image-container {
-            order: 1; flex-basis: 300px; flex-shrink: 0;
-            margin-bottom: 0; text-align: left;
-        }
-        .intro-profile-image {
-            /* Desktop override for intro image if using flex-basis */
-            max-width: 100%; width: 100%; display: block; margin: 0;
-        }
-    }
-
-    /* Mobile */
-    @media (max-width: 768px) {
-        body { flex-direction: column; }
-        .sidebar {
-            position: fixed; top: 0; left: 0; height: 100%;
-            width: min(80%, 300px); max-width: 300px;
-            transform: translateX(-100%);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            z-index: 1010;
-            padding: 20px !important; padding-top: 50px !important;
-        }
-         .sidebar.collapsed h2,
-         .sidebar.collapsed .sidebar-description,
-         .sidebar.collapsed .sidebar-nav { display: block; }
-         .sidebar.collapsed .sidebar-profile-pic {
-             max-width: 150px !important; height: auto !important; margin: 15px auto !important;
-         }
-         .sidebar.collapsed .sidebar-icon-links { margin-top: 0; text-align: center; }
-         .sidebar.collapsed .sidebar-icon-links a { font-size: 20px; margin: 0 8px; display: inline-block; }
-
-        #mobile-top-bar { display: flex; }
-        #desktop-sidebar-toggle { display: none; }
-        #sidebar-close-button { display: block; }
-
-        body.sidebar-open .sidebar { transform: translateX(0); }
-
-        .content-wrapper { margin-left: 0; width: 100%; }
-        /* Mobile overlay */
-        body::after {
-           content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-           background: rgba(0, 0, 0, 0.6); z-index: 999;
-           opacity: 0; visibility: hidden;
-           transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
-        }
-        body.sidebar-open::after { opacity: 1; visibility: visible; }
-        body { padding-top: var(--mobile-top-bar-height); } /* Adjust body for fixed top bar */
-    }
-
-  </style>
+  {% if page.mathjax %}
+  <script>
+    window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"], ["$$", "$$"]] } };
+  </script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+  {% endif %}
 </head>
 <body>
 
-  <!-- Mobile Only Top Bar -->
-  <div id="mobile-top-bar">
-      <button id="mobile-sidebar-toggle" aria-label="Open Menu" aria-controls="sidebar" aria-expanded="false">
-          <i class="fas fa-bars"></i>
-      </button>
-      <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham" class="mobile-top-profile-pic">
-      <div class="mobile-top-icons">
-          <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
-          <a href="mailto:shubhamkejriwal@u.nus.edu" title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      </div>
-  </div>
-
-  <!-- Sidebar -->
-  <div id="sidebar" class="sidebar">
-    <button id="desktop-sidebar-toggle" aria-label="Toggle Menu" aria-controls="sidebar" aria-expanded="true">
-      <i class="fas fa-times"></i> <!-- Icon changes via JS -->
-    </button>
-    <button id="sidebar-close-button" aria-label="Close Menu">
-        <i class="fas fa-times"></i>
-    </button>
-
-    <img src="{{ site.baseurl | default: '' }}/assets/profile.jpg" alt="Shubham" class="sidebar-profile-pic">
-    <h2>Shubham Kejriwal</h2>
-    <p class="sidebar-description"><strong>Ph.D. Physics</strong> <br>National University of Singapore <br>
-Science Drive 4, <br> Singapore-119077 </p>
-    <div class="sidebar-icon-links">
-      <a href="https://github.com/perturber" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://orcid.org/0009-0004-5838-1886" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
-      <a href="mailto:shubhamkejriwal@u.nus.edu" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="{{ site.baseurl }}/">Shubham Kejriwal</a>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        {% for item in site.data.nav %}
+          {% assign target = item.url | prepend: site.baseurl %}
+          <a href="{{ target }}"{% if page.url == item.url %} class="active" aria-current="page"{% endif %}{% if item.external %} target="_blank" rel="noopener"{% endif %}>{{ item.title }}</a>
+        {% endfor %}
+      </nav>
+      <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-circle-half-stroke"></i></button>
+      <button class="icon-btn" id="nav-toggle" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false"><i class="fas fa-bars"></i></button>
     </div>
-    <nav class="sidebar-nav">
-  <a href="{{ site.baseurl | default: '' }}/">Home</a>
-  <a href="{{ site.baseurl | default: '' }}/about/">About</a>
-  <a href="{{ site.baseurl | default: '' }}/research/">Research</a>
-  <a href="{{ site.baseurl | default: '' }}/publications/">Publications</a>
-  <a href="{{ site.baseurl | default: '' }}/contact/">Contact</a>
-  <a href="{{ site.baseurl | default: '' }}/assets/Shubham_Kejriwal_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
-</nav>
+  </header>
 
-  </div>
+  <main>
+    {{ content }}
+  </main>
 
-  <!-- Main Content Area -->
-  <div class="content-wrapper">
-    <main>
-      {{ content }} <!-- Markdown content renders here -->
-    </main>
-  </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>© {{ site.time | date: "%Y" }} Shubham Kejriwal</span>
+      <span class="footer-icons">
+        <a href="mailto:{{ site.email }}" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/perturber" title="GitHub" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+        <a href="https://orcid.org/0009-0004-5838-1886" title="ORCID" target="_blank" rel="noopener"><i class="fab fa-orcid"></i></a>
+        <a href="https://inspirehep.net/authors/2739234" title="INSPIRE-HEP" target="_blank" rel="noopener"><i class="fas fa-book"></i></a>
+        <a href="https://www.linkedin.com/in/shubham-kejriwal-919976192/" title="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+      </span>
+    </div>
+  </footer>
 
   <script>
-    // Standard sidebar and layout JavaScript (kept concise for brevity)
-    document.addEventListener("DOMContentLoaded", function () {
-      const sidebar = document.getElementById("sidebar");
-      const body = document.body;
-      const mobileTopBar = document.getElementById("mobile-top-bar");
-      const desktopToggleBtn = document.getElementById("desktop-sidebar-toggle");
-      const mobileToggleBtn = document.getElementById("mobile-sidebar-toggle");
-      const sidebarCloseBtn = document.getElementById("sidebar-close-button");
-      const mainContent = document.querySelector('main');
-
-      if (!sidebar || !body || !mobileTopBar || !desktopToggleBtn || !mobileToggleBtn || !sidebarCloseBtn || !mainContent) {
-          console.error("Essential layout element(s) not found."); return;
-      }
-
-      const adjustBodyPadding = () => {
-          const isMobile = window.innerWidth <= 768;
-          const isTopBarVisible = window.getComputedStyle(mobileTopBar).display !== 'none';
-          const topBarHeight = mobileTopBar.offsetHeight;
-          body.style.paddingTop = (isMobile && isTopBarVisible && topBarHeight > 0) ? `${topBarHeight}px` : '0px';
-      };
-
-      const setSidebarState = (shouldBeOpen) => {
-          const isMobile = window.innerWidth <= 768;
-          if (isMobile) {
-              body.classList.toggle('sidebar-open', shouldBeOpen);
-              sidebar.classList.remove('collapsed');
-              mobileToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
-              desktopToggleBtn.setAttribute('aria-expanded', 'true');
-              const desktopIcon = desktopToggleBtn.querySelector('i'); if (desktopIcon) desktopIcon.className = 'fas fa-times';
-          } else {
-              sidebar.classList.toggle('collapsed', !shouldBeOpen);
-              body.classList.remove('sidebar-open');
-              desktopToggleBtn.setAttribute('aria-expanded', shouldBeOpen);
-              const desktopIcon = desktopToggleBtn.querySelector('i'); if (desktopIcon) { desktopIcon.className = shouldBeOpen ? 'fas fa-times' : 'fas fa-bars'; }
-              mobileToggleBtn.setAttribute('aria-expanded', 'false');
-          }
-          requestAnimationFrame(adjustBodyPadding);
-      };
-
-      const setInitialState = () => {
-          const isMobile = window.innerWidth <= 768;
-          setSidebarState(!isMobile); adjustBodyPadding();
-      };
-
-      const setupMainLinks = () => {
-         mainContent.querySelectorAll('a').forEach(link => {
-            const href = link.getAttribute('href');
-             if (href && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('javascript:') && !link.hasAttribute('target')) {
-                try {
-                    const linkUrl = new URL(href, window.location.href);
-                    if (linkUrl.hostname !== window.location.hostname) {
-                        link.setAttribute('target', '_blank'); link.setAttribute('rel', 'noopener noreferrer');
-                    }
-                } catch (e) { /* Ignore invalid URLs */ }
-             }
-         });
-      };
-
-      setInitialState();
-      setupMainLinks();
-      if (typeof MathJax !== "undefined" && MathJax.Hub) { MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.body]); }
-
-      desktopToggleBtn.addEventListener("click", () => setSidebarState(sidebar.classList.contains('collapsed')));
-      mobileToggleBtn.addEventListener("click", () => setSidebarState(true));
-      sidebarCloseBtn.addEventListener("click", () => setSidebarState(false));
-      body.addEventListener('click', event => {
-           if (window.innerWidth <= 768 && body.classList.contains('sidebar-open') && !sidebar.contains(event.target) && !mobileToggleBtn.contains(event.target)) {
-               setSidebarState(false);
-           }
-       });
-
-      let resizeTimeout; let currentWindowWidth = window.innerWidth;
-      window.addEventListener('resize', () => {
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(() => {
-              const newWindowWidth = window.innerWidth; const breakpoint = 768;
-              const isMobile = newWindowWidth <= breakpoint; const wasMobile = currentWindowWidth <= breakpoint;
-              if (isMobile !== wasMobile) { setInitialState(); } else { adjustBodyPadding(); }
-              currentWindowWidth = newWindowWidth;
-          }, 150);
+    (function () {
+      var nav = document.getElementById("site-nav");
+      var navBtn = document.getElementById("nav-toggle");
+      navBtn.addEventListener("click", function () {
+        var open = nav.classList.toggle("open");
+        navBtn.setAttribute("aria-expanded", open);
+        navBtn.innerHTML = open ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
       });
-      window.addEventListener('orientationchange', () => requestAnimationFrame(adjustBodyPadding));
-    });
-  </script>
 
+      var root = document.documentElement;
+      document.getElementById("theme-toggle").addEventListener("click", function () {
+        var current = root.getAttribute("data-theme") ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        var next = current === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+      });
+
+      // Open external links in a new tab
+      document.querySelectorAll("main a[href^='http']").forEach(function (a) {
+        if (a.hostname !== location.hostname && !a.hasAttribute("target")) {
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
