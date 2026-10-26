@@ -31,7 +31,7 @@ I completed my Ph.D. in Physics at the [National University of Singapore](https:
 <div class="interest-grid">
   <div class="card">
     <h3>Robust inference for LISA</h3>
-    <p>Semi-coherent and loosely-coherent analyses of years-long signals that hold up against waveform and data systematics.</p>
+    <p>Analyses of years-long signals in the time, frequency, and time-frequency domains that hold up against modeling and data systematics.</p>
   </div>
   <div class="card">
     <h3>Environments &amp; beyond-GR</h3>
@@ -46,15 +46,3 @@ I completed my Ph.D. in Physics at the [National University of Singapore](https:
     <p>Core developer of <a href="https://github.com/perturber/StableEMRIFisher">StableEMRIFisher</a> and contributor to <a href="https://github.com/BlackHolePerturbationToolkit/FastEMRIWaveforms">FastEMRIWaveforms</a>.</p>
   </div>
 </div>
-
-<h2 class="section-title">News</h2>
-
-<ul class="news">
-  <li><span class="date">Sep 2026</span><span>Gave a seminar in the ACR group at AEI Potsdam.</span></li>
-  <li><span class="date">2026</span><span>Started as a postdoctoral researcher at the Max Planck Institute for Gravitational Physics (AEI), Potsdam.</span></li>
-  <li><span class="date">2026</span><span>Completed my Ph.D. at NUS. Thesis: <em>"New Challenges in Gravitational Wave Astronomy: data analysis implications of extreme-mass-ratio inspirals as precision astronomy probes."</em></span></li>
-  <li><span class="date">2026</span><span><a href="https://arxiv.org/abs/2606.13728">SPLIT</a>, a loosely-coherent inference pipeline for long-inspiral sources, has been accepted in Phys. Rev. D.</span></li>
-  <li><span class="date">Jul 2026</span><span>Co-organized <em>EMRI Search and Inference within the LISA Global Fit – Part II</em> at NUS, and gave a talk there.</span></li>
-  <li><span class="date">2025</span><span>Received the NUS Department of Physics Best Graduate Researcher Award.</span></li>
-  <li><span class="date">Sep 2025</span><span>Seminar tour in Europe: ETH Zurich, SISSA Trieste, and an earlier visit to APC Paris.</span></li>
-</ul>

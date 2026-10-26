@@ -378,3 +378,68 @@ figcaption { margin-top: .7em; font-size: .88rem; color: var(--muted); }
 .footer-inner a { color: var(--muted); }
 .footer-inner a:hover { color: var(--accent); }
 .footer-icons a { margin-left: 14px; font-size: 1rem; }
+
+/* --- Lightbox (gallery carousel) -------------------------------------- */
+.gallery figure { cursor: zoom-in; }
+.gallery figure:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 12, 16, .55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.lightbox.open { display: flex; }
+.lightbox-figure {
+  margin: 0;
+  max-width: min(92vw, 1400px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lightbox-figure img {
+  max-width: 100%;
+  max-height: 80vh;
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .5);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.lightbox-figure figcaption {
+  color: #f2f2f2;
+  font-size: .95rem;
+  margin-top: 12px;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .6);
+}
+.lightbox-count { opacity: .7; margin-left: 8px; font-variant-numeric: tabular-nums; }
+.lightbox-btn {
+  position: absolute;
+  background: rgba(255, 255, 255, .14);
+  border: 1px solid rgba(255, 255, 255, .25);
+  color: #fff;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-btn:hover { background: rgba(255, 255, 255, .28); }
+.lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
+.lightbox-close { top: 18px; right: 18px; }
+@media (max-width: 600px) {
+  .lightbox-prev, .lightbox-next { top: auto; bottom: 22px; transform: none; }
+  .lightbox-prev { left: calc(50% - 56px); }
+  .lightbox-next { right: calc(50% - 56px); }
+  .lightbox-figure { margin-bottom: 60px; }
+}
+body.lightbox-open { overflow: hidden; }

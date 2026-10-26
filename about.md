@@ -6,7 +6,7 @@ permalink: /about/
 <h1 class="page-title">About</h1>
 <p class="page-lede">Education, positions and awards, plus a little about life outside research.</p>
 
-I am a gravitational-wave astronomer working on data analysis for the Laser Interferometer Space Antenna (LISA). I joined the Albert Einstein Institute in Potsdam as a postdoc in 2026, after a Ph.D. at the National University of Singapore on extreme-mass-ratio inspirals as probes for precision astronomy. I mostly work with Bayesian statistics and machine learning, and I also know general-relativistic waveform modeling well enough to use it in my work.
+I am a gravitational-wave astronomer working on data analysis pipelines for future detectors, including the Laser Interferometer Space Antenna (LISA). I employ various Bayesian statistics and machine learning techniques in my work, and have also helped develop new inference methods with the help of these tools.
 
 <h2 class="section-title">Positions</h2>
 
@@ -60,3 +60,76 @@ When I'm not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriwa
   <figure><img src="{{ site.baseurl }}/assets/bambooforestjapan.jpg" alt="Bamboo forest" loading="lazy"><figcaption>Bamboo forest near Kyoto, Japan</figcaption></figure>
   <figure><img src="{{ site.baseurl }}/assets/krabi.jpg" alt="Ao Nang beach" loading="lazy"><figcaption>Ao Nang Beach, Krabi, Thailand</figcaption></figure>
 </div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox-btn lightbox-close" aria-label="Close"><i class="fas fa-xmark"></i></button>
+  <button class="lightbox-btn lightbox-prev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
+  <figure class="lightbox-figure">
+    <img alt="">
+    <figcaption><span class="lightbox-caption"></span><span class="lightbox-count"></span></figcaption>
+  </figure>
+  <button class="lightbox-btn lightbox-next" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
+</div>
+
+<script>
+(function () {
+  var items = Array.prototype.slice.call(document.querySelectorAll(".gallery figure"));
+  var box = document.getElementById("lightbox");
+  var img = box.querySelector("img");
+  var cap = box.querySelector(".lightbox-caption");
+  var count = box.querySelector(".lightbox-count");
+  var index = 0, lastFocus = null;
+
+  function show(i) {
+    index = (i + items.length) % items.length;
+    var src = items[index].querySelector("img");
+    img.src = src.src;
+    img.alt = src.alt;
+    cap.textContent = items[index].querySelector("figcaption").textContent;
+    count.textContent = (index + 1) + " / " + items.length;
+  }
+  function open(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    box.classList.add("open");
+    document.body.classList.add("lightbox-open");
+    box.querySelector(".lightbox-close").focus();
+  }
+  function close() {
+    box.classList.remove("open");
+    document.body.classList.remove("lightbox-open");
+    if (lastFocus) lastFocus.focus();
+  }
+
+  items.forEach(function (fig, i) {
+    fig.tabIndex = 0;
+    fig.setAttribute("role", "button");
+    fig.setAttribute("aria-label", "View photo: " + fig.querySelector("figcaption").textContent);
+    fig.addEventListener("click", function () { open(i); });
+    fig.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(i); }
+    });
+  });
+
+  box.querySelector(".lightbox-prev").addEventListener("click", function () { show(index - 1); });
+  box.querySelector(".lightbox-next").addEventListener("click", function () { show(index + 1); });
+  box.querySelector(".lightbox-close").addEventListener("click", close);
+  box.addEventListener("click", function (e) { if (e.target === box) close(); });
+
+  document.addEventListener("keydown", function (e) {
+    if (!box.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") show(index - 1);
+    else if (e.key === "ArrowRight") show(index + 1);
+  });
+
+  var startX = null;
+  box.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener("touchend", function (e) {
+    if (startX === null) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) show(dx > 0 ? index - 1 : index + 1);
+    startX = null;
+  });
+})();
+</script>
