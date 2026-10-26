@@ -17,7 +17,10 @@ title: Home
       <a class="pill" href="https://github.com/perturber"><i class="fab fa-github"></i>GitHub</a>
     </div>
   </div>
-  <img class="hero-photo" src="{{ site.baseurl }}/assets/profile_large.jpg" alt="Portrait of Shubham Kejriwal">
+  <picture>
+    <source media="(max-width: 700px)" srcset="{{ site.baseurl }}/assets/profile_square.jpg">
+    <img class="hero-photo" src="{{ site.baseurl }}/assets/profile_large.jpg" alt="Portrait of Shubham Kejriwal">
+  </picture>
 </section>
 
 I am a postdoctoral researcher in the Astrophysical and Cosmological Relativity (ACR) group at the [Albert Einstein Institute](https://www.aei.mpg.de/) in Potsdam, working with Jonathan Gair. My position is supported by the ERC grant *"Making Sense of the Unexpected in the Gravitational-Wave Sky"*.

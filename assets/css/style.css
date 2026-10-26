@@ -195,7 +195,8 @@ main {
 }
 @media (max-width: 700px) {
   .hero { grid-template-columns: 1fr; gap: 24px; }
-  .hero-photo { width: 180px; aspect-ratio: 1; border-radius: 50%; order: -1; }
+  .hero-photo { width: 180px; aspect-ratio: 1; border-radius: 50%; }
+  .hero picture { order: -1; }
   .hero h1 { font-size: 2.1rem; }
 }
 
