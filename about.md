@@ -1,248 +1,62 @@
 ---
-layout: default
 title: About
 permalink: /about/
 ---
 
-# About Me
+<h1 class="page-title">About</h1>
+<p class="page-lede">Education, positions and awards, plus a little about life outside research.</p>
 
-<div class="bubble" markdown="1">
+I am a gravitational-wave astronomer working on data analysis for the Laser Interferometer Space Antenna (LISA). I joined the Albert Einstein Institute in Potsdam as a postdoc in 2026, after a Ph.D. at the National University of Singapore on extreme-mass-ratio inspirals as probes for precision astronomy. I mostly work with Bayesian statistics and machine learning, and I also know general-relativistic waveform modeling well enough to use it in my work.
 
-My name is Shubham Kejriwal, a final-year Ph.D. student in gravitational wave data analysis at the National University of Singapore. My PhD is supervised by Prof. Alvin Chua. My research focuses on developing the data analysis pipeline for the upcoming LISA mission. I am proficient in Bayesian statistics and machine learning, with a working knowledge of general-relativistic waveform modeling.
+<h2 class="section-title">Positions</h2>
 
-</div>
-
-<div class="bubble" markdown="1">
-
-## Education
-- **Ph.D. in Physics (2023-)**  
-  [National University of Singapore, Singapore](https://www.nus.edu.sg/).  
-  Thesis advisor: [Asst. Prof. Alvin J. K. Chua](https://www.physics.nus.edu.sg/faculty/chua-alvin-jk/)  
-
-- **B.Sc. (Research) in Physics with a Minor in Mathematics (2018-2022)**  
-  [Shiv Nadar University, Delhi, India](https://snu.edu.in/home/).  
-
-</div>
-
-<div class="bubble" markdown="1">
-
-## What I Do
-### Research Work
-Some broad directions of my research are highlighted below. You can read more about my research [here](/shubham/research/) and access my full list of publications [here](/shubham/publications/).
-
-- GW waveform modeling and inference of extreme-mass-ratio inspirals (EMRIs).  
-- Inferring environments and beyond-GR ("beyond-vacuum-GR") effects using the LISA mission.  
-- Search for electromagnetic counterparts of EMRIs.  
-
-### Teaching
-I have served as a Teaching Assistant for graduate and undergraduate courses, leading tutorials, grading, and mentoring classes of 40-100 students. Below is a list of courses I have helped with.
-
-- [PC5252](https://nusmods.com/courses/PC5252/bayesian-statistics-and-machine-learning) "Bayesian Statistics and Machine Learning" (2 semesters).  
-- [COS1000](https://nusmods.com/courses/COS1000/computational-thinking-for-scientists) "Computational Thinking for Scientists" (3 semesters).  
-- [HS1502](https://nusmods.com/courses/HS1502/conceptual-introduction-to-machine-learning) "Conceptual Introduction to Machine Learning" (2 semesters).  
-
-### Presentations
-Below is a short list of talks and posters I have presented for various research conferences and science outreach programs.  
-
-- ([Talk](https://virtual.oxfordabstracts.com/event/5189/submission/77)) 15th International LISA Symposium 2024, Dublin, Ireland.  
-- ([Talk](https://www.caprameeting.org/capra-meetings/capra-27)) 27th Capra Meeting, June 2024, NUS.  
-- ([Talk](https://www.caltech.edu/campus-life-events/calendar/ligo-seminar-86)) LIGO Seminar, April 2024, Caltech.  
-- (Poster) Physics Engagement Camp, March 2024, NUS.  
-
-</div>
-
-<div class="bubble" markdown="1">
-
-## Other Contributions
-I am a member of multiple international research collaborations including:  
-
-- [LISA Consortium](https://www.lisamission.org/) (core member)  
-- [FastEMRIWaveforms (FEW)](https://github.com/BlackHolePerturbationToolkit/FastEMRIWaveforms) Collaboration  
-
-I also enjoy contributing to science events, by organizing them:  
-
-- Local Organizing Committee member, [Capra27](https://www.caprameeting.org/capra-meetings/capra-27).  
-- Executive Committee member, Physics Graduate Students' Society, NUS.  
-
-or by participating:  
-
-- [Beyond the Horizon Program](https://icts.res.in/program/beyondhorizon), March 2025, ICTS-TIFR, India.  
-- [EMRI Search and Inference within the LISA Global Fit - Part 1](https://indico.in2p3.fr/event/34916/overview), June 2025, APC, Paris, France.  
-- [Enabling Future Gravitational Wave Astrophysics in the Milli-Hertz Regime](https://www.munich-iapbp.de/activities/activities-2025/gravitational-waves), July 2025, MIAPbP, Munich, Germany.  
-
-</div>
-
-<div class="bubble" markdown="1">
-
-## Beyond Academia
-<div class="gallery-container">
-  <button class="gallery-btn prev" onclick="plusSlides(-1)">&#10094;</button>
-  
-  <div class="gallery-track">
-    <div class="gallery-slide">
-      <img src="{{ site.baseurl }}/assets/icecave.jpg" alt="Iceland Ice Cave">
-      <div class="caption">Inside an ice cave on Katla Glacier, Iceland.</div>
-    </div>
-
-    <div class="gallery-slide">
-      <img src="{{ site.baseurl }}/assets/mtbromo.jpg" alt="Mt Bromo Portrait">
-      <div class="caption">A view of Mt. Bromo, Indonesia.</div>
-    </div>
-
-    <div class="gallery-slide">
-      <img src="{{ site.baseurl }}/assets/joshuatree.jpg" alt="Joshua Tree National Park">
-      <div class="caption">The night sky in Joshua Tree National Park, USA.</div>
-    </div>
-
-    <div class="gallery-slide">
-      <img src="{{ site.baseurl }}/assets/krabi.jpg" alt="Krabi Beach">
-      <div class="caption">Ao Nang Beach, Krabi, Thailand.</div>
-    </div>
-
-    <div class="gallery-slide">
-      <img src="{{ site.baseurl }}/assets/swissalps.jpg" alt="Alpine Range from Pilatus">
-      <div class="caption">A view of the Alpine Range from Mt. Pilatus, Switzerland.</div>
-    </div>
-
-    <div class="gallery-slide">
-      <img src="{{ site.baseurl }}/assets/bambooforestjapan.jpg" alt="Bamboo forest Japan">
-      <div class="caption">Inside a Bamboo Forest near Kyoto, Japan.</div>
-    </div>
+<div class="card">
+  <div class="entry">
+    <div class="entry-head"><span class="entry-title">Postdoctoral Researcher</span><span class="entry-meta">2026 – present</span></div>
+    <div class="entry-sub"><a href="https://www.aei.mpg.de/">Max Planck Institute for Gravitational Physics (Albert Einstein Institute)</a>, Potsdam, Germany</div>
+    <ul>
+      <li>Astrophysical and Cosmological Relativity (ACR) group; supervisor: Dr. Jonathan Gair</li>
+      <li>Supported by the ERC grant <em>"Making Sense of the Unexpected in the Gravitational-Wave Sky"</em></li>
+    </ul>
   </div>
-
-  <button class="gallery-btn next" onclick="plusSlides(1)">&#10095;</button>
 </div>
 
-When I am not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriwal). I also love travelling and trying out different cuisines (though restrictive as a vegetarian). I am a big Formula One fan. I enjoy trekking and swimming, so I am both a mountain *and* a beach person!
+<h2 class="section-title">Education</h2>
 
+<div class="card">
+  <div class="entry">
+    <div class="entry-head"><span class="entry-title">Ph.D. in Physics</span><span class="entry-meta">2023 – 2026</span></div>
+    <div class="entry-sub"><a href="https://www.nus.edu.sg/">National University of Singapore</a>, Gravitational Waves Group, Department of Physics</div>
+    <ul>
+      <li>Thesis: <em>"New Challenges in Gravitational Wave Astronomy: data analysis implications of extreme-mass-ratio inspirals as precision astronomy probes"</em></li>
+      <li>Advisor: <a href="https://www.physics.nus.edu.sg/faculty/chua-alvin-jk/">Asst. Prof. Alvin J. K. Chua</a></li>
+    </ul>
+  </div>
+  <div class="entry">
+    <div class="entry-head"><span class="entry-title">B.Sc. (Research) in Physics, Minor in Mathematics (Distinction)</span><span class="entry-meta">2018 – 2022</span></div>
+    <div class="entry-sub"><a href="https://snu.edu.in/home/">Shiv Nadar University</a>, Delhi, India</div>
+    <ul>
+      <li>Thesis: <em>"On the Effects of Relative Motion on Gravitational Waves from Extreme-Mass-Ratio Inspirals"</em></li>
+      <li>Advisors: Asst. Prof. Arindam Chatterjee (internal), Asst. Prof. Alvin J. K. Chua (external)</li>
+    </ul>
+  </div>
 </div>
 
-<style>
-.bubble {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+<h2 class="section-title">Awards</h2>
 
-.gallery-container {
-  position: relative;
-  max-width: 600px;
-  margin: auto;
-  aspect-ratio: 4/3;
-  background: #000;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
+- NUS Department of Physics Best Graduate Researcher Award (2025)
+- NUS Research Scholarship (2023–2026)
+- Dean's List Academic Excellence Award (×3), Shiv Nadar University (2019, 2020)
 
-.gallery-track {
-  display: flex;
-  transition: transform 0.8s ease-in-out; /* smooth slide */
-  height: 100%;
-}
+<h2 class="section-title">Beyond academia</h2>
 
-.gallery-slide {
-  min-width: 100%;
-  height: 100%;
-  position: relative;
-}
+When I'm not working, I sometimes [vlog](https://www.youtube.com/@ShubhamKejriwal). I love travelling and trying different cuisines, within the limits of being vegetarian. I'm a big Formula One fan. I enjoy both trekking and swimming, so I'm a mountain *and* a beach person.
 
-.gallery-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.caption {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  font-size: 1rem;
-  padding: 8px 12px;
-  text-align: center;
-  font-style: italic;
-  border-radius: 0 0 8px 8px;
-}
-
-.gallery-btn {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  padding: 12px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 24px; /* slightly bigger */
-  border: none;
-  background: rgba(0,0,0,0.4);
-  border-radius: 50%;
-  user-select: none;
-  transition: 0.3s;
-  z-index: 10; /* ensure buttons stay above the slides */
-}
-
-.gallery-btn:hover { background: rgba(0,0,0,0.8); }
-.prev { left: 0; } .next { right: 0; }
-</style>
-
-<script>
-let slideIndex = 0;
-let slideTimer;
-
-const track = document.querySelector(".gallery-track");
-const slides = document.querySelectorAll(".gallery-slide");
-const totalSlides = slides.length;
-
-function updateSlidePosition() {
-  track.style.transform = `translateX(-${slideIndex * 100}%)`;
-}
-
-function plusSlides(n) {
-  clearTimeout(slideTimer);
-  slideIndex = (slideIndex + n + totalSlides) % totalSlides;
-  updateSlidePosition();
-  slideTimer = setTimeout(autoSlide, 10000);
-}
-
-function autoSlide() {
-  slideIndex = (slideIndex + 1) % totalSlides;
-  updateSlidePosition();
-  slideTimer = setTimeout(autoSlide, 10000);
-}
-
-// Swipe support
-let startX = 0;
-let endX = 0;
-
-track.addEventListener("touchstart", (e) => {
-  startX = e.touches[0].clientX;
-});
-
-track.addEventListener("touchmove", (e) => {
-  endX = e.touches[0].clientX;
-});
-
-track.addEventListener("touchend", () => {
-  let deltaX = endX - startX;
-  if (Math.abs(deltaX) > 50) {  // threshold to prevent accidental taps
-    if (deltaX > 0) {
-      plusSlides(-1); // swipe right → previous
-    } else {
-      plusSlides(1);  // swipe left → next
-    }
-  }
-  startX = 0;
-  endX = 0;
-});
-
-// init
-updateSlidePosition();
-slideTimer = setTimeout(autoSlide, 10000);
-</script>
-
+<div class="gallery">
+  <figure><img src="{{ site.baseurl }}/assets/icecave.jpg" alt="Inside an ice cave" loading="lazy"><figcaption>Ice cave on Katla Glacier, Iceland</figcaption></figure>
+  <figure><img src="{{ site.baseurl }}/assets/swissalps.jpg" alt="The Alps seen from Mt. Pilatus" loading="lazy"><figcaption>The Alps from Mt. Pilatus, Switzerland</figcaption></figure>
+  <figure><img src="{{ site.baseurl }}/assets/joshuatree.jpg" alt="Night sky over Joshua Tree" loading="lazy"><figcaption>Night sky, Joshua Tree, USA</figcaption></figure>
+  <figure><img src="{{ site.baseurl }}/assets/mtbromo.jpg" alt="Mt. Bromo" loading="lazy"><figcaption>Mt. Bromo, Indonesia</figcaption></figure>
+  <figure><img src="{{ site.baseurl }}/assets/bambooforestjapan.jpg" alt="Bamboo forest" loading="lazy"><figcaption>Bamboo forest near Kyoto, Japan</figcaption></figure>
+  <figure><img src="{{ site.baseurl }}/assets/krabi.jpg" alt="Ao Nang beach" loading="lazy"><figcaption>Ao Nang Beach, Krabi, Thailand</figcaption></figure>
+</div>
